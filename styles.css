@@ -1,0 +1,143 @@
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f8f1e7;
+    color: #5a4636;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #e1c9a8;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px; /* Optional: Add padding to the left and right */
+}
+
+nav ul {
+    display: flex; /* Make the list horizontal */
+    list-style-type: none; /* Remove list bullets */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+nav ul li {
+    margin-left: 20px; /* Space between the list items */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #382817; /* Link color */
+}
+
+nav ul li a:hover {
+    color: #8c6239;
+}
+
+/* Hero Section */
+#hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: #f4e3d6;
+}
+.logo img {
+    max-width: 150px; /* Adjust the logo size */
+    height: 100px; /* Maintain aspect ratio */
+}
+/* Container holding the slideshow */
+.slideshow-container {
+    width: 200%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Slideshow itself */
+  .slideshow {
+    display: flex;
+    width: 100%;
+    animation: scrollImages 30s linear infinite;
+  }
+  
+  /* Style the images */
+  .slideshow img {
+    width: 25%; /* Adjust the width based on how many images you want visible at a time */
+    height: auto;
+    border: 5px solid #000; /* Add a black border with 5px thickness */
+    margin: 10px;
+    
+
+  }
+  
+  /* Animation to scroll images */
+  @keyframes scrollImages {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+
+/* Project Section */
+.gallery {
+    display: flex;
+    gap: 20px;
+    justify-content: left;
+    flex-wrap: wrap; /* Allow the items to wrap on smaller screens */
+    padding: 20px; /* Optional: Add some padding around the gallery */
+}
+
+.project {
+    position: relative;
+    cursor: pointer;
+    flex: 1 1 calc(25% - 20px); /* Make each project take up 25% of the container minus gap */
+    box-sizing: border-box;
+}
+
+/* Ensure images are responsive */
+.project img {
+    width: 100%; /* Make the images fit the container */
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .project {
+        flex: 1 1 calc(33.33% - 20px); /* 3 images per row on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .project {
+        flex: 1 1 100%; /* 1 image per row on small screens (e.g., mobile phones) */
+    }
+}
+
+
+.project:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.project:hover .overlay {
+    opacity: 1;
+}
