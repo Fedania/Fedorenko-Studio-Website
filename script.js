@@ -1,10 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".slider");
-    const slides = document.querySelectorAll(".slide");
-    const totalSlides = slides.length;
-    const slideWidth = slides[0].offsetWidth;
-    let scrollAmount = 0;
-    
     function autoSlide() {
         scrollAmount += slideWidth / 2; // Moves half-slide width for smooth effect
         if (scrollAmount >= slideWidth * totalSlides) {
@@ -24,5 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = url;
             }
         });
+        
     });
-});
+    document.querySelectorAll('.image-container').forEach(container => {
+        const textElement = container.querySelector('.image-text');
+        textElement.textContent = container.getAttribute('data-text');
+    });
+    
+    
+
+

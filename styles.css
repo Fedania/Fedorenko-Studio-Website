@@ -4,8 +4,12 @@ body {
     color: #5a4636;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    width: 100%;
 }
-
+h1, h2, p {
+    padding: 5%;
+}
 header {
     background: #e1c9a8;
     padding: 20px 0;
@@ -41,9 +45,14 @@ nav ul li a:hover {
 /* Hero Section */
 #hero {
     text-align: center;
-    padding: 100px 20px;
+    padding: 5%;
     background: #f4e3d6;
 }
+.hero-container {
+    background-color: #949494;
+ 
+}
+
 .logo img {
     max-width: 150px; /* Adjust the logo size */
     height: 100px; /* Maintain aspect ratio */
@@ -53,24 +62,57 @@ nav ul li a:hover {
     width: 200%;
     overflow: hidden;
     position: relative;
-  }
-  
-  /* Slideshow itself */
-  .slideshow {
+}
+
+/* Slideshow itself */
+.slideshow {
     display: flex;
     width: 100%;
     animation: scrollImages 30s linear infinite;
-  }
-  
-  /* Style the images */
-  .slideshow img {
-    width: 25%; /* Adjust the width based on how many images you want visible at a time */
-    height: auto;
-    border: 5px solid #000; /* Add a black border with 5px thickness */
-    margin: 10px;
-    
+}
 
-  }
+/* Style the images inside the slideshow */
+.slideshow .image-container {
+    position: relative;
+    display: inline-block;
+    width: 25%; /* Adjust width based on how many images should be visible */
+    margin: 10px;
+    border: 5px solid #000; /* Black border */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.slideshow .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Image Name Text */
+.slideshow .image-container .image-text {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(50px); /* Start off-screen */
+    opacity: 0;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* Hover Effect */
+.slideshow .image-container:hover img {
+    opacity: 0.5; /* Fade out */
+}
+
+.slideshow .image-container:hover .image-text {
+    opacity: 1;
+    transform: translateX(0); /* Slide into place */
+}
+
+
   
   /* Animation to scroll images */
   @keyframes scrollImages {
