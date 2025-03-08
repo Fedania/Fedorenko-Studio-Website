@@ -23,7 +23,15 @@
         const textElement = container.querySelector('.image-text');
         textElement.textContent = container.getAttribute('data-text');
     });
+    document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
     
+        hamburger.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    });
+      
     
 
 
