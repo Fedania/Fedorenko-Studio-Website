@@ -7,11 +7,13 @@ body {
     overflow-x: hidden;
     width: 100%;
     line-height: 1.6; /* Adjust this value as needed */
+    font-size: 1rem;
 }
 h1, h2, p {
     padding-left: 5%;
+    padding-right: 5%;
+
 }
-/* Header Styling */
 /* Header Styling */
 header {
     background: #e1c9a8;
@@ -55,7 +57,7 @@ nav {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 .nav-links li {
@@ -68,40 +70,6 @@ nav {
     font-size: 16px;
 }
 
-/* Mobile Menu */
-@media (max-width: 768px) {
-    .header-container {
-        height: 30px; /* Keep header height fixed on small screens */
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 200px;
-        background: #e1c9a8;
-        padding: 15px;
-        border-radius: 10px;
-        text-align: left;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
-        flex-direction: column;
-        display: flex;
-        gap: 10px;
-    }
-
-    .nav-links.active {
-        transform: translateX(0);
-    }
-
-    .hamburger {
-        display: block;
-    }
-   
-}
-
-
-
 nav ul {
     display: flex; /* Make the list horizontal */
     list-style-type: none; /* Remove list bullets */
@@ -110,7 +78,7 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 20px; /* Space between the list items */
+    margin: 0;
 }
 
 nav ul li a {
@@ -129,19 +97,35 @@ nav ul li a:hover {
     background: #f4e3d6;
 }
 .hero-container {
-    
- 
+    display: flex; /* Enables flexible scaling */
+    flex-direction: column; /* Stacks content vertically */
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Ensures text stays centered */
+    min-height: 10vh; /* Ensures it fills the viewport */
+    width: 100%; /* Ensures it spans the entire width */
+    padding: 20px; /* Adds spacing */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+.hero-container h2 {
+    font-size: clamp(1rem, 5vw, 4rem); /* Scales between 2rem and 4rem */
+    margin-bottom: 10px;
 }
 
 .logo img {
     max-width: 150px; /* Adjust the logo size */
     height: 100px; /* Maintain aspect ratio */
 }
-/* Container holding the slideshow */
-.slideshow-container {
-    width: 200%;
-    overflow: hidden;
+#Services {
     position: relative;
+}
+/* Main container holding the slideshow */
+.slideshow-container {
+    display: flex;
+    width: 200%;
+    overflow: visible;  /* Allow the text to be visible outside the container */
+    position: relative;
+    flex-wrap: wrap;
 }
 
 /* Slideshow itself */
@@ -154,42 +138,56 @@ nav ul li a:hover {
 /* Style the images inside the slideshow */
 .slideshow .image-container {
     position: relative;
+    
     display: inline-block;
     width: 25%; /* Adjust width based on how many images should be visible */
-    margin: 10px;
-    border: 5px solid #000; /* Black border */
-    overflow: hidden;
+    margin: 0.5%;
+    padding-bottom: 5vw;
+
     cursor: pointer;
+    overflow: visible;  /* Allow text to overflow and be visible */
 }
 
 .slideshow .image-container img {
     width: 100%;
+    
     height: auto;
     display: block;
     transition: opacity 0.4s ease-in-out;
+    background-color: #000;
+    
 }
 
 /* Image Name Text */
 .slideshow .image-container .image-text {
     position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(50px); /* Start off-screen */
-    opacity: 0;
-    color: white;
-    font-size: 1.5rem;
+    width: 100%;
+
+    bottom: 0;  /* Position the text at the bottom */
+    left: 50%;    /* Align text to the left */
+    transform: translateX(-50%);
+    color: #382817;
+    font-size: 3vw;
     font-weight: bold;
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.5s ease, color 0.5s ease;
+    background: rgba(0, 0, 0, 0);  /* Optional background for readability */
+
+
+    white-space: nowrap;  /* Prevent text from wrapping */
+    text-align: center;  /* Ensure the text is centered horizontally */
 }
 
-/* Hover Effect */
+/* Hover effect: image fades out and text floats above */
 .slideshow .image-container:hover img {
-    opacity: 0.5; /* Fade out */
+    opacity: 0.5;
 }
 
 .slideshow .image-container:hover .image-text {
-    opacity: 1;
-    transform: translateX(0); /* Slide into place */
+    transform: translate(-50%, -100%);  /* Moves text above the image */
+    bottom: 0;  /* Adjust text position */
+    background: rgba(0, 0, 0, 0.5);  /* Optional background for readability */
+    color: white;
 }
 
 
@@ -211,16 +209,17 @@ nav ul li a:hover {
 .about-container {
     display: flex; /* Align text and image side by side */
     justify-content: space-between; /* Ensure the text and image are spaced out */
-    align-items: center; /* Vertically center the content */
+    align-items: start; /* Vertically center the content */
     max-width: 1200px; /* Optional: limit the maximum width */
     margin: 0 auto; /* Center the container */
 }
 
 .about-text {
+    
     flex: 1; /* Take up equal width */
     display: flex;
     flex-direction: column; /* Stack the content vertically (heading on top of paragraph) */
-    justify-content: center; /* Vertically center content inside the block */
+    justify-content: start; /* Vertically center content inside the block */
     padding-right: 20px; /* Optional: add spacing between text and image */
     
 }
@@ -232,6 +231,8 @@ nav ul li a:hover {
 
 .about-text p {
     margin-top: 10px; /* Add space between the heading and paragraph */
+    font-size: 1rem;
+    text-align: justify;
 }
 
 .about-image {
@@ -240,66 +241,40 @@ nav ul li a:hover {
     justify-content: center; /* Horizontally center the image */
 }
 
-
 .about-image img {
     width: 100%; /* Make the image responsive */
     max-width: 500px; /* Optional: set a maximum size for the image */
     height: auto; /* Maintain aspect ratio */
 }
-@media (max-width: 768px) {
-    .about-container {
-        flex-direction: column; /* Stack the content vertically on small screens */
-        align-items: flex-start; /* Align to the left */
-    }
-
-    .about-text {
-        padding-right: 0; /* Remove right padding */
-    }
-
-    .about-image {
-        margin-top: 20px; /* Optional: Add some space between text and image */
-        width: 100%; /* Ensure the image takes full width on small screens */
-    }
-}
 /* Project Section */
 .gallery {
     display: flex;
-    gap: 20px;
-    justify-content: left;
-    flex-wrap: wrap; /* Allow the items to wrap on smaller screens */
-    padding: 20px; /* Optional: Add some padding around the gallery */
+    flex-wrap: wrap;
+    gap: 30px; /* Ensures equal spacing between images (both rows & columns) */
+    justify-content: flex-start; /* Align last row images to the left */
+    margin: 5%;
 }
 
 .project {
-    flex: 0 0 23%; /* 4 images per row, each taking 23% of the container width */
-    margin-bottom: 20px; /* Space between rows */
-    position: relative; /* Add position relative to the .project container */
-    overflow: hidden; /* Hide anything that overflows (like the scaled image) */
+    flex: 0 0 calc(25% - 30px); /* 4 images per row, considering gap */
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 1 / 1;
 }
 
 /* Ensure images are responsive */
 .project img {
-    width: 100%; /* Make the images fit the container */
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-/* Media Query for Medium Screens (Tablets or smaller) */
-@media (max-width: 1024px) {
-    .project {
-        flex: 0 0 48%; /* 2 images per row, each taking 48% of the container width */
-    }
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    object-fit: cover;
 }
 
-/* Media Query for Small Screens (Mobile devices) */
-@media (max-width: 768px) {
-    .project {
-        flex: 0 0 100%; /* 1 image per row, each taking 100% of the container width */
-    }
+/* Hover Effect */
+.project:hover img {
+    transform: scale(1.1);
 }
-
-
-
 .project:hover img {
     transform: scale(1.1);
 }
@@ -321,14 +296,15 @@ nav ul li a:hover {
     opacity: 1;
 }
 footer {
-    background-color: #222;
-    color: #fff;
+    background-color: #382817;
+    color: #f4e3d6;
     text-align: center;
     padding: 5px;
     font-size: 14px;
 }
 
 .footer-container {
+    min-width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -337,6 +313,16 @@ footer {
     flex-wrap: wrap;
 }
 
+
+.footer-text {
+    text-align: left; /* Align text to the left */
+    white-space: nowrap; /* Prevent the text from wrapping */
+}
+
+.footer-buttons {
+    text-align: right; /* Align buttons to the right */
+    flex-shrink: 0;
+}
 nav a {
     color: #ff6347;
     text-decoration: none;
@@ -344,7 +330,109 @@ nav a {
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
-
 nav a:hover {
-    color: #fff;
+    color: #f4e3d6;
+}
+/*Smaller screens*/
+
+
+@media (max-width: 1024px) {
+    .project {
+        flex: 0 0 calc(33.333% - 30px); /* 3 images per row */
+    }
+}
+
+
+/* Tablets */
+@media (max-width: 768px) {
+    /* Mobile Menu */
+    .header-container {
+        height: 30px; /* Keep header height fixed on small screens */
+    }
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 200px;
+        background: #e1c9a8;
+        padding: 3vh;
+        border-radius: 10px;
+        text-align: left;
+        transform: scale(0);
+        transform-origin: top left;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;  /* Add delayed visibility transition */
+        visibility: hidden;  /* Hide the element initially */
+        opacity: 0;  /* Make the element invisible */
+        flex-direction: column;
+        display: flex;
+        gap: 4vw;
+    }
+    
+    /* Show menu with animation */
+    .nav-links.active {
+        visibility: visible;  /* Make the element visible */
+        opacity: 1;  /* Fade in the element */
+        transform: scale(1);  /* Scale it up */
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;  /* Ensure smooth transition when showing */
+    }
+    
+    /* When hiding the menu, set visibility delay to match animation timing */
+    .nav-links:not(.active) {
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;  /* Add delayed visibility transition */
+        visibility: hidden;
+        opacity: 0;  /* Fade out */
+        transform: scale(0);  /* Scale down */
+    }
+    
+
+    .hamburger {
+        display: block;
+        transform: scale(1);
+    }
+    .project {
+        flex: 0 0 calc(50% - 30px); /* 2 images per row */
+    }
+    .about-container {
+        flex-direction: column; /* Stack the content vertically on small screens */
+        align-items: center; /* Align to the left */
+    }
+
+    .about-text {
+        padding-right: 0; /* Remove right padding */
+    }
+
+    .about-image {
+        margin-top: 20px; /* Optional: Add some space between text and image */
+        width: 100%; /* Ensure the image takes full width on small screens */
+    }
+    .footer-text {
+        white-space: wrap;
+    }
+    .footer-container {
+        flex-direction: column; /* Stack the content vertically */
+        text-align: center; /* Center align everything */
+        align-items: center; /* Center items horizontally */
+    }
+    .footer-text{
+        text-align: center; /* Make sure text and buttons are centered */
+        width: 100%; /* Ensure they take full width of the footer */
+    }
+}
+
+
+/* Mobile device */
+@media (max-width: 480px) {
+    .project {
+        flex: 0 0 100%; /* 1 image per row */
+    }
+
+    .footer-container {
+        flex-direction: column; /* Stack the content vertically */
+        text-align: center; /* Center align everything */
+        align-items: center; /* Center items horizontally */
+    }
+    .footer-text{
+        text-align: center; /* Make sure text and buttons are centered */
+        width: 100%; /* Ensure they take full width of the footer */
+    }
 }
