@@ -271,10 +271,10 @@ nav ul li a:hover {
 }
 
 .project {
-    position: relative;
-    cursor: pointer;
-    flex: 1 1 calc(33.33% - 20px); /* Adjust for 3 columns on large screens */
+    flex: 0 0 23%; /* 4 images per row, each taking 23% of the container width */
     margin-bottom: 20px; /* Space between rows */
+    position: relative; /* Add position relative to the .project container */
+    overflow: hidden; /* Hide anything that overflows (like the scaled image) */
 }
 
 /* Ensure images are responsive */
@@ -284,19 +284,20 @@ nav ul li a:hover {
     border-radius: 10px;
     transition: transform 0.3s;
 }
+/* Media Query for Medium Screens (Tablets or smaller) */
+@media (max-width: 1024px) {
+    .project {
+        flex: 0 0 48%; /* 2 images per row, each taking 48% of the container width */
+    }
+}
 
-/* Responsive styling for smaller screens */
+/* Media Query for Small Screens (Mobile devices) */
 @media (max-width: 768px) {
     .project {
-        flex: 1 1 calc(25% - 20px); 
+        flex: 0 0 100%; /* 1 image per row, each taking 100% of the container width */
     }
 }
 
-@media (max-width: 480px) {
-    .project {
-        flex: 1 1 100%; /* 1 image per row on small screens (e.g., mobile phones) */
-    }
-}
 
 
 .project:hover img {
