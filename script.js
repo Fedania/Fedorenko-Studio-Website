@@ -1,13 +1,19 @@
-    function autoSlide() {
-        scrollAmount += slideWidth / 2; // Moves half-slide width for smooth effect
-        if (scrollAmount >= slideWidth * totalSlides) {
-            scrollAmount = 0;
-        }
-        slider.style.transform = `translate3d(-${scrollAmount}px, 0, 0)`;
-        slider.style.transition = "transform 1s linear";
+// Define variables before using them
+let scrollAmount = 0; // Start at 0
+const slider = document.querySelector(".slideshow"); // Ensure this matches your HTML
+const slideWidth = document.querySelector(".image-container").offsetWidth; // Get width of a slide
+const totalSlides = document.querySelectorAll(".image-container").length; // Count slides
+
+function autoSlide() {
+    scrollAmount += slideWidth / 2; // Moves half-slide width for smooth effect
+    if (scrollAmount >= slideWidth * totalSlides) {
+        scrollAmount = 0;
     }
-    
-    setInterval(autoSlide, 50); // Smooth continuous scrolling
+    slider.style.transform = `translate3d(-${scrollAmount}px, 0, 0)`;
+    slider.style.transition = "transform 1s linear";
+}
+
+setInterval(autoSlide, 50); // Smooth continuous scrolling
 
     // Project Click Event
     document.querySelectorAll(".project").forEach(project => {

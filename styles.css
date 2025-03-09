@@ -9,10 +9,8 @@ body {
     line-height: 1.6; /* Adjust this value as needed */
     font-size: 1rem;
 }
-h1, h2, p {
-    padding-left: 5%;
-    padding-right: 5%;
-
+section:not(#footer) {
+    padding: 5%;
 }
 /* Header Styling */
 header {
@@ -202,79 +200,80 @@ nav ul li a:hover {
     }
   }
   
-  #about {
-    padding: 50px 20px;
-}
+
 
 .about-container {
-    display: flex; /* Align text and image side by side */
-    justify-content: space-between; /* Ensure the text and image are spaced out */
-    align-items: start; /* Vertically center the content */
-    max-width: 1200px; /* Optional: limit the maximum width */
-    margin: 0 auto; /* Center the container */
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Make sure both text and image have the same height */
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allows stacking on smaller screens */
+
 }
 
 .about-text {
-    
-    flex: 1; /* Take up equal width */
+    flex: 1;
     display: flex;
-    flex-direction: column; /* Stack the content vertically (heading on top of paragraph) */
-    justify-content: start; /* Vertically center content inside the block */
-    padding-right: 20px; /* Optional: add spacing between text and image */
-    
+    flex-direction: column;
+    justify-content: start;
+    padding-right: 20px;
 }
 
 .about-text h2 {
-    margin: 0; /* Remove default margin for the h2 */
-
+    margin: 0;
 }
 
 .about-text p {
-    margin-top: 10px; /* Add space between the heading and paragraph */
+    margin-top: 10px;
     font-size: 1rem;
     text-align: justify;
 }
 
 .about-image {
-    flex: 1; /* Take up equal width */
+    flex: 1;
     display: flex;
-    justify-content: center; /* Horizontally center the image */
+    justify-content: center;
+    align-items: center; /* Ensures vertical alignment */
+    overflow: hidden; /* Prevents any unwanted overflow */
 }
 
 .about-image img {
-    width: 100%; /* Make the image responsive */
-    max-width: 500px; /* Optional: set a maximum size for the image */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: 100%; /* Fills the container height */
+    object-fit: cover; /* Ensures the image scales properly inside */
 }
+
+
 /* Project Section */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px; /* Ensures equal spacing between images (both rows & columns) */
-    justify-content: flex-start; /* Align last row images to the left */
-    margin: 5%;
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Dynamic columns */
+    gap: 20px; /* Gap between items */
+
+    margin: 0 auto; /* Center the gallery */
+
 }
 
 .project {
-    flex: 0 0 calc(25% - 30px); /* 4 images per row, considering gap */
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1; /* Maintain square aspect ratio for images */
 }
 
 /* Ensure images are responsive */
 .project img {
     width: 100%;
     height: 100%;
-    transition: transform 0.5s;
     object-fit: cover;
+    transition: transform 0.5s ease-in-out;
 }
 
-/* Hover Effect */
+/* Optional hover effect for the images */
 .project:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05); /* Slight zoom effect on hover */
 }
+
 .project:hover img {
     transform: scale(1.1);
 }
@@ -388,22 +387,17 @@ nav a:hover {
     .hamburger {
         display: block;
         transform: scale(1);
-    }
-    .project {
-        flex: 0 0 calc(50% - 30px); /* 2 images per row */
-    }
+    }   
     .about-container {
         flex-direction: column; /* Stack the content vertically on small screens */
-        align-items: center; /* Align to the left */
+        align-items: center; 
     }
 
-    .about-text {
-        padding-right: 0; /* Remove right padding */
-    }
-
-    .about-image {
-        margin-top: 20px; /* Optional: Add some space between text and image */
-        width: 100%; /* Ensure the image takes full width on small screens */
+    .about-text, .about-image {
+        padding-right: 0; /* Remove spacing when stacked */
+    } 
+    .project {
+        flex: 0 0 calc(50% - 30px); /* 2 images per row */
     }
     .footer-text {
         white-space: wrap;
