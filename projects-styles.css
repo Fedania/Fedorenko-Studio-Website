@@ -1,45 +1,141 @@
-/* Gallery Grid Layout */
-.project-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid columns that adjust based on screen size */
-    gap: 20px; /* Space between items */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Individual Project Items */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f0e6; /* Beige background */
+    height: 100%; /* Ensure body takes full height */
+
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    min-height: 100vh; /* Ensure container takes full height of the screen */
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed; /* Fixes the sidebar on the screen */
+    top: 0; /* Aligns the sidebar to the top of the screen */
+    left: 0; /* Aligns the sidebar to the left of the screen */
+    width: 250px;
+    padding: 40px 20px;
+    background: #fff;
+    min-height: 100vh; /* Ensures the sidebar takes full height of the viewport */
+    z-index: 1000; /* Ensures it stays above other content */
+}
+
+.sidebar h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+}
+
+.sidebar nav ul li a.active,
+.sidebar nav ul li a:hover {
+    color: black;
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links a {
+    font-size: 18px;
+    font-weight: bold;
+    color: gray;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+/* Gallery Container */
+.project-gallery-container {
+    display: flex;
+    margin-left: 250px;
+    justify-content: center; /* Center the gallery */
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden; /* Prevent content from overflowing */
+}
+
+/* Project Gallery */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Flexible grid layout */
+    gap: 20px;
+    height: fit-content;
+    width: 100%;
+    max-width: 1200px; /* Prevent it from becoming too wide */
+    flex: 1;
+}
+
 .project {
-    position: relative;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px; /* Add rounded corners to images */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    position: relative;
 }
 
 .project img {
     width: 100%;
     height: auto;
+    display: block;
     object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+/* Optional hover effect for the images */
+.project:hover img {
+    transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-
-/* Hover Effects */
-.project:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.project:hover h3 {
-    background-color: rgba(0, 0, 0, 0.7);
+.project:hover .overlay {
+    opacity: 1;
 }
-
-/* Media Queries for Responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
     .project-gallery {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile screens */
+        grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
     }
 }
 
 @media (max-width: 480px) {
     .project-gallery {
-        grid-template-columns: 1fr; /* 1 column on very small screens */
+        grid-template-columns: 1fr; /* Single column on very small screens */
     }
 }

@@ -3,72 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Showcase</title>
+    <title>Portfolio - All Projects</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main>
-        <!-- Branding Projects Section -->
-        <section id="branding" class="projects-section">
-            <h2>Branding</h2>
-            <div class="project-gallery">
-                <div class="project">
-                    <a href="branding-project1.html">
-                        <img src="Image1.jpg" alt="Branding Project 1">
-                        <h3>Branding Project 1</h3>
+    <header>
+        <div class="header-container">
+            <button class="hamburger" aria-label="Toggle navigation">
+                ☰
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+   
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h1>SVITLANA FEDORENKO</h1>
+            <nav>
+                <ul>
+                    <li><a href="projects.html" class="active">ALL PROJECTS</a></li>
+                    <li><a href="illustration.html">ILLUSTRATION</a></li>
+                    <li><a href="print.html">PRINT</a></li>
+                    <li><a href="posters.html">POSTERS</a></li>
+                    <li><a href="branding.html">BRANDING</a></li>
+                </ul>
+            </nav>
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="#" class="behance">Bē</a>
+                <a href="#" class="linkedin">in</a>
+            </div>
+        </aside>
+<div class="container-project-page">
+        <section id="projects">
+            <div class="project-gallery-container">
+                <main class="project-gallery">
+                    <a href="project1.html" class="project">
+                        <img src="Image1.jpg" alt="Project 1">
+                        <div class="overlay">Project 1</div>
                     </a>
-                </div>
-                <div class="project">
-                    <a href="branding-project2.html">
-                        <img src="Image1.jpg" alt="Branding Project 2">
-                        <h3>Branding Project 2</h3>
+                    <a href="project2.html" class="project">
+                        <img src="image1.jpg" alt="Project 2">
+                        <div class="overlay">Project 2</div>
                     </a>
-                </div>
-                <!-- Add more branding projects here -->
+                    <a href="project3.html" class="project">
+                        <img src="image1.jpg" alt="Project 3">
+                        <div class="overlay">Project 3</div>
+                    </a>
+                    <a href="project4.html" class="project">
+                        <img src="image1.jpg" alt="Project 4">
+                        <div class="overlay">Project 4</div>
+                    </a>
+                    
+                </main>
             </div>
         </section>
+    </div>
 
-        <!-- Communication Design Projects Section -->
-        <section id="communication-design" class="projects-section">
-            <h2>Communication Design</h2>
-            <div class="project-gallery">
-                <div class="project">
-                    <a href="communication-project1.html">
-                        <img src="Image1.jpg" alt="Communication Project 1">
-                        <h3>Communication Project 1</h3>
-                    </a>
+    <section id="footer">
+        <footer>
+            <div class="footer-container">
+                <div class="footer-text">
+                    <p>© 2025 Fedorenko Studio. All rights reserved.</p>
                 </div>
-                <div class="project">
-                    <a href="communication-project2.html">
-                        <img src="Image1.jpg" alt="Communication Project 2">
-                        <h3>Communication Project 2</h3>
-                    </a>
+                <div class="footer-buttons">
+                    <nav>
+                        <a href="about.html">About</a>
+                        <a href="licensing.html">Licensing</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
                 </div>
-                <!-- Add more communication design projects here -->
+                    
             </div>
-        </section>
-
-        <!-- Motion Design Projects Section -->
-        <section id="motion-design" class="projects-section">
-            <h2>Motion Design</h2>
-            <div class="project-gallery">
-                <div class="project">
-                    <a href="motion-project1.html">
-                        <img src="motion1.jpg" alt="Motion Project 1">
-                        <h3>Motion Project 1</h3>
-                    </a>
-                </div>
-                <div class="project">
-                    <a href="motion-project2.html">
-                        <img src="motion2.jpg" alt="Motion Project 2">
-                        <h3>Motion Project 2</h3>
-                    </a>
-                </div>
-                <!-- Add more motion design projects here -->
-            </div>
-        </section>
-
-        <!-- Add additional project sections as needed -->
-    </main>
+        </footer>
+    </section>
 </body>
 </html>

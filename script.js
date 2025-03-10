@@ -1,19 +1,36 @@
-// Define variables before using them
-let scrollAmount = 0; // Start at 0
-const slider = document.querySelector(".slideshow"); // Ensure this matches your HTML
-const slideWidth = document.querySelector(".image-container").offsetWidth; // Get width of a slide
-const totalSlides = document.querySelectorAll(".image-container").length; // Count slides
+const slider = document.querySelector(".slideshow"); // Slider container
+const slides = document.querySelectorAll(".image-container"); // All slides
+const slideWidth = slides[0].offsetWidth; // Width of a single slide
+const totalSlides = slides.length;
+const slidesToShow = 3; // Number of images visible at once
+const scrollSpeed = 2; // Adjust scroll speed
+
+// Duplicate slides to create a seamless effect
+slider.innerHTML += slider.innerHTML; // Clone slides for looping effect
+
+let scrollAmount = 0;
 
 function autoSlide() {
-    scrollAmount += slideWidth / 2; // Moves half-slide width for smooth effect
+    scrollAmount += scrollSpeed;
+
+    // Check if we've scrolled past the original set of slides
     if (scrollAmount >= slideWidth * totalSlides) {
-        scrollAmount = 0;
+        slider.style.transition = "none"; // Remove animation
+        scrollAmount = 0; // Instantly reset position
+        slider.style.transform = `translate3d(-${scrollAmount}px, 0, 0)`;
+
+        // Ensure smooth transition resumes
+        setTimeout(() => {
+            slider.style.transition = "transform 1s linear";
+        }, 20);
+    } else {
+        slider.style.transform = `translate3d(-${scrollAmount}px, 0, 0)`;
+        slider.style.transition = "transform 1s linear";
     }
-    slider.style.transform = `translate3d(-${scrollAmount}px, 0, 0)`;
-    slider.style.transition = "transform 1s linear";
 }
 
 setInterval(autoSlide, 50); // Smooth continuous scrolling
+
 
     // Project Click Event
     document.querySelectorAll(".project").forEach(project => {
