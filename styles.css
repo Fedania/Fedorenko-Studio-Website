@@ -26,6 +26,8 @@
          url('fonts/charmanserif-thinitalic-webfont.woff') format('woff');
     font-weight: 100;
     font-style: italic;
+
+    /* END FONTS */
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Charmanserif', serif;
@@ -45,81 +47,221 @@ body {
 section:not(#footer) {
     padding: 5%;
 }
-/* Header Styling */
-header {
-    background: #e1c9a8;
-    padding: 10px 5%;
-    text-align: center;
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+    /* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: white;
+    padding: 5px;
+    padding-left: 20px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
     position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+}
+
+/* Dropdown menu for desktop navbar */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #444;
+    list-style: none;
+    padding: 0;
+    display: none;
+    width: 150px;
+
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
     width: 100%;
 }
 
-/* Ensure the header-container has a proper height */
-.header-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 5px 5%;
-    height: 30px;
-    
+.dropdown-menu a {
+    padding: 10px;
+    display: block;
+    color: white;
+    text-decoration: none;
 }
 
-/* Navigation Styles */
-nav {
-    display: flex;
-    align-items: center;
-    padding-right: 5%;
+.dropdown-menu a:hover {
+    background: #555;
 }
 
-/* Hamburger Button */
+/* Hamburger Menu */
 .hamburger {
     display: none;
     font-size: 24px;
     background: none;
     border: none;
-    color: rgb(71, 71, 71);
+    color: white;
     cursor: pointer;
-    position: absolute;
-    top: 10px;
-    left: 15px;
 }
 
-/* Nav Links */
-.nav-links {
-    list-style: none;
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: #222;
+    color: white;
+    padding: 0 20px 20px ;
+    transition: left 0.3s ease;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    z-index: 1000;
 }
 
-.nav-links li {
-    display: inline-block;
+.sidebar.active {
+    left: 0;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: rgb(71, 71, 71);
-    font-size: 16px;
-}
-
-nav ul {
-    display: flex; /* Make the list horizontal */
-    list-style-type: none; /* Remove list bullets */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-}
-
-nav ul li {
+.sidebar-links {
+    list-style: none;
+    padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-nav ul li a {
-    text-decoration: none; /* Remove underline from links */
-    color: #382817; /* Link color */
+.sidebar-links li {
+    margin: 10px 0;
 }
 
-nav ul li a:hover {
-    color: #8c6239;
+.sidebar-links a {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    cursor: pointer;
 }
+
+/* Sidebar dropdown button */
+.sidebar-dropdown button {
+    display: flex;
+    justify-content: space-between; /* Separates text and arrow */
+    align-items: center;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Space out text and arrow */
+.sidebar-dropdown .text {
+    flex-grow: 1; /* Pushes text to the left */
+}
+
+.sidebar-dropdown .arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when active */
+.sidebar-dropdown.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Sidebar dropdown */
+.sidebar-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+}
+
+.sidebar-dropdown.active .sidebar-dropdown-menu {
+    display: flex;
+}
+
+.sidebar-dropdown button {
+    cursor: pointer;
+    background: #333;
+}
+
+/* Close Button */
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    align-self: flex-end;
+    cursor: pointer;
+    padding: 0 10px 10px 10px;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+
+/* END HEADER */
 
 /* Hero Section */
 #hero {
@@ -326,57 +468,9 @@ nav ul li a:hover {
     opacity: 1;
 }
 
-/*Smaller screens*/
-
-
-
-
 /* Tablets */
 @media (max-width: 768px) {
-    /* Mobile Menu */
-    .header-container {
-        height: 30px; /* Keep header height fixed on small screens */
-    }
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 200px;
-        background: #e1c9a8;
-        padding: 3vh;
-        border-radius: 10px;
-        text-align: left;
-        transform: scale(0);
-        transform-origin: top left;
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;  /* Add delayed visibility transition */
-        visibility: hidden;  /* Hide the element initially */
-        opacity: 0;  /* Make the element invisible */
-        flex-direction: column;
-        display: flex;
-        gap: 4vw;
-    }
-    
-    /* Show menu with animation */
-    .nav-links.active {
-        visibility: visible;  /* Make the element visible */
-        opacity: 1;  /* Fade in the element */
-        transform: scale(1);  /* Scale it up */
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;  /* Ensure smooth transition when showing */
-    }
-    
-    /* When hiding the menu, set visibility delay to match animation timing */
-    .nav-links:not(.active) {
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;  /* Add delayed visibility transition */
-        visibility: hidden;
-        opacity: 0;  /* Fade out */
-        transform: scale(0);  /* Scale down */
-    }
-    
-
-    .hamburger {
-        display: block;
-        transform: scale(1);
-    }   
+   
     .about-container {
         flex-direction: column; /* Stack the content vertically on small screens */
         align-items: center; 
@@ -425,45 +519,7 @@ nav ul li a:hover {
     min-height: 100vh; /* Ensure container takes full height of the screen */
     padding-left: 250px;
 }
-/* Sidebar */
-.sidebar {
-    position: fixed; /* Fixes the sidebar on the screen */
-    top: 0; /* Aligns the sidebar to the top of the screen */
-    left: 0; /* Aligns the sidebar to the left of the screen */
-    width: 250px;
-    padding: 40px 20px;
-    background: #fff;
-    min-height: 100vh; /* Ensures the sidebar takes full height of the viewport */
-    z-index: 1000; /* Ensures it stays above other content */
-}
 
-.sidebar h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.sidebar nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar nav ul li {
-    display: block;
-    margin-bottom: 15px;
-}
-
-.sidebar nav ul li a {
-    text-decoration: none;
-    color: #555;
-    font-weight: bold;
-    display: block;
-}
-
-.sidebar nav ul li a.active,
-.sidebar nav ul li a:hover {
-    color: black;
-}
 footer {
     background-color: #382817;
     color: #f4e3d6;
