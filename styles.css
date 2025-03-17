@@ -44,7 +44,7 @@ body {
     line-height: 1.6; /* Adjust this value as needed */
     font-size: 1rem;
 }
-section:not(#footer) {
+section:not(#footer, #Services) {
     padding: 5%;
 }
 
@@ -65,6 +65,8 @@ body {
     color: white;
     padding: 5px;
     padding-left: 20px;
+    position: relative; /* Prevents dropdown from spilling over the navbar */
+    
 }
 
 .nav-links {
@@ -75,6 +77,7 @@ body {
 
 .nav-links li {
     position: relative;
+
 }
 
 .nav-links a {
@@ -83,33 +86,39 @@ body {
     padding: 10px 15px;
     display: block;
 }
-
-/* Dropdown menu for desktop navbar */
+.dropdown {
+    position: relative; /* Ensure the dropdown menu is positioned relative to the parent */
+}
 .dropdown-menu {
     position: absolute;
     top: 100%;
-    left: 0;
     background: #444;
     list-style: none;
-    padding: 0;
     display: none;
-    width: 150px;
-
+    box-sizing: border-box;
+    width: 100%; /* Ensure full width */
+    padding: 0;
+    margin: 0;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .dropdown-menu li {
-    width: 100%;
+    border: 1px solid red; /* Helps visualize the issue */
 }
 
 .dropdown-menu a {
-    padding: 10px;
-    display: block;
+    width: 100%;
     color: white;
     text-decoration: none;
+    background: #444;
+    border: 1px solid blue;
+    display: block; /* Ensure anchor tag takes full width */
+    padding: 10px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .dropdown-menu a:hover {
@@ -230,7 +239,7 @@ body {
     font-size: 30px;
     align-self: flex-end;
     cursor: pointer;
-    padding: 0 10px 10px 10px;
+    padding: 10px;
 }
 
 /* Overlay */
@@ -292,40 +301,45 @@ body {
 #Services {
     position: relative;
 }
-/* Main container holding the slideshow */
-.slideshow-container {
-    display: flex;
-    width: 200%;
-    overflow: visible;  /* Allow the text to be visible outside the container */
-    position: relative;
-    flex-wrap: wrap;
+
+
+/* Main container holding the slideshow */ 
+  .slideshow-container {
+    overflow: hidden;
+    padding: 60px 0;
+    width: 100%;
 }
+
+
+/* Animation to scroll images */
+  @keyframes scrollImages {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 
 /* Slideshow itself */
 .slideshow {
     display: flex;
-    width: 100%;
-    animation: scrollImages 30s linear infinite;
+    white-space: nowrap;
+    width: 200%; /* Ensures enough space for scrolling effect */
+    animation: scrollImages 20s linear infinite;
 }
 
 /* Style the images inside the slideshow */
 .slideshow .image-container {
     position: relative;
-    
+    width: 25%;
     display: inline-block;
-    width: 25%; /* Adjust width based on how many images should be visible */
-    margin: 0.5%;
-    padding-bottom: 5vw;
-
-    cursor: pointer;
-    overflow: visible;  /* Allow text to overflow and be visible */
+    margin: 0 10px;
+    transition: transform 0.5s ease-in-out;
 }
 
 .slideshow .image-container img {
     width: 100%;
-    
-    height: auto;
-    display: block;
     transition: opacity 0.4s ease-in-out;
     background-color: #000;
     
@@ -336,9 +350,9 @@ body {
     position: absolute;
     width: 100%;
 
-    bottom: 0;  /* Position the text at the bottom */
-    left: 50%;    /* Align text to the left */
-    transform: translateX(-50%);
+    bottom: -15%;  /* Position the text at the bottom */
+    left: 0;    /* Align text to the left */
+
     color: #382817;
     font-size: 3vw;
     font-weight: bold;
@@ -357,7 +371,7 @@ body {
 }
 
 .slideshow .image-container:hover .image-text {
-    transform: translate(-50%, -100%);  /* Moves text above the image */
+    transform: translate(0, 0);  /* Moves text above the image */
     bottom: 0;  /* Adjust text position */
     background: rgba(0, 0, 0, 0.5);  /* Optional background for readability */
     color: white;
@@ -365,15 +379,7 @@ body {
 
 
   
-  /* Animation to scroll images */
-  @keyframes scrollImages {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
+ 
   
 
 
@@ -419,15 +425,15 @@ body {
 }
 
 
-/* Project Section */
-.project-gallery {
+/* Home Section */
+.home .project-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Dynamic columns */
     gap: 3vw; /* Proportional gap based on viewport width */
     margin: 0 auto; /* Center the gallery */
 }
 
-.project {
+.home .project {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
@@ -435,7 +441,7 @@ body {
 }
 
 /* Ensure images are responsive */
-.project img {
+.home .project img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -443,15 +449,15 @@ body {
 }
 
 /* Optional hover effect for the images */
-.project:hover img {
+.home .project:hover img {
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-.project:hover img {
+.home .project:hover img {
     transform: scale(1.1);
 }
 
-.overlay {
+.home .overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -464,62 +470,58 @@ body {
     transition: opacity 0.3s;
 }
 
-.project:hover .overlay {
+.home .project:hover .overlay {
     opacity: 1;
 }
 
-/* Tablets */
-@media (max-width: 768px) {
-   
-    .about-container {
-        flex-direction: column; /* Stack the content vertically on small screens */
-        align-items: center; 
-    }
 
-    .about-text, .about-image {
-        padding-right: 0; /* Remove spacing when stacked */
-    } 
-    .project-gallery {
-        grid-template-columns: repeat(3, 1fr); /* Switch to 2 columns on tablet/mobile */
-    }
+/* PROJECTS */
+.project-page-body{
 
-    .footer-text {
-        white-space: wrap;
-    }
-    .footer-container {
-        flex-direction: column; /* Stack the content vertically */
-        text-align: center; /* Center align everything */
-        align-items: center; /* Center items horizontally */
-    }
-    .footer-text{
-        text-align: center; /* Make sure text and buttons are centered */
-        width: 100%; /* Ensure they take full width of the footer */
-    }
+    padding: 3vw;
+}
+.gallery, .project-gallery {
+    display: flex;
+    flex-direction: column; /* Ensures rows are stacked */
+    gap: 10px;
+    padding: 20px;
+}
+
+.image-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.image-container {
+    display: flex;
+    flex: 1; /* Ensure equal width for all containers */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.image-container img {
+    width: 100%; /* Ensures images fill their container */
+    height: auto;
 }
 
 
-/* Mobile device */
-@media (max-width: 480px) {
-    .project-gallery {
-        grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on tablet/mobile */
-    }
 
-    .footer-container {
-        flex-direction: column; /* Stack the content vertically */
-        text-align: center; /* Center align everything */
-        align-items: center; /* Center items horizontally */
-    }
-    .footer-text{
-        text-align: center; /* Make sure text and buttons are centered */
-        width: 100%; /* Ensure they take full width of the footer */
-    }
-}
-.container-project-page {
 
-    min-height: 100vh; /* Ensure container takes full height of the screen */
-    padding-left: 250px;
+.custom-text {
+    width: 100%;
+    padding: 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+    color: #333;
 }
 
+/* PROJECTS END */
+/* FOOTER */
 footer {
     background-color: #382817;
     color: #f4e3d6;
@@ -548,13 +550,56 @@ footer {
     text-align: right; /* Align buttons to the right */
     flex-shrink: 0;
 }
-nav a {
+footer nav a {
     color: #ff6347;
     text-decoration: none;
     margin: 0 10px;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
-nav a:hover {
+footer nav a:hover {
     color: #f4e3d6;
 }
+/* Tablets */
+@media (max-width: 768px) {
+   
+    .about-container {
+        flex-direction: column; /* Stack the content vertically on small screens */
+        align-items: center; 
+    }
+
+    .about-text, .about-image {
+        padding-right: 0; /* Remove spacing when stacked */
+    } 
+    .project-gallery {
+        grid-template-columns: repeat(3, 1fr); /* Switch to 2 columns on tablet/mobile */
+    }
+    .footer-container {
+        flex-direction: column; /* Stack the content vertically */
+        text-align: center; /* Center align everything */
+        align-items: center; /* Center items horizontally */
+    }
+    .footer-text, .footer-buttons{
+        text-align: center; /* Make sure text and buttons are centered */
+        width: 100%; /* Ensure they take full width of the footer */
+    }
+    
+}
+
+
+/* Mobile device */
+@media (max-width: 480px) {
+    .project-gallery {
+        grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on tablet/mobile */
+    }
+
+    
+.container-project-page {
+
+    min-height: 100vh; /* Ensure container takes full height of the screen */
+    padding-left: 250px;
+}
+}
+
+
+

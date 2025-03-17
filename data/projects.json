@@ -1,0 +1,30 @@
+[
+    {
+        "id": "03-BR-PR-MEDICINE",
+        "title": "Erfundene Krankheiten",
+        "categories": ["Branding", "Print"],
+        "thumbnail": "images/medicine/thumbnail.jpg",
+        "layout": [1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1],
+        "captions": [
+            "This is a caption for the first image of the Medicine project.",
+            null,
+            null, 
+            null,
+            "Another caption for the second image.",
+            null,
+            null,   
+            null,
+            null,
+            "Caption for the fourth image.",
+            "Final caption for the last image.",
+            "Final caption for the last image."
+        ]
+    },
+    {
+        "id": "poster-series",
+        "title": "Poster Series",
+        "categories": ["Posters"],
+        "thumbnail": "images/poster-series/thumbnail.jpg",
+        "layout": [2, 4]
+    }
+]

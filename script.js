@@ -5,14 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.getElementById("close-btn");
     const projectsBtn = document.getElementById("sidebar-projects-btn");
     const dropdownMenu = document.getElementById("sidebar-dropdown-menu");
-
-    const slider = document.querySelector(".slideshow"); // Slider container
-    const slides = document.querySelectorAll(".image-container"); // All slides
-    const slideWidth = slides[0].offsetWidth; // Width of a single slide
-    const totalSlides = slides.length;
-    const slidesToShow = 3; // Number of images visible at once
-    const scrollSpeed = 2; // Adjust scroll speed
-
     // Open sidebar
     hamburger.addEventListener("click", () => {
         sidebar.classList.add("active");
@@ -42,33 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });  
 });
 
-// Duplicate slides to create a seamless effect
-slider.innerHTML += slider.innerHTML; // Clone slides for looping effect
-
-let scrollAmount = 0;
-
-function autoSlide() {
-    scrollAmount += scrollSpeed;
-
-    // Check if we've scrolled past the original set of slides
-    if (scrollAmount >= slideWidth * totalSlides) {
-        slider.style.transition = "none"; // Remove animation
-        scrollAmount = 0; // Instantly reset position
-        slider.style.transform = `translate3d(-${scrollAmount}px, 0, 0)`;
-
-        // Ensure smooth transition resumes
-        setTimeout(() => {
-            slider.style.transition = "transform 1s linear";
-        }, 20);
-    } else {
-        slider.style.transform = `translate3d(-${scrollAmount}px, 0, 0)`;
-        slider.style.transition = "transform 1s linear";
-    }
-}
-
-setInterval(autoSlide, 50); // Smooth continuous scrolling
-
-
     // Project Click Event
     document.querySelectorAll(".project").forEach(project => {
         project.addEventListener("click", function () {
@@ -90,7 +55,58 @@ setInterval(autoSlide, 50); // Smooth continuous scrolling
             navLinks.classList.toggle("active");
         });
     });
-      
+    
+
+
+    
+    //   NEW
+    async function loadProjectImages(projectId) {
+        const projectGallery = document.querySelector(".project-gallery");
+    
+        const response = await fetch("../data/projects.json");
+        const projects = await response.json();
+        const project = projects.find(p => p.id === projectId);
+    
+        if (!project) {
+            console.error("Project not found!");
+            return;
+        }
+    
+        let imgIndex = 1;
+        let imageFolder = `../images/${projectId}/`; // Project-specific image folder
+        const captions = project.captions; // Captions for the specific project
+    
+        project.layout.forEach(rowCount => {
+            let row = document.createElement("div");
+            row.classList.add("image-row");
+    
+            for (let i = 0; i < rowCount; i++) {
+                let imgContainer = document.createElement("div");
+                imgContainer.classList.add("image-container");
+    
+                let img = document.createElement("img");
+                img.src = `${imageFolder}${projectId}-${String(imgIndex).padStart(2, '0')}.jpg`;
+                img.alt = `Image ${imgIndex}`;
+                imgContainer.appendChild(img);
+    
+                // Add caption if available
+                if (captions && captions[imgIndex - 1]) {
+                    let caption = document.createElement("p");
+                    caption.classList.add("caption");
+                    caption.textContent = captions[imgIndex - 1];
+                    imgContainer.appendChild(caption);
+                }
+    
+                row.appendChild(imgContainer);
+                imgIndex++;
+            }
+    
+            projectGallery.appendChild(row);
+        });
+    }
+    
+    
+    
     
 
 
