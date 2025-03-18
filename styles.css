@@ -493,6 +493,11 @@ body {
     gap: 10px;
 }
 
+.image-row img {
+    width: 100%;
+    height: auto;
+}
+
 .image-container {
     display: flex;
     flex: 1; /* Ensure equal width for all containers */
@@ -521,6 +526,63 @@ body {
 }
 
 /* PROJECTS END */
+/* ALL PROJECTS */
+/* Container for the category blocks */
+.category-container {
+    margin-bottom: 40px;
+}
+
+/* Category title (shown once at the top) */
+.category-container h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Row for projects within a category (3 images per row) */
+.project-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+    gap: 20px; /* Space between images */
+    margin-bottom: 20px; /* Space after each row */
+}
+
+/* Each project block (image + caption) */
+.project-block {
+    text-align: center; /* Centers the caption under the image */
+}
+
+/* Thumbnail image */
+.thumbnail {
+    width: 100%; /* Adjust to desired size */
+    max-width: 300px; /* Adjust to desired max size */
+    height: auto;
+}
+
+/* Caption under the image */
+.caption {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+/* Style for the "See More" button */
+.see-more-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.see-more-button:hover {
+    background-color: #0056b3;
+}
+
+/* ALL PROJECTS END */
 /* FOOTER */
 footer {
     background-color: #382817;
