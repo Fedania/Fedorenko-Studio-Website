@@ -1,104 +1,111 @@
 {
     "project": [
     {
-        "id": "O1-BR-DOWNTOWN",
+        "id": "01-BR-DOWNTOWN",
         "title": "Downtown",
         "categories": ["Branding"],
-        "thumbnail": "images/O1-BR-DOWNTOWN/O1-BR-DOWNTOWN-01.jpg"
+        "thumbnail": "../images/01-BR-DOWNTOWN/01-BR-DOWNTOWN-01.jpg",
+        "link": "../projects/01-BR-DOWNTOWN.html"
     },
     {
         "id": "02-BR-MONOBREW",
         "title": "Monobrew",
         "categories": ["Branding"],
-        "thumbnail": "images/02-BR-MONOBREW/02-BR-MONOBREW-01.jpg"
+        "thumbnail": "../images/02-BR-MONOBREW/02-BR-MONOBREW-01.jpg",
+        "layout":[1,1,1,1,2],
+        "link": "../projects/02-BR-MONOBREW.html"
     },
     {
         "id": "03-BR-NECU",
         "title": "Necu",
         "categories": ["Branding"],
-        "thumbnail": "images/03-BR-NECU/03-BR-NECU-01.jpg"
+        "thumbnail": "../images/03-BR-NECU/03-BR-NECU-01.jpg",
+        "link": "../projects/03-BR-NECU.html"
     },
     {
         "id": "04-BR-PR-MEDICINE",
         "title": "Erfundene Krankheiten",
         "categories": ["Branding", "Print"],
-        "thumbnail": "images/04-BR-PR-Medicine/04-BR-PR-MEDICINE-01.jpg",
+        "thumbnail": "../images/04-BR-PR-MEDICINE/04-BR-PR-MEDICINE-01.jpg",
         "layout": [1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1],
-        "captions": [
-            "This is a caption for the first image of the Medicine project.",
-            null,
-            null, 
-            null,
-            "Another caption for the second image.",
-            null,
-            null,   
-            null,
-            null,
-            "Caption for the fourth image.",
-            "Final caption for the last image.",
-            "Final caption for the last image."
-        ]
+        "captions": [{ "index": 1, "text": "This is a caption for the first image of the Medicine project." },
+        { "index": 5, "text": "Another caption for the second image." },
+        { "index": 10, "text": "Caption for the fourth image." },
+        { "index": 11, "text": "Final caption for the last image." }
+        ],
+        "link": "../projects/04-BR-PR-MEDICINE.html"
     },
     {
         "id": "05-BR-PR-BRANDHERDE",
         "title": "Brandherde",
         "categories": ["Branding", "Print"],
-        "thumbnail": "images/05-BR-PR-BRANDHERDE/05-BR-PR-BRANDHERDE-01.jpg"
+        "thumbnail": "../images/05-BR-PR-BRANDHERDE/05-BR-PR-BRANDHERDE-01.jpg",
+        "link": "../projects/05-BR-PR-BRANDHERDE.html"
     },
     {
         "id": "06-PR-INVITE",
         "title": "Invite",
         "categories": ["Print"],
-        "thumbnail": "images/06-PR-INVITE/06-PR-INVITE-01.jpg"
+        "thumbnail": "../images/06-PR-INVITE/06-PR-INVITE-01.jpg",
+        "link": "../projects/06-PR-INVITE.html"
     },
     {
         "id": "07-PR-SMARTHOME",
         "title": "Smarthome",
         "categories": ["Print"],
-        "thumbnail": "images/07-PR-SMARTHOME/07-PR-SMARTHOME-01.jpg"
+        "thumbnail": "../images/07-PR-SMARTHOME/07-PR-SMARTHOME-01.jpg",
+        "link": "../projects/07-PR-SMARTHOME.html"
     },
     {
         "id": "09-IL-FACTORS",
         "title": "Factors",
         "categories": ["Illustration"],
-        "thumbnail": "images/09-IL-FACTORS/09-IL-FACTORS-01.jpg"
+        "thumbnail": "../images/09-IL-FACTORS/09-IL-FACTORS-01.jpg",
+        "link": "../projects/09-IL-FACTORS.html"
     },
     {
         "id": "10-IL-EMOTIONS",
         "title": "Emotions",
         "categories": ["Illustration"],
-        "thumbnail": "images/10-IL-EMOTIONS/10-IL-EMOTIONS-01.jpg"
+        "thumbnail": "../images/10-IL-EMOTIONS/10-IL-EMOTIONS-01.jpg",
+        "link": "../projects/10-IL-EMOTIONS.html"
     },
     {
         "id": "11-IL-STAINPORTRAITS",
         "title": "Stainportraits",
         "categories": ["Illustration"],
-        "thumbnail": "images/11-IL-STAINPORTRAITS/11-IL-STAINPORTRAITS-01.jpg"
+        "thumbnail": "../images/11-IL-STAINPORTRAITS/11-IL-STAINPORTRAITS-01.jpg",
+        "link": "../projects/11-IL-STAINPORTRAITS.html"
     },
     {
         "id": "12-IL-WINTER",
         "title": "Winter",
         "categories": ["Illustration"],
-        "thumbnail": "images/12-IL-WINTER/12-IL-WINTER-01.jpg"
+        "thumbnail": "../images/12-IL-WINTER/12-IL-WINTER-01.jpg",
+        "link": "../projects/12-IL-WINTER.html"
     },
     {
         "id": "13-PO-ECO",
         "title": "Eco",
         "categories": ["Posters"],
-        "thumbnail": "images/13-PO-ECO/13-PO-ECO-01.jpg"
+        "thumbnail": "../images/13-PO-ECO/13-PO-ECO-01.jpg",
+        "link": "../projects/13-PO-ECO.html"
     },
     {
         "id": "14-PO-SOCIAL",
         "title": "Social",
         "categories": ["Posters"],
-        "thumbnail": "images/14-PO-SOCIAL/14-PO-SOCIAL-01.jpg"
+        "thumbnail": "../images/14-PO-SOCIAL/14-PO-SOCIAL-01.jpg",
+        "link": "../projects/14-PO-SOCIAL.html"
     },
     {
         "id": "15-PO-GOLDENBEE",
         "title": "Poster Series",
         "categories": ["Posters"],
-        "thumbnail": "images/15-PO-GOLDENBEE/15-PO-GOLDENBEE-01.jpg",
-        "layout": [1, 1, 1, 1, "repeat-4", 1, 1, 1, 1] 
+        "thumbnail": "../images/15-PO-GOLDENBEE/15-PO-GOLDENBEE-01.jpg",
+        "layout": [1, 1, 1, 1, "repeat-4", 1, 1, 1, 1],
+        "link": "../projects/15-PO-GOLDENBEE.html"
     }
 ]
 }
+

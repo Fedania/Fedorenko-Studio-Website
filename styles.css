@@ -32,6 +32,7 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Charmanserif', serif;
     font-size: 3rem;
+    margin: 0;
 }
 body {
     font-family: 'chesnagrotesk', sans-serif;
@@ -44,50 +45,53 @@ body {
     line-height: 1.6; /* Adjust this value as needed */
     font-size: 1rem;
 }
-section:not(#footer, #Services) {
-    padding: 5%;
-}
-
-/* General Styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
+section:not(#header, #footer, #Services) {
+    padding: 10%;
 }
 
 /* HEADER */
     /* Navbar */
+    
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #333;
     color: white;
-    padding: 5px;
-    padding-left: 20px;
-    position: relative; /* Prevents dropdown from spilling over the navbar */
-    
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #9d47ff;
+    height: 50px;
 }
 
 .nav-links {
+    width: 50%;
+    justify-content: space-between;
+    justify-self: flex-end;
     display: flex;
     list-style: none;
-    padding: 0;
+ 
+    
 }
 
 .nav-links li {
     position: relative;
-
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
+.arrow {
+    margin-left: 10px;
+}
 .nav-links a {
     text-decoration: none;
     color: white;
-    padding: 10px 15px;
+    
     display: block;
 }
 .dropdown {
     position: relative; /* Ensure the dropdown menu is positioned relative to the parent */
+  
 }
 .dropdown-menu {
     position: absolute;
@@ -96,9 +100,10 @@ body {
     list-style: none;
     display: none;
     box-sizing: border-box;
-    width: 100%; /* Ensure full width */
+    width: 160%; /* Ensure full width */
     padding: 0;
-    margin: 0;
+    z-index: 10;
+ 
 }
 
 .dropdown:hover .dropdown-menu {
@@ -108,16 +113,20 @@ body {
 
 .dropdown-menu li {
     border: 1px solid red; /* Helps visualize the issue */
+    margin: 0;  /* Ensures no extra spacing */
+    padding: 0; /* Removes default padding */
 }
 
 .dropdown-menu a {
     width: 100%;
     color: white;
     text-decoration: none;
+    font-weight: lighter;
+    font-size: small;
     background: #444;
     border: 1px solid blue;
     display: block; /* Ensure anchor tag takes full width */
-    padding: 10px; /* Add padding for better spacing */
+    padding: 5px; /* Add padding for better spacing */
     box-sizing: border-box; /* Include padding in width */
 }
 
@@ -188,7 +197,7 @@ body {
     background: #333;
     color: white;
     border: none;
-    padding: 15px;
+    padding: 20px;
     width: 100%;
     text-align: left;
     font-size: 18px;
@@ -377,12 +386,10 @@ body {
     color: white;
 }
 
-
+/* SLIDESHOW END */
   
  
-  
-
-
+/* ABOUT SECTION */
 .about-container {
     display: flex;
     justify-content: space-between;
@@ -424,7 +431,7 @@ body {
     object-fit: cover; /* Ensures the image scales properly inside */
 }
 
-
+/* PROJECTS HOME */
 /* Home Section */
 .home .project-gallery {
     display: grid;
@@ -473,24 +480,27 @@ body {
 .home .project:hover .overlay {
     opacity: 1;
 }
+/* PROJECTS HOME END */
+
 
 
 /* PROJECTS */
 .project-page-body{
 
-    padding: 3vw;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 .gallery, .project-gallery {
     display: flex;
     flex-direction: column; /* Ensures rows are stacked */
-    gap: 10px;
-    padding: 20px;
+    gap: 1vw;
+    
 }
 
 .image-row {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 2vw;
 }
 
 .image-row img {
@@ -527,60 +537,98 @@ body {
 
 /* PROJECTS END */
 /* ALL PROJECTS */
-/* Container for the category blocks */
 .category-container {
-    margin-bottom: 40px;
+    text-align: left; /* Align content properly */
+    margin-bottom: 30px; /* Add spacing between categories */
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-/* Category title (shown once at the top) */
-.category-container h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+
+/* Category title */
+.category-title {
+    font-size: 1.5rem;
+    margin: 20px 0;
 }
 
-/* Row for projects within a category (3 images per row) */
-.project-row {
+/* Project grid */
+.projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
-    gap: 20px; /* Space between images */
-    margin-bottom: 20px; /* Space after each row */
+    gap: 10px;
+    margin-bottom: 5vh;
 }
 
-/* Each project block (image + caption) */
-.project-block {
-    text-align: center; /* Centers the caption under the image */
+/* MAIN PAGE: 4 projects per row */
+.main-view .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
 }
 
-/* Thumbnail image */
-.thumbnail {
-    width: 100%; /* Adjust to desired size */
-    max-width: 300px; /* Adjust to desired max size */
-    height: auto;
+/* CATEGORY PAGE: 2 projects per row */
+.category-view .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
 }
 
-/* Caption under the image */
-.caption {
-    font-size: 1.2rem;
-    font-weight: normal;
-    margin-top: 10px;
+/* Ensure images stay square and responsive */
+.project-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    text-decoration: none; /* Remove underline */
 }
 
-/* Style for the "See More" button */
-.see-more-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
+.project {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
+    border-radius: 8px;   
+    min-width: 100px;     
+}
+
+/* Overlay on hover */
+.project-wrapper .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* Transparent by default */
     color: white;
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 5px;
-    text-align: center;
+    opacity: 0;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    border-radius: 8px;
 }
 
-.see-more-button:hover {
-    background-color: #0056b3;
+.project-wrapper:hover .overlay {
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay on hover */
+    opacity: 1;
 }
+
+/* Align the "See More" button to the right */
+.see-more {
+    display: block;
+    text-decoration: none;
+    background: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-align: right;
+    margin-left: auto; /* Pushes it to the right */
+    width: fit-content;
+}
+
+.see-more:hover {
+    background: #555;
+}
+
+
+
 
 /* ALL PROJECTS END */
 /* FOOTER */
@@ -621,7 +669,35 @@ footer nav a {
 }
 footer nav a:hover {
     color: #f4e3d6;
+
 }
+
+.image-container.image img {
+    width: 100%;
+    height: auto;
+}
+
+.image-container.vimeo iframe {
+    width: 100%;
+    height: 360px;
+    border-radius: 10px;
+}
+
+.image-container.gif img {
+    
+    height: 100vh;
+    
+    max-width: 100%;
+    margin-bottom: 2vw ;
+}
+
+.image-container.rive canvas {
+    width: 100%;
+    height: 400px;
+    background-color: transparent;
+}
+
+
 /* Tablets */
 @media (max-width: 768px) {
    
@@ -645,6 +721,9 @@ footer nav a:hover {
         text-align: center; /* Make sure text and buttons are centered */
         width: 100%; /* Ensure they take full width of the footer */
     }
+    .main-view .projects-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row instead of 4 */
+    }
     
 }
 
@@ -661,6 +740,10 @@ footer nav a:hover {
     min-height: 100vh; /* Ensure container takes full height of the screen */
     padding-left: 250px;
 }
+.main-view .projects-grid,
+    .category-view .projects-grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 per row on very small screens */
+    }
 }
 
 

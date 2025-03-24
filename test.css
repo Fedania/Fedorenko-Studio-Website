@@ -1,75 +1,48 @@
-/* Container for the category blocks */
-.category-container {
-    margin-bottom: 40px;
-}
-
-/* Category title (shown once at the top) */
-.category-container h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-.row-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 16px; /* Space between project blocks */
-}
-/* This ensures the row will display items in a horizontal line */
-.project-row {
-    display: flex;
-    flex-wrap: wrap; /* This allows the items to wrap onto the next line if necessary */
-    gap: 16px; /* Space between project blocks */
-}
-
-/* This ensures each project block has the same width and appears in one row */
-.project-block {
-    flex: 1 1 30%; /* This allows each project block to take up 30% of the row */
-    box-sizing: border-box; /* Prevents padding and border from affecting width */
-    text-align: center; /* Centers the content inside the project block */
-}
-
-/* Optionally, you can set a max-width for the thumbnails to avoid them stretching too much */
-.thumbnail {
-    width: 100%;
-    height: auto;
-    max-width: 100%; /* Ensures the image doesn't overflow */
-}
-
-/* Style the placeholder for missing thumbnails */
-.thumbnail-placeholder {
-    width: 100%;
-    height: 200px; /* Height of the placeholder */
-    background-color: #000000; /* Placeholder color */
-    display: block;
-    margin: 0 auto;
-}
-
-
-/* Caption under the image */
-.caption {
-    font-size: 1.2rem;
-    font-weight: normal;
-    margin-top: 10px;
-}
-
-/* Style for the "See More" button */
-.see-more-button {
-    display: block;  /* Ensures it takes up the whole line */
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
     text-align: center;
-    width: 100%; /* Ensure it's full width */
-    max-width: 300px; /* Adjust max width */
-    margin-left: auto;
-    margin-right: auto; /* Center the button */
 }
 
-.see-more-button:hover {
-    background-color: #0056b3;
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.projects-grid {
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+}
+
+.main-view .projects-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 per row on main page */
+}
+
+.category-view .projects-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row when filtering */
+}
+
+.project {
+    width: 100%;
+    max-width: 100%;
+}
+
+.see-more {
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    background: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.see-more:hover {
+    background: #555;
 }

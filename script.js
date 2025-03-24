@@ -58,8 +58,8 @@ function activateSidebar() {
 
 // Load header & footer, then activate the sidebar
 document.addEventListener("DOMContentLoaded", () => {
-    loadComponent("header-container", "components/header.html", activateSidebar);
-    loadComponent("footer-container", "components/footer.html");
+    loadComponent("header-container", "../components/header.html", activateSidebar);
+    loadComponent("footer-container", "../components/footer.html");
 });
 
 
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
         const response = await fetch("../data/projects.json");
         const data = await response.json();
-        const project = data.project.find(p => p.id === projectId); // Adjusted to access the 'project' key
+        const project = data.project.find(p => p.id === projectId);
     
         if (!project) {
             console.error("Project not found!");
@@ -103,64 +103,97 @@ document.addEventListener("DOMContentLoaded", () => {
     
         let imgIndex = 1;
         let imageFolder = `../images/${projectId}/`;
-        const captions = project.captions;
+        const captions = project.captions || [];
+        const insertions = project.insertions || [];
     
-        let imagesArray = []; // Stores images for potential repeats
+        // Map captions for quick lookup
+        const captionMap = new Map();
+        captions.forEach(caption => captionMap.set(caption.index, caption.text));
     
         project.layout.forEach(rowCount => {
-            if (typeof rowCount === "string" && rowCount.startsWith("repeat-")) {
-                // Extract the number from "repeat-N"
-                const repeatCount = parseInt(rowCount.split("-")[1], 10);
+            let row = document.createElement("div");
+            row.classList.add("image-row");
     
-                if (!isNaN(repeatCount) && imagesArray.length >= repeatCount) {
-                    let repeatRow = document.createElement("div");
-                    repeatRow.classList.add("image-row");
+            for (let i = 0; i < rowCount; i++) {
+                let imgContainer = document.createElement("div");
+                let insertedItem = insertions.find(ins => ins.index === imgIndex);
     
-                    imagesArray.slice(-repeatCount).forEach(src => {
-                        let imgContainer = document.createElement("div");
-                        imgContainer.classList.add("image-container");
+                if (insertedItem) {
+                    imgContainer.classList.add("inserted", insertedItem.type); // Assign type as class
     
-                        let img = document.createElement("img");
-                        img.src = src;
-                        img.alt = "Repeated Image";
-                        imgContainer.appendChild(img);
-    
-                        repeatRow.appendChild(imgContainer);
-                    });
-    
-                    projectGallery.appendChild(repeatRow);
-                }
-            } else {
-                let row = document.createElement("div");
-                row.classList.add("image-row");
-    
-                for (let i = 0; i < rowCount; i++) {
-                    let imgContainer = document.createElement("div");
-                    imgContainer.classList.add("image-container");
-    
-                    let img = document.createElement("img");
-                    let imgSrc = `${imageFolder}${projectId}-${String(imgIndex).padStart(2, '0')}.jpg`;
-                    img.src = imgSrc;
-                    img.alt = `Image ${imgIndex}`;
-                    imgContainer.appendChild(img);
-    
-                    imagesArray.push(imgSrc); // Store for potential repeat
-    
-                    if (captions && captions[imgIndex - 1]) {
-                        let caption = document.createElement("p");
-                        caption.classList.add("caption");
-                        caption.textContent = captions[imgIndex - 1];
-                        imgContainer.appendChild(caption);
+                    switch (insertedItem.type) {
+                        case "image":
+                        case "gif":
+                            createImageElement(imgContainer, insertedItem.src);
+                            break;
+                        case "vimeo":
+                            createVimeoElement(imgContainer, insertedItem.src);
+                            break;
+                        case "rive":
+                            createRiveElement(imgContainer, insertedItem.src);
+                            break;
+                        default:
+                            console.warn(`Unknown insertion type: ${insertedItem.type}`);
                     }
-    
-                    row.appendChild(imgContainer);
-                    imgIndex++;
+                } else {
+                    imgContainer.classList.add("image");
+                    let imgSrc = `${imageFolder}${projectId}-${String(imgIndex).padStart(2, '0')}.jpg`;
+                    createImageElement(imgContainer, imgSrc);
                 }
     
+                // Add caption if available
+                if (captionMap.has(imgIndex)) {
+                    let caption = document.createElement("p");
+                    caption.classList.add("caption");
+                    caption.textContent = captionMap.get(imgIndex);
+                    imgContainer.appendChild(caption);
+                }
+    
+                row.appendChild(imgContainer);
                 projectGallery.appendChild(row);
+    
+                imgIndex++;
             }
         });
     }
+    
+    // Helper function to create an image element
+    function createImageElement(container, src) {
+        let img = document.createElement("img");
+        img.src = src;
+        img.alt = "Project Image";
+        container.appendChild(img);
+    }
+    
+    // Helper function to create a Vimeo iframe
+    function createVimeoElement(container, vimeoUrl) {
+        let vimeoId = vimeoUrl.split("/").pop();
+        let iframe = document.createElement("iframe");
+        iframe.src = `https://player.vimeo.com/video/${vimeoId}`;
+        iframe.width = "640";
+        iframe.height = "360";
+        iframe.frameBorder = "0";
+        iframe.allow = "autoplay; fullscreen; picture-in-picture";
+        iframe.allowFullscreen = true;
+        container.appendChild(iframe);
+    }
+    
+    // Helper function for Rive animations (assuming you load Rive.js)
+    function createRiveElement(container, riveSrc) {
+        let riveCanvas = document.createElement("canvas");
+        riveCanvas.classList.add("rive-animation");
+        container.appendChild(riveCanvas);
+    
+        // Assuming Rive.js is available globally
+        new rive.Rive({
+            src: riveSrc,
+            canvas: riveCanvas,
+            autoplay: true,
+        });
+    }
+    
+
+    
     
     
     
