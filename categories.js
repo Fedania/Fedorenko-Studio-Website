@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <h2 class="category-title">${category}</h2>
             <div class="projects-grid">
                 ${projects.map(p => `
-                    <a href="${p.link}" class="project-wrapper">
+                     <a href="/project-page.html#${p.id}" class="project-wrapper">
                         <img class="project" src="${p.thumbnail}" alt="${p.title}">
                         <div class="overlay">${p.title}</div>
                     </a>

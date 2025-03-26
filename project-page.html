@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monobrew</title>
+    <title>Project page</title>
     <link rel="stylesheet" href="../styles.css">
     <script defer src="../script.js"></script>
 </head>
 <body>
+    
     <header>
         <div id="header-container"></div>
     </header>
-    <main>
-        <div class="project-page-body">
-            <h1>Monobrew</h1>
+        <section id = "project-page">
+            <h1 id="project-title"></h1>
             
             <div class="project-gallery"></div>
-        </div>
-    </main>
+        </section>
+        <section id="nav-buttons"></section>
     <footer>
         <div id="footer-container"></div>
     </footer>
-
+    <script src="../insertions.js"></script>
     <script src="../projects.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const projectId = "02-br-monobrew"; // Change this for each project
-            loadProjectImages(projectId);
-        });
-    </script>
 </body>
 </html>
