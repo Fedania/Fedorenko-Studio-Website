@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rive Animation Test</title>
+  
+</head>
+<body>
+
+  <div id="rive-container">
+    <canvas id="rive-canvas"></canvas>
+  </div>
+
+  <script src="https://unpkg.com/@rive-app/canvas"></script>
+  <script>
+    const riveCanvas = document.getElementById("rive-canvas");
+    const devicePixelRatio = window.devicePixelRatio || 1;
+
+    // Fix blurry canvas on high DPI screens
+    function resizeCanvas() {
+      riveCanvas.width = riveCanvas.clientWidth * devicePixelRatio;
+      riveCanvas.height = riveCanvas.clientHeight * devicePixelRatio;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Load and play the Rive file
+    const riveInstance = new rive.Rive({
+      src: "../images/09-il-factors/laptop-2.riv", // Replace with your Rive file path
+      canvas: riveCanvas,
+      autoplay: true,
+      artboard: "Laptop", // Replace with your artboard name if needed
+      stateMachines: "Laptop Scroll", // Optional: only if you have one
+    });
+  </script>
+
+</body>
+</html>

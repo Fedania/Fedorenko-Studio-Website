@@ -57,44 +57,47 @@ async function loadProjectImages(projectId, project) {
         });
     }
 
-    // Add images and insertions between them
-    project.layout.forEach(rowCount => {
-        let row = document.createElement("div");
-        row.classList.add("image-row");
+   // Add images and insertions between them
+project.layout.forEach(rowCount => {
+    let row = document.createElement("div");
+    row.classList.add("image-row");
 
-        for (let i = 0; i < rowCount; i++) {
-            let imgContainer = document.createElement("div");
+    for (let i = 0; i < rowCount; i++) {
+        let imgContainer = document.createElement("div");
 
-            // Check for insertion before the current image
-            let insertedItem = insertions.find(ins => ins.index === imgIndex);
-
-            if (insertedItem && !insertedIndexes.has(imgIndex)) {
-                imgContainer.classList.add("inserted", insertedItem.type); // Assign type as class
-
-                // Add the insertion
-                insertInsertion(imgContainer, insertedItem);
-
-                // Mark as inserted
-                insertedIndexes.add(imgIndex);
-            } else {
-                imgContainer.classList.add("image");
-                let imgSrc = `${imageFolder}${projectId}-${String(imgIndex).padStart(2, '0')}.jpg`;
-                createImageElement(imgContainer, imgSrc);
-            }
-
-            // Add caption if available
-            if (captionMap.has(imgIndex)) {
-                let caption = document.createElement("p");
-                caption.classList.add("caption");
-                caption.textContent = captionMap.get(imgIndex);
-                imgContainer.appendChild(caption);
-            }
-
-            row.appendChild(imgContainer);
-            projectGallery.appendChild(row);
-
-            imgIndex++;
+        // Check for insertion before the current image
+        let insertedItem = insertions.find(ins => ins.index === imgIndex);
+        if (insertedItem && !insertedIndexes.has(imgIndex)) {
+            imgContainer.classList.add("inserted", insertedItem.type); // Assign type as class
+            insertInsertion(imgContainer, insertedItem);
+            insertedIndexes.add(imgIndex);
+        } else {
+            imgContainer.classList.add("image");
+            let imgSrc = `${imageFolder}${projectId}-${String(imgIndex).padStart(2, '0')}.jpg`;
+            createImageElement(imgContainer, imgSrc);
         }
+
+        row.appendChild(imgContainer);
+        projectGallery.appendChild(row);
+
+        // 🔹 Check if there's a caption **after** this image
+        let captionObj = captions.find(caption => caption.index === imgIndex);
+        if (captionObj) {
+            let caption = document.createElement("p");
+            caption.classList.add("caption");
+            caption.textContent = captionObj.text;
+            
+            let captionWrapper = document.createElement("div");
+            captionWrapper.classList.add("caption-wrapper"); // For styling if needed
+            captionWrapper.appendChild(caption);
+            
+            projectGallery.appendChild(captionWrapper); // Add caption *after* row
+        }
+
+        imgIndex++;
+    }
+
+
 
         // After each row, check for any insertions
         insertions.filter(ins => ins.index === imgIndex).forEach(insertion => {
