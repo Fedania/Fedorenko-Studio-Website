@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 // 🔹 NEW: Load images and handle insertions
 async function loadProjectImages(projectId, project) {
-    const projectGallery = document.querySelector(".project-gallery");
+    const projectGallery = document.querySelector(".project-page__gallery");
     // 🔹 Apply project-wide class if specified
     if (project.class) {
         projectGallery.classList.add(project.class);
@@ -60,7 +60,7 @@ async function loadProjectImages(projectId, project) {
    // Add images and insertions between them
 project.layout.forEach(rowCount => {
     let row = document.createElement("div");
-    row.classList.add("image-row");
+    row.classList.add("gallery__image-row");
 
     for (let i = 0; i < rowCount; i++) {
         let imgContainer = document.createElement("div");
@@ -68,11 +68,11 @@ project.layout.forEach(rowCount => {
         // Check for insertion before the current image
         let insertedItem = insertions.find(ins => ins.index === imgIndex);
         if (insertedItem && !insertedIndexes.has(imgIndex)) {
-            imgContainer.classList.add("inserted", insertedItem.type); // Assign type as class
+            imgContainer.classList.add("gallery__inserted", insertedItem.type); // Assign type as class
             insertInsertion(imgContainer, insertedItem);
             insertedIndexes.add(imgIndex);
         } else {
-            imgContainer.classList.add("image");
+            imgContainer.classList.add("gallery__image");
             let imgSrc = `${imageFolder}${projectId}-${String(imgIndex).padStart(2, '0')}.jpg`;
             createImageElement(imgContainer, imgSrc);
         }
@@ -84,11 +84,11 @@ project.layout.forEach(rowCount => {
         let captionObj = captions.find(caption => caption.index === imgIndex);
         if (captionObj) {
             let caption = document.createElement("p");
-            caption.classList.add("caption");
+            caption.classList.add("gallery__caption");
             caption.textContent = captionObj.text;
             
             let captionWrapper = document.createElement("div");
-            captionWrapper.classList.add("caption-wrapper"); // For styling if needed
+            captionWrapper.classList.add("gallery__caption-wrapper"); // For styling if needed
             captionWrapper.appendChild(caption);
             
             projectGallery.appendChild(captionWrapper); // Add caption *after* row

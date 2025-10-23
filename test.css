@@ -9,40 +9,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-.category-title {
-    font-size: 1.5rem;
-    margin: 20px 0;
-}
-
-.projects-grid {
-    display: grid;
-    gap: 10px;
-    padding: 10px;
-}
-
-.main-view .projects-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 per row on main page */
-}
-
-.category-view .projects-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row when filtering */
-}
-
-.project {
-    width: 100%;
-    max-width: 100%;
-}
-
-.see-more {
-    margin-top: 10px;
-    display: inline-block;
-    text-decoration: none;
-    background: #333;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 5px;
-}
-
-.see-more:hover {
-    background: #555;
-}
+.swiper {
+    width: 600px;
+    height: 300px;
+  }

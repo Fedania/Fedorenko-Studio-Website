@@ -60,7 +60,7 @@ section:not(#header, #footer, #Services) {
 /* HEADER */
     /* Navbar */
     
-.navbar {
+.header__navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,40 +71,65 @@ section:not(#header, #footer, #Services) {
     background-color: #9d47ff;
     height: 50px;
 }
-
-.nav-links {
+.logo{
     width: 40%;
-    justify-content: space-between;
-    justify-self: flex-end;
     display: flex;
-    list-style: none;
-    
     
 }
-
-.nav-links li {
-    position: relative;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    
-   
-    text-align: center;
+/* Container holding both left + right link groups */
+.header__nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.arrow {
+/* Both groups share similar flex styling */
+.nav-links--left,
+.nav-links--right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  gap: 30px; /* space between items */
+  margin: 0;
+  padding: 0;
+}
+
+/* Optional: you can control proportions if you want */
+.nav-links--left {
+  justify-content: flex-start;
+}
+.nav-links--right {
+  justify-content: flex-end;
+}
+
+/* Links styling */
+.header__nav-links li {
+  position: relative;
+}
+
+.header__nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+#projects-btn .arrow {
     margin-left: 2px;
 }
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 80%;
-    display: block;
-}
-.dropdown {
+
+.header__dropdown {
     position: relative; /* Ensure the dropdown menu is positioned relative to the parent */
   
 }
-.dropdown-menu {
+.header__dropdown-menu {
     position: absolute;
     top: 100%;
     background: #444;
@@ -117,18 +142,18 @@ section:not(#header, #footer, #Services) {
  
 }
 
-.dropdown:hover .dropdown-menu {
+.header__dropdown:hover .header__dropdown-menu {
     display: flex;
     flex-direction: column;
 }
 
-.dropdown-menu li {
+.header__dropdown-menu li {
     border: 1px solid red; /* Helps visualize the issue */
     margin: 0;  /* Ensures no extra spacing */
     padding: 0; /* Removes default padding */
 }
 
-.dropdown-menu a {
+.header__dropdown-menu a {
     width: 100%;
     color: white;
     text-decoration: none;
@@ -141,12 +166,12 @@ section:not(#header, #footer, #Services) {
     box-sizing: border-box; /* Include padding in width */
 }
 
-.dropdown-menu a:hover {
+.header__dropdown-menu a:hover {
     background: #555;
 }
 
 /* Hamburger Menu */
-.hamburger {
+.header__hamburger {
     display: none;
     font-size: 24px;
     background: none;
@@ -165,7 +190,7 @@ section:not(#header, #footer, #Services) {
     background: #222;
     color: white;
     padding: 0 20px 20px ;
-    transition: left 0.3s ease;
+    transition: left 0.6s ease;
     display: flex;
     flex-direction: column;
     z-index: 1000;
@@ -175,7 +200,7 @@ section:not(#header, #footer, #Services) {
     left: 0;
 }
 
-.sidebar-links {
+.sidebar__links {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -183,11 +208,11 @@ section:not(#header, #footer, #Services) {
     flex-direction: column;
 }
 
-.sidebar-links li {
+.sidebar__links li {
     margin: 10px 0;
 }
 
-.sidebar-links a {
+.sidebar__links a {
     display: block;
     background: none;
     border: none;
@@ -201,7 +226,7 @@ section:not(#header, #footer, #Services) {
 }
 
 /* Sidebar dropdown button */
-.sidebar-dropdown button {
+.sidebar__dropdown button {
     display: flex;
     justify-content: space-between; /* Separates text and arrow */
     align-items: center;
@@ -216,21 +241,21 @@ section:not(#header, #footer, #Services) {
 }
 
 /* Space out text and arrow */
-.sidebar-dropdown .text {
+.sidebar__dropdown .text {
     flex-grow: 1; /* Pushes text to the left */
 }
 
-.sidebar-dropdown .arrow {
+.sidebar__dropdown .arrow {
     transition: transform 0.3s ease;
 }
 
 /* Rotate arrow when active */
-.sidebar-dropdown.active .arrow {
+.sidebar__dropdown.active .arrow {
     transform: rotate(180deg);
 }
 
 /* Sidebar dropdown */
-.sidebar-dropdown-menu {
+.sidebar__dropdown-menu {
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -239,20 +264,20 @@ section:not(#header, #footer, #Services) {
     margin-left: 20px;
     height: 0;
     overflow: hidden;
-    transition: height 0.3s ease-in-out;
+    transition: height 0.5s ease-in-out;
 }
 
-.sidebar-dropdown.active .sidebar-dropdown-menu {
+.sidebar__dropdown.active .sidebar__dropdown-menu {
     display: flex;
 }
 
-.sidebar-dropdown button {
+.sidebar__dropdown button {
     cursor: pointer;
     background: #333;
 }
 
 /* Close Button */
-.close-btn {
+.sidebar__close-btn {
     background: none;
     border: none;
     color: white;
@@ -263,35 +288,61 @@ section:not(#header, #footer, #Services) {
 }
 
 /* Overlay */
-.overlay {
+.sidebar__overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    display: none;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Initially hidden */
     z-index: 999;
+    transition: opacity 0.3s ease, visibility 0s 0.3s; /* Fade opacity and delay visibility */
 }
 
-.overlay.active {
-    display: block;
+.sidebar__overlay.active {
+    opacity: 1; /* Make visible when active */
+    visibility: visible; /* Ensure it's visible */
+    transition: opacity 0.3s ease, visibility 0s; /* Remove delay for visibility */
 }
+
+
 
 /* Responsive */
 @media (max-width: 768px) {
-    .nav-links {
+    .header__nav-links {
         display: none;
     }
 
-    .hamburger {
+    .header__hamburger {
         display: block;
     }
 }
 
 
 /* END HEADER */
-
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 200;
+    padding: 10px 16px;
+    font-size: 20px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  #scrollToTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+   
 /* Hero Section */
 #hero {
     text-align: center;
@@ -496,59 +547,88 @@ section:not(#header, #footer, #Services) {
 
 
 /* PROJECTS */
-.gallery, .project-gallery {
-    display: flex;
-    flex-direction: column; /* Ensures rows are stacked */
-    align-items: center;
-    gap: 1vw;    
-}
-.image-row {
-    display: flex;
-    flex-direction: row;
-    
-    justify-content: space-between;
-    gap: 2vw;
-    align-items: stretch; /* Ensures images align evenly */
-}
-.image{
+.project-page__gallery {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    max-height: fit-content;
+    gap: 1rem;
     width: 100%;
-}
-.image img {
-    width: 100%; /* Make sure images fit container */
-    height: 100%; /* Ensure they fill the available space */
-    object-fit: fill;
-    
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.custom-text {
+.gallery__image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    flex-wrap: nowrap; /* Keep images on one line */
+    max-height: 90vh;
     width: 100%;
-    padding: 20px;
-    background-color: #f0f0f0;
-    text-align: center;
-    font-size: 18px;
-    margin: 20px 0;
-    color: #333;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevents overflow */
 }
+
+/* Let each image scale proportionally to fit within the row */
+.gallery__image {
+    flex: 1 1 0;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery__image img {
+    max-height: 90vh;
+    max-width: 100%;
+    height: auto;
+    width: 100%; /* Ensures it fills the flex space */
+    object-fit: contain;
+    display: block;
+}
+.gallery__caption{
+
+}
+.gallery__caption-wrapper{
+
+}
+
+/* Mobile fallback */
+@media (max-width: 767px) {
+    .gallery__image-row {
+        justify-content: space-between;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .gallery__image {
+        max-height: fit-content;
+        width: 100%;
+    }
+
+    .gallery__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+}
+
 
 /* INSERTED */
-.inserted{
+.gallery__inserted{
     width: 100%;
     height:auto;
     
 }
-.inserted.gif img{
+.gallery__inserted.gif img{
     width: 100%;
     height: auto;
 }
-.inserted.mp4 video{
+.gallery__inserted.mp4 video{
     width: 100%;
 }
-.inserted.rive {
+.gallery__inserted.rive {
     display: block;
     max-width: 100%;
     height: auto;
@@ -629,31 +709,31 @@ section:not(#header, #footer, #Services) {
 
 
 /* ALL PROJECTS */
-.category-container {
+.category__container {
     text-align: left; /* Align content properly */
     margin-bottom: 30px; /* Add spacing between categories */
     
 }
 /* Category title */
-.category-title {
+.category__title {
     font-size: 1.5rem;
     margin: 20px 0;
 }
 
 /* Project grid */
-.projects-grid {
+.category__thumbnails-grid {
     display: grid;
     gap: 10px;
     margin-bottom: 5vh;
 }
 
 /* MAIN PAGE: 4 projects per row */
-.main-view .projects-grid {
+.main-view .category__thumbnails-grid {
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* CATEGORY PAGE: 2 projects per row */
-.category-view .projects-grid {
+.category-view .category__thumbnails-grid {
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -662,21 +742,25 @@ section:not(#header, #footer, #Services) {
     position: relative;
     display: block;
     width: 100%;
+    border-radius: 8px;  
     aspect-ratio: 1 / 1;
     overflow: hidden;
     text-decoration: none; /* Remove underline */
 }
 
-.project {
+.project__thumbnail {
     width: 100%;
     height: 100%;
     object-fit: cover;    
-    border-radius: 8px;   
-    min-width: 100px;     
+     
+    min-width: 100px;
+    transition: transform 0.5s ease-in-out;     
 }
-
+.project-wrapper:hover .project__thumbnail {
+    transform: scale(1.05);
+  }
 /* Overlay on hover */
-.project-wrapper .overlay {
+.project-wrapper .project__overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -694,7 +778,7 @@ section:not(#header, #footer, #Services) {
     border-radius: 8px;
 }
 
-.project-wrapper:hover .overlay {
+.project-wrapper:hover .project__overlay {
     background: rgba(0, 0, 0, 0.6); /* Dark overlay on hover */
     opacity: 1;
 }
@@ -729,7 +813,7 @@ footer {
     font-size: 14px;
 }
 
-.footer-container {
+.footer__container {
     min-width: 95%;
     display: flex;
     justify-content: space-between;
@@ -740,12 +824,12 @@ footer {
 }
 
 
-.footer-text {
+.footer__text {
     text-align: left; /* Align text to the left */
     white-space: nowrap; /* Prevent the text from wrapping */
 }
 
-.footer-buttons {
+.footer__buttons {
     text-align: right; /* Align buttons to the right */
     flex-shrink: 0;
 }
@@ -798,19 +882,19 @@ footer nav a:hover {
     .about-text, .about-image {
         padding-right: 0; /* Remove spacing when stacked */
     } 
-    .project-gallery {
+    .project-page__gallery {
         grid-template-columns: repeat(3, 1fr); /* Switch to 2 columns on tablet/mobile */
     }
-    .footer-container {
+    .footer__container {
         flex-direction: column; /* Stack the content vertically */
         text-align: center; /* Center align everything */
         align-items: center; /* Center items horizontally */
     }
-    .footer-text, .footer-buttons{
+    .footer__text, .footer__buttons{
         text-align: center; /* Make sure text and buttons are centered */
         width: 100%; /* Ensure they take full width of the footer */
     }
-    .main-view .projects-grid {
+    .main-view .category__thumbnails-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 per row instead of 4 */
     }
     
@@ -819,12 +903,12 @@ footer nav a:hover {
 
 /* Mobile device */
 @media (max-width: 480px) {
-    .project-gallery {
+    .project-page__gallery {
         grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on tablet/mobile */
     }
 
-.main-view .projects-grid,
-    .category-view .projects-grid {
+.main-view .projects__grid,
+    .category-view .category__thumbnails-grid {
         grid-template-columns: repeat(1, 1fr); /* 1 per row on very small screens */
     }
 }

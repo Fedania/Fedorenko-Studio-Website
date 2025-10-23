@@ -1,37 +1,46 @@
 <section id="header">
 <header>
-    <nav class="navbar">
-        <div class="logo">My Website</div>
-        <button class="hamburger" id="hamburger">&#9776;</button>
-        <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../services.html">Services</a></li>
-            <li class="dropdown">
-                <a href="../all-projects.html" id="projects-btn">Projects <span class="arrow">&#x25BC;</span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="../all-projects.html">All Projects</a></li>
-                    <li><a href="../all-projects.html?category=Branding">Branding</a></li>
-                    <li><a href="../all-projects.html?category=Posters">Posters</a></li>
-                    <li><a href="../all-projects.html?category=Print">Print</a></li>
-                    <li><a href="../all-projects.html?category=Illustration">Illustration</a></li>
+    <nav class="header__navbar">
+        <div class="logo"><a href="../index.html">My Website</a></div>
+        <button class="header__hamburger" id="hamburger">&#9776;</button>
+        
+        <ul class="header__nav-links">
+            
+                <ul class="nav-links--left">
+                    <li class="header__dropdown">
+                        <a href="../all-projects.html" id="projects-btn">Projects <span class="arrow">&#x25BC;</span></a>
+                        <ul class="header__dropdown-menu">
+                            <li><a href="../all-projects.html">All Projects</a></li>
+                            <li><a href="../all-projects.html?category=Branding">Branding</a></li>
+                            <li><a href="../all-projects.html?category=Posters">Posters</a></li>
+                            <li><a href="../all-projects.html?category=Print">Print</a></li>
+                            <li><a href="../all-projects.html?category=Illustration">Illustration</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../services.html">Services</a></li>
+                    <li><a href="../index.html">Clients</a></li>
                 </ul>
-            </li>
-            <li><a href="../about.html">About</a></li>
-            <li><a href="../contact.html">Contact</a></li>
+
+                <ul class="nav-links--right">
+                    <li><a href="../about.html">About us</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            
         </ul>
+        
     </nav>
     
     <div class="sidebar" id="sidebar">
-        <button class="close-btn" id="close-btn">&times;</button>
-        <ul class="sidebar-links">
+        <button class="sidebar__close-btn" id="close-btn">&times;</button>
+        <ul class="sidebar__links">
             <li><a href="../index.html">Home</a></li>
             <li><a href="../services.html">Services</a></li>
-            <li class="sidebar-dropdown">
+            <li class="sidebar__dropdown">
                 <button id="sidebar-projects-btn">
                     <span class="text">Projects</span>
                     <span class="arrow">&#x25BC;</span> <!-- Dropdown arrow -->
                 </button>
-                <ul class="sidebar-dropdown-menu" id="sidebar-dropdown-menu">
+                <ul class="sidebar__dropdown-menu" id="sidebar-dropdown-menu">
                     <li><a href="../all-projects.html">All Projects</a></li>
                     <li><a href="../all-projects.html?category=Branding">Branding</a></li>
                     <li><a href="../all-projects.html?category=Posters">Posters</a></li>
@@ -44,6 +53,7 @@
         </ul>
     </div>
 
-    <div class="overlay" id="overlay"></div>
+    <div class="sidebar__overlay" id="overlay"></div>
+    
 </header>
 </section>

@@ -58,34 +58,84 @@ function activateSidebar() {
 
 // Load header & footer, then activate the sidebar
 document.addEventListener("DOMContentLoaded", () => {
-    loadComponent("header-container", "../components/header.html", activateSidebar);
-    loadComponent("footer-container", "../components/footer.html");
-});
+    // Log initial scroll position when the page loads
+    console.log('Initial scrollY on page load:', window.scrollY);
 
+    // Load header and footer components
+    loadComponent("header-container", "../components/header.html", () => {
+        console.log('Header loaded');
+        activateSidebar();
+    });
 
-    // Project Click Event
-    document.querySelectorAll(".project").forEach(project => {
-        project.addEventListener("click", function () {
-            const url = this.getAttribute("data-url");
-            if (url) {
-                window.location.href = url;
+    loadComponent("footer-container", "../components/footer.html", () => {
+        console.log('Footer loaded');
+        initializeScrollToTop();
+    });
+
+    // Initialize the scroll-to-top button logic
+    function initializeScrollToTop() {
+        console.log('Scroll to Top Initialized');
+        
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        if (!scrollBtn) {
+            console.error('Scroll to Top button not found!');
+            return;
+        }
+
+        // Scroll event listener
+        window.addEventListener('scroll', () => {
+            
+
+            if (window.scrollY > 100) {
+                if (!scrollBtn.classList.contains('show')) {
+                    console.log('Showing scroll-to-top button');
+                    scrollBtn.classList.add('show');
+                }
+            } else {
+                if (scrollBtn.classList.contains('show')) {
+                    console.log('Hiding scroll-to-top button');
+                    scrollBtn.classList.remove('show');
+                }
             }
         });
-    });
-    document.querySelectorAll('.image-container').forEach(container => {
-        const textElement = container.querySelector('.image-text');
-        textElement.textContent = container.getAttribute('data-text');
-    });
-    document.addEventListener("DOMContentLoaded", function () {
-        const hamburger = document.querySelector(".hamburger");
-        const navLinks = document.querySelector(".nav-links");
-    
-        if (hamburger) {
-            hamburger.addEventListener("click", function () {
-              navLinks.classList.toggle("active");
-            });
+
+        // Click event to scroll to the top
+        scrollBtn.addEventListener('click', () => {
+            console.log('Scrolling to top...');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+
+    // Project Click Events
+    document.body.addEventListener("click", function (event) {
+        const projectImg = event.target.closest(".project");
+        if (projectImg) {
+          const url = projectImg.getAttribute("data-url");
+          if (url) {
+            window.location.href = url;
+          }
         }
+      });
+      
+  
+    // Add image text
+    document.querySelectorAll('.image-container').forEach(container => {
+      const textElement = container.querySelector('.image-text');
+      textElement.textContent = container.getAttribute('data-text');
     });
+  
+    // Hamburger menu
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+  
+    if (hamburger) {
+      hamburger.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+      });
+    }
+  });
+  
     
 
 

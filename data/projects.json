@@ -1,111 +1,154 @@
 {
     "project": [
     {
-        "id": "01-BR-DOWNTOWN",
+        "id": "01-br-downtown",
         "title": "Downtown",
         "categories": ["Branding"],
-        "thumbnail": "../images/01-BR-DOWNTOWN/01-BR-DOWNTOWN-01.jpg",
-        "link": "../projects/01-BR-DOWNTOWN.html"
+        "thumbnail": "../images/01-br-downtown/01-br-downtown-01.jpg",
+        "layout": [1, 1, 1, 1, 1, 1, 1, 1, 2],
+        "rowClasses": {
+            "2": "no-gap" 
+        }
+        
     },
     {
-        "id": "02-BR-MONOBREW",
+        "id": "02-br-monobrew",
         "title": "Monobrew",
         "categories": ["Branding"],
-        "thumbnail": "../images/02-BR-MONOBREW/02-BR-MONOBREW-01.jpg",
-        "layout":[1,1,1,1,2],
-        "link": "../projects/02-BR-MONOBREW.html"
+        "thumbnail": "../images/02-br-monobrew/02-br-monobrew-01.jpg",
+        "layout":[1,1,1,1,1, 1,1,1,1,1,2,2],
+        "link": "../projects/02-br-monobrew.html",
+        "insertions": [
+        { "index": 3, "type": "gif", "src": "images/02-br-monobrew/02-br-monobrew.gif" }
+        ]
     },
     {
-        "id": "03-BR-NECU",
+        "id": "03-br-necu",
         "title": "Necu",
         "categories": ["Branding"],
-        "thumbnail": "../images/03-BR-NECU/03-BR-NECU-01.jpg",
-        "link": "../projects/03-BR-NECU.html"
+        "thumbnail": "../images/03-br-necu/03-br-necu-01.jpg",
+        "layout": [1, 1, 1, 1, 1, 1],
+        "insertions": [
+        { "index": 3, "type": "gif", "src": "images/03-br-necu/03-br-necu.gif" },
+        { "index": 4, "type": "mp4", "src": "images/03-br-necu/03-br-necu.mp4", "class": "video-insertion" }
+
+        ]
     },
     {
-        "id": "04-BR-PR-MEDICINE",
+        "id": "04-br-pr-medicine",
         "title": "Erfundene Krankheiten",
         "categories": ["Branding", "Print"],
-        "thumbnail": "../images/04-BR-PR-MEDICINE/04-BR-PR-MEDICINE-01.jpg",
+        "thumbnail": "../images/04-br-pr-medicine/04-br-pr-medicine-01.jpg",
         "layout": [1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1],
-        "captions": [{ "index": 1, "text": "This is a caption for the first image of the Medicine project." },
+        "captions": [
+        { "index": 1, "text": "This is a caption for the first image of the Medicine project." },
         { "index": 5, "text": "Another caption for the second image." },
         { "index": 10, "text": "Caption for the fourth image." },
-        { "index": 11, "text": "Final caption for the last image." }
-        ],
-        "link": "../projects/04-BR-PR-MEDICINE.html"
+        { "index": 12, "text": "Final caption for the last image." }
+        ]
     },
     {
-        "id": "05-BR-PR-BRANDHERDE",
+        "id": "05-br-pr-brandherde",
         "title": "Brandherde",
         "categories": ["Branding", "Print"],
-        "thumbnail": "../images/05-BR-PR-BRANDHERDE/05-BR-PR-BRANDHERDE-01.jpg",
-        "link": "../projects/05-BR-PR-BRANDHERDE.html"
+        "thumbnail": "../images/05-br-pr-brandherde/05-br-pr-brandherde-01.jpg",
+        "layout": [1, 1, 1, 1, 1, 1, 1, 1, 1]
     },
     {
-        "id": "06-PR-INVITE",
+        "id": "06-pr-invite",
         "title": "Invite",
         "categories": ["Print"],
-        "thumbnail": "../images/06-PR-INVITE/06-PR-INVITE-01.jpg",
-        "link": "../projects/06-PR-INVITE.html"
+        "thumbnail": "../images/06-pr-invite/06-pr-invite-01.jpg",
+        "layout":[1,1,1,1,1,2]
     },
     {
-        "id": "07-PR-SMARTHOME",
+        "id": "07-pr-smarthome",
         "title": "Smarthome",
         "categories": ["Print"],
-        "thumbnail": "../images/07-PR-SMARTHOME/07-PR-SMARTHOME-01.jpg",
-        "link": "../projects/07-PR-SMARTHOME.html"
+        "thumbnail": "../images/07-pr-smarthome/07-pr-smarthome-01.jpg",
+        "layout":[1,1,1,1,2]
     },
     {
-        "id": "09-IL-FACTORS",
+        "id": "09-il-factors",
         "title": "Factors",
         "categories": ["Illustration"],
-        "thumbnail": "../images/09-IL-FACTORS/09-IL-FACTORS-01.jpg",
-        "link": "../projects/09-IL-FACTORS.html"
+        "thumbnail": "../images/09-il-factors/09-il-factors-01.jpg",
+        "layout":[1,1,1,1,1],
+        "insertions": [
+            {
+                "index": 0,
+                "type": "rive",
+                "src": "../images/09-il-factors/laptop-2.riv",
+                "artboard": "Laptop",
+                "stateMachine": "Laptop Scroll" 
+              }
+        ]
     },
     {
-        "id": "10-IL-EMOTIONS",
+        "id": "10-il-emotions",
         "title": "Emotions",
         "categories": ["Illustration"],
-        "thumbnail": "../images/10-IL-EMOTIONS/10-IL-EMOTIONS-01.jpg",
-        "link": "../projects/10-IL-EMOTIONS.html"
+        "thumbnail": "../images/10-il-emotions/10-il-emotions-01.jpg",
+        "layout":[1,1,1,1,1,1,1,1,1,1,1,1],
+        "captions": [
+        { "index": 1, "text": "The best background for your selfies? Your houseplants." },
+        { "index": 2, "text": "When your pale face perfectly matches the color of your dress." },
+        { "index": 3, "text": "Trying to relax in the bath, but your phone won’t stop ringing." },
+        { "index": 4, "text": "That 'I can have fun without alcohol' facial expression." },
+        { "index": 5, "text": "When you finally finish your 'no makeup' makeup look." },
+        { "index": 6, "text": "That moment when your favorite song starts playing." },
+        { "index": 7, "text": "When you’ve already picked your Halloween mask weeks in advance." },
+        { "index": 8, "text": "Nobody ever has a charger that fits your phone." },
+        { "index": 9, "text": "When you get birthday notifications on Facebook every single day." },
+        { "index": 10, "text": "Waking up early just because your hair takes forever to dry." },
+        { "index": 11, "text": "Do you have a vegan cheesecake?" },
+        { "index": 12, "text": "<i>Cute people can be serious too!</i>" }
+        ]
+        
     },
     {
-        "id": "11-IL-STAINPORTRAITS",
+        "id": "11-il-stainportraits",
         "title": "Stainportraits",
         "categories": ["Illustration"],
-        "thumbnail": "../images/11-IL-STAINPORTRAITS/11-IL-STAINPORTRAITS-01.jpg",
-        "link": "../projects/11-IL-STAINPORTRAITS.html"
+        "thumbnail": "../images/11-il-stainportraits/11-il-stainportraits-01.jpg",
+        "layout": [1, 1, 1, 1, 1, 1, 1, 1, 2]
     },
     {
-        "id": "12-IL-WINTER",
+        "id": "12-il-winter",
         "title": "Winter",
         "categories": ["Illustration"],
-        "thumbnail": "../images/12-IL-WINTER/12-IL-WINTER-01.jpg",
-        "link": "../projects/12-IL-WINTER.html"
+        "thumbnail": "../images/12-il-winter/12-il-winter-01.jpg",
+        "layout": [1, 1, 1, 1, 1, 1, 1, 1, 2]
     },
     {
-        "id": "13-PO-ECO",
+        "id": "13-po-eco",
         "title": "Eco",
         "categories": ["Posters"],
-        "thumbnail": "../images/13-PO-ECO/13-PO-ECO-01.jpg",
-        "link": "../projects/13-PO-ECO.html"
+        "thumbnail": "../images/13-po-eco/13-po-eco-01.jpg",
+        "layout": [1, 1, 1, 1, 1, 1, 1, 1, 2]
     },
     {
-        "id": "14-PO-SOCIAL",
+        "id": "14-po-social",
         "title": "Social",
         "categories": ["Posters"],
-        "thumbnail": "../images/14-PO-SOCIAL/14-PO-SOCIAL-01.jpg",
-        "link": "../projects/14-PO-SOCIAL.html"
+        "thumbnail": "../images/14-po-social/14-po-social-01.jpg",
+        "layout": [1, 1, 1, 1, 1, 1, 1, 1, 2]
     },
     {
-        "id": "15-PO-GOLDENBEE",
+        "id": "15-po-goldenbee",
         "title": "Poster Series",
         "categories": ["Posters"],
-        "thumbnail": "../images/15-PO-GOLDENBEE/15-PO-GOLDENBEE-01.jpg",
-        "layout": [1, 1, 1, 1, "repeat-4", 1, 1, 1, 1],
-        "link": "../projects/15-PO-GOLDENBEE.html"
-    }
+        "thumbnail": "../images/15-po-goldenbee/15-po-goldenbee-01.jpg",
+        "layout": [1, 1, 1, 1, "repeat-4", 1, 1, 1, 1]
+        
+    },
+    {
+        "id": "16-an-test",
+        "title": "test",
+        "thumbnail": "../images/15-po-goldenbee/15-po-goldenbee-01.jpg",
+        "categories": ["Branding", "Print"],
+        "customUrl": "/projects/15-PO-GOLDENBEE.html"
+      }
 ]
 }
 

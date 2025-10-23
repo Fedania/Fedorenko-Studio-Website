@@ -70,6 +70,7 @@ body {
 }
 
 /* Gallery Container */
+/* Gallery Container */
 .project-gallery-container {
     display: flex;
     margin-left: 250px;
@@ -97,17 +98,10 @@ body {
     border-radius: 8px; /* Add rounded corners to images */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     position: relative;
+    transition: transform 0.5s ease-in-out; /* Zoom effect on hover */
 }
 
-.project img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    transition: transform 0.5s ease-in-out;
-}
-/* Optional hover effect for the images */
-.project:hover img {
+.project-wrapper:hover .project {
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
@@ -124,9 +118,10 @@ body {
     transition: opacity 0.3s;
 }
 
-.project:hover .overlay {
+.project-wrapper:hover .overlay {
     opacity: 1;
 }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .project-gallery {

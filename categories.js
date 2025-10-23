@@ -45,19 +45,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderCategory(category, projects, container, showMore) {
         const section = document.createElement("div");
-        section.classList.add("category-container"); // Added container class
+        section.classList.add("category__container");
+        
         section.innerHTML = `
-            <h2 class="category-title">${category}</h2>
-            <div class="projects-grid">
-                ${projects.map(p => `
-                     <a href="/project-page.html#${p.id}" class="project-wrapper">
-                        <img class="project" src="${p.thumbnail}" alt="${p.title}">
-                        <div class="overlay">${p.title}</div>
-                    </a>
-                `).join("")}
+            <h2 class="category__title">${category}</h2>
+            <div class="category__thumbnails-grid">
+                ${projects.map(p => {
+                    const href = p.customUrl ? p.customUrl : `/project-page.html#${p.id}`;
+                    return `
+                        <a href="${href}" class="project-wrapper">
+                            <img class="project__thumbnail" src="${p.thumbnail}" alt="${p.title}">
+                            <div class="project__overlay">${p.title}</div>
+                        </a>
+                    `;
+                }).join("")}
             </div>
             ${showMore ? `<a class="see-more" href="?category=${category}">See more ${category} projects</a>` : ""}
         `;
+    
         container.appendChild(section);
     }
+    
 });

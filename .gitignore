@@ -1,0 +1,16 @@
+projects.html
+categories/branding.html
+projects/03-BR-PR-MEDICINE.html
+test.html
+branding.html
+# Ignore all images
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.bmp
+*.tiff
+*.ico
+node_modules/
+
