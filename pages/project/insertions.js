@@ -1,5 +1,5 @@
 // 🔹 Helper function to handle insertion of items (image, gif, video, etc.)
-function insertInsertion(container, insertion) {
+export async function insertInsertion(container, insertion) {
     let imgContainer = document.createElement("div");
     imgContainer.classList.add("inserted", insertion.type);
 
@@ -28,7 +28,7 @@ function insertInsertion(container, insertion) {
 }
 
 // 🔹 Helper function to create an image element
-function createImageElement(container, src) {
+export async function createImageElement(container, src) {
     let img = document.createElement("img");
     img.src = src;
     img.alt = "Project Image";

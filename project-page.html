@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project page</title>
     <link rel="stylesheet" href="../styles.css">
-    <script defer src="../script.js"></script>
+    <script type="module" src="../script.js"></script>
 </head>
 <body>
     
-    <header>
-        <div id="header-container"></div>
-    </header>
+    <div id="header-container"></div>
+        <div class="page-wrapper">
+            <div id="page-overlay">
+                <div class="vignette"></div>
+            </div>
+            
         <div class="page-content">
             <section id = "project-page">
                 <h1 id="project-title"></h1>
@@ -20,10 +23,10 @@
             </section>
             <section id="nav-buttons"></section>
         </div>
+    </div>
     <footer>
         <div id="footer-container"></div>
     </footer>
-    <script src="../insertions.js"></script>
-    <script src="../projects.js"></script>
+    
 </body>
 </html>

@@ -12,5 +12,6 @@ branding.html
 *.bmp
 *.tiff
 *.ico
+*.mp4
 node_modules/
 
