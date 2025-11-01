@@ -41,7 +41,11 @@ export async function initPageGallery() {
     const selectedProjects = allProjects.filter(p => projectList.includes(p.id));
 
     // 4. Render
-  section.innerHTML = selectedProjects.map(renderProjectThumbnail).join("");
+  section.innerHTML = `
+    <div class="gallery__container-grid">
+      ${selectedProjects.map(renderProjectThumbnail).join("")}
+    </div>
+  `;
 
   } catch (error) {
     console.error("Error loading project gallery:", error);

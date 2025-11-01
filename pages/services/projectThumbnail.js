@@ -22,7 +22,7 @@ export function renderProjectThumbnail(project) {
             loading="lazy"
           />
           <div class="overlay">
-            <h3>${project.title}</h3>
+            <h5>${project.title}</h5>
           </div>
         
       </a>

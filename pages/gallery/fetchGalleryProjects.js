@@ -1,5 +1,5 @@
-// components/fetchPageProjects.js
-export async function fetchPageProjects() {
+// gallery/fetchGalleryProjects.js
+export async function fetchGalleryProjects() {
   try {
     const response = await fetch("../data/pageProjects.json");
     if (!response.ok) throw new Error("Failed to fetch page projects");

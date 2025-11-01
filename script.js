@@ -4,7 +4,8 @@ import { initCategories } from "./pages/categories/categories.js";
 import { initProjectPage } from './pages/project/projectPage.js';
 import { initHeader } from "./components/header.js";
 import { qs } from "./components/domHelpers.js";
-import { initPageGallery } from "./pages/pageProjects/initPageGallery.js";
+import { initServices } from "./pages/services/sectionServices.js";
+import { initPageGallery } from "./pages/gallery/initPageGallery.js";
 import { initLandingVideo } from "./pages/services/landingVideo.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -53,5 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
       
    })
    
+  }
+  if (path.includes("think-big.html")) {
+    initServices("#services", 'think-big');
+  } else if (path.includes("start-small.html")) {
+    initServices("#services", 'start-small');
   }
 });

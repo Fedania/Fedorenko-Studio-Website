@@ -36,11 +36,10 @@
     
     /* END FONTS */
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Charmanserif', serif;
-    font-size: 3rem;
-    margin: 0;
+html {
+  font-size: 18px;
 }
+
 body {
     font-family: 'chesnagrotesk', sans-serif;
     background-color: #afafaf;
@@ -49,17 +48,64 @@ body {
     padding: 0;
     overflow-x: hidden;
     width: 100%;
-    line-height: 1.6; /* Adjust this value as needed */
+    line-height: 1em; /* Adjust this value as needed */
+    
+    
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+h1 {
+    
+    font-size: 7.45rem;
+    font-weight: normal;
+    font-family: 'PestoMafio';
+    line-height: 1em;
+
+    color: #fff;
+    
+}
+h2 {
+    font-size: 4.77rem;
+       
+}
+h3 {
+    font-size: 3.052rem;
+       
+}
+h4 {
+    font-size: 2.441rem;
+       
+}
+h5 {
+    font-size: 1.563rem;
+       
+}
+h6 {
+    font-size: 1rem;
+       
+}
+p {
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
     font-size: 1rem;
 }
+
 body.main-view .gallery__container-grid {
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
 body.category-view .gallery__container-grid {
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
 .page-content {
@@ -87,7 +133,7 @@ section:not(#header, #footer, #Services, #hero) {
    transition: top 0.4s ease, opacity 0.3s;
 }
 .page-wrapper {
-    width: ;
+ 
     margin: 1rem;
     box-shadow: 0 0 0 9999px rgb(0, 0, 0);
    border-radius: 40px;
@@ -488,23 +534,22 @@ header.visible {
  z-index: 2;
 
 }
-.hero-text {
+.hero-text h1{
     
-    font-size: 10rem;
-    font-family: 'PestoMafio';
-    line-height: 1em;
+
     text-align: center;
-    color: #fff;
+
     transition: transform 0.4s ease;
     transform-origin: center center;
   will-change: transform;
   backface-visibility: hidden;
 }
+
 .hero__text--small {
     position: absolute;
     bottom: 2%;
 }
-.hero-text:hover {
+.hero-text:hover h1{
     transform: scale(1.2);
     cursor: pointer;
 }
@@ -514,87 +559,65 @@ header.visible {
     height: 100px; /* Maintain aspect ratio */
 }
 #Services {
-    position: relative;
+    display: block;
+    text-align: center;
+    height: 80vh;
+}
+.services__title h4{
+  text-align: center;
+
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.services__list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.service {
+  border: 1px solid #333;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.service__title {
+
+  font-weight: 700;
+  padding: 1.5rem;
+  color: #ccc;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.service__description {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+  padding: 0 1.5rem;
+  color: #aaa;
+}
+
+.service.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.service.active .service__title {
+  color: #fff;
+}
+
+.service.active .service__description {
+  max-height: 200px;
+  opacity: 1;
+  padding: 1.5rem;
 }
 
 
-/* Main container holding the slideshow */ 
-  .slideshow-container {
-    overflow: hidden;
-    padding: 60px 0;
-    width: 100%;
-}
 
-
-/* Animation to scroll images */
-  @keyframes scrollImages {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-/* Slideshow itself */
-.slideshow {
-    display: flex;
-    white-space: nowrap;
-    width: 200%; /* Ensures enough space for scrolling effect */
-    animation: scrollImages 20s linear infinite;
-}
-
-/* Style the images inside the slideshow */
-.slideshow .image-container {
-    position: relative;
-    width: 25%;
-    display: inline-block;
-    margin: 0 10px;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slideshow .image-container img {
-    width: 100%;
-    transition: opacity 0.4s ease-in-out;
-    background-color: #000;
-    
-}
-
-/* Image Name Text */
-.slideshow .image-container .image-text {
-    position: absolute;
-    width: 100%;
-
-    bottom: -15%;  /* Position the text at the bottom */
-    left: 0;    /* Align text to the left */
-
-    color: #382817;
-    font-size: 3vw;
-    font-weight: bold;
-    opacity: 1;
-    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.5s ease, color 0.5s ease;
-    background: rgba(0, 0, 0, 0);  /* Optional background for readability */
-
-
-    white-space: nowrap;  /* Prevent text from wrapping */
-    text-align: center;  /* Ensure the text is centered horizontally */
-}
-
-/* Hover effect: image fades out and text floats above */
-.slideshow .image-container:hover img {
-    opacity: 0.5;
-}
-
-.slideshow .image-container:hover .image-text {
-    transform: translate(0, 0);  /* Moves text above the image */
-    bottom: 0;  /* Adjust text position */
-    background: rgba(0, 0, 0, 0.5);  /* Optional background for readability */
-    color: white;
-}
-
-/* SLIDESHOW END */
-  
- 
 /* ABOUT SECTION */
 .about-container {
     display: flex;
@@ -619,7 +642,7 @@ header.visible {
 
 .about-text p {
     margin-top: 10px;
-    font-size: 1rem;
+
     text-align: justify;
 }
 
@@ -690,25 +713,29 @@ header.visible {
 
 /* GALLERY */
 #gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  
+  
   padding: 3rem 5%;
   justify-items: center;
   align-items: start;
 }
 .gallery__container-grid {
-  display: grid;
-  gap: 2rem;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+    gap: 1.25rem;
 
-  justify-items: center;
-  align-items: start;
+    justify-items: center;
+    align-items: start;
 }
 
 /* Project cards */
 .project__card {
-  position: relative;
-  width: 100%;
+    position: relative;
+    display: block; /* anchors must be block so width & aspect-ratio apply */
+    width: 100%;
   aspect-ratio: 1 / 1; /* 🔹 perfect square */
   overflow: hidden;
   border-radius: 1rem;
@@ -759,8 +786,8 @@ header.visible {
   opacity: 1;
   
 }
-.project__card .overlay h3 {
-  font-size: 1.1rem;
+.project__card .overlay h5 {
+
   font-weight: 500;
   letter-spacing: 0.5px;
   margin: 0;
@@ -1108,10 +1135,22 @@ footer nav a:hover {
     background-color: transparent;
 }
 
+@media (min-width: 1280px) {
+        html {
+    font-size: clamp(18px, 1.2vw, 24px); 
+        }
+    }
 
 /* Tablets */
 @media (max-width: 768px) {
-   
+        html {
+    font-size: clamp(14px, 1.2vw, 18px); 
+    }
+    body.main-view .gallery__container-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+    
     .about-container {
         flex-direction: column; /* Stack the content vertically on small screens */
         align-items: center; 
@@ -1141,6 +1180,9 @@ footer nav a:hover {
 
 /* Mobile device */
 @media (max-width: 480px) {
+        html {
+    font-size: clamp(10px, 1.2vw, 14px); 
+    }
     .project-page__gallery {
         grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on tablet/mobile */
     }

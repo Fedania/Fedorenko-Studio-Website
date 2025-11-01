@@ -27,7 +27,7 @@ export function initLandingVideo(options = {}) {
   video.autoplay = true;
   video.loop = true;
   video.muted = true;
-  video.playbackRate = playbackRate;
+  video.playbackRate = 0;
 
   
 

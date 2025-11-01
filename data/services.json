@@ -1,0 +1,36 @@
+{
+  "think-big": [
+    {
+      "id": "pitch-decks",
+      "title": "Pitch Decks & Presentation Templates",
+      "description": "We design investor-ready presentations and templates you can easily edit."
+    },
+    {
+      "id": "websites",
+      "title": "Websites & Landing Pages",
+      "description": "We build high-converting, responsive websites and landing pages."
+    },
+    {
+      "id": "branding",
+      "title": "Branding Packages",
+      "description": "Complete branding sets including logos, palettes, and typography systems."
+    }
+  ],
+  "start-small": [
+    {
+      "id": "social-media",
+      "title": "Social Media Planning & Design",
+      "description": "We help you create a cohesive, visually appealing social media presence."
+    },
+    {
+      "id": "newsletter",
+      "title": "Newsletter Layouts",
+      "description": "We create professional email campaigns that look great everywhere."
+    },
+    {
+      "id": "ads",
+      "title": "Digital / Printed Ads",
+      "description": "We design attention-grabbing ads to promote your brand effectively."
+    }
+  ]
+}
