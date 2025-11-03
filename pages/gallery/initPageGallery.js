@@ -42,8 +42,10 @@ export async function initPageGallery() {
 
     // 4. Render
   section.innerHTML = `
-    <div class="gallery__container-grid">
-      ${selectedProjects.map(renderProjectThumbnail).join("")}
+    <div class="section__content">
+      <div class="gallery__container-grid">
+        ${selectedProjects.map(renderProjectThumbnail).join("")}
+      </div>
     </div>
   `;
 

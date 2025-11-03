@@ -6,6 +6,7 @@ export function setupHeaderIdleLogic(header, overlay) {
   let lastMouseY = 0;
   let lastScrollY = window.scrollY;
     let isHovering = false;
+     let isHeaderExpanded = false;
 
   const hideHeader = () => {
     if (isHovering) return;
@@ -71,7 +72,21 @@ export function setupHeaderIdleLogic(header, overlay) {
     isHovering = false;
     startIdleTimer(); // resume hiding after 3s
   });
+  // --- NEW: detect scroll-up gesture at top (for expanding header) ---
+  window.addEventListener("wheel", (e) => {
+    if (window.scrollY === 0 && e.deltaY < -20) {
+      if (!isHeaderExpanded) {
+        showHeader();
+        isHeaderExpanded = true;
+      }
+    }
 
+    // collapse header if user scrolls down again
+    if (isHeaderExpanded && e.deltaY > 20) {
+      hideHeader();
+      isHeaderExpanded = false;
+    }
+  });
   // Attach listeners
   window.addEventListener("mousemove", handleMouseMove);
   window.addEventListener("scroll", handleScroll);

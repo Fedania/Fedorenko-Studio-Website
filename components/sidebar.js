@@ -6,11 +6,28 @@ export function activateSidebar() {
   const overlay = document.getElementById("overlay");
   const hamburger = document.getElementById("hamburger");
   const closeBtn = document.getElementById("close-btn");
-  const projectsBtn = document.getElementById("sidebar-projects-btn");
-  const dropdownMenu = document.getElementById("sidebar-dropdown-menu");
 
-  if (!sidebar || !overlay || !hamburger || !closeBtn || !projectsBtn || !dropdownMenu) {
-    console.error("Sidebar elements missing. Make sure they exist in header.html");
+
+  if (!sidebar) {
+    console.error("Sidebar element missing. Make sure it exists in header.html");
+  }
+  if (!overlay) {
+    console.error("Overlay element missing. Make sure it exists in header.html");
+  }
+  if (!hamburger) {
+    console.error("Hamburger element missing. Make sure it exists in header.html");
+  }
+  if (!closeBtn) {
+    console.error("Close button element missing. Make sure it exists in header.html");
+  }
+
+  if ([
+    sidebar,
+    overlay,
+    hamburger,
+    closeBtn
+
+  ].some(el => !el)) {
     return;
   }
 
@@ -28,9 +45,5 @@ export function activateSidebar() {
   closeBtn.addEventListener("click", closeSidebar);
   overlay.addEventListener("click", closeSidebar);
 
-  projectsBtn.addEventListener("click", () => {
-    const expanded = dropdownMenu.classList.toggle("active");
-    projectsBtn.parentElement.classList.toggle("active", expanded);
-    dropdownMenu.style.height = expanded ? dropdownMenu.scrollHeight + "px" : "0px";
-  });
+  
 }
