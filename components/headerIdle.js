@@ -12,15 +12,15 @@ export function setupHeaderIdleLogic(header, overlay) {
     if (isHovering) return;
     header.classList.add("hidden");
     header.classList.remove("visible");
-    overlay.classList.add("overlay-expanded");
-    overlay.classList.remove("overlay-shrunk");
+    overlay.classList.add("overlay--expanded");
+    overlay.classList.remove("overlay--shrunk");
   };
 
   const showHeader = () => {
     header.classList.remove("hidden");
     header.classList.add("visible");
-    overlay.classList.remove("overlay-expanded");
-    overlay.classList.add("overlay-shrunk");
+    overlay.classList.remove("overlay--expanded");
+    overlay.classList.add("overlay--shrunk");
   };
 
   const startIdleTimer = () => {

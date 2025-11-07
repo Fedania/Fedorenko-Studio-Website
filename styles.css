@@ -1,15 +1,15 @@
 @font-face {
     font-family: 'ChesnaGrotesk';
-    src: url('fonts/chesnagrotesk-medium-webfont.woff2') format('woff2'),
-         url('fonts/chesnagrotesk-medium-webfont.woff') format('woff');
+    src: url('fonts/ChesnaGrotesk-medium-webfont.woff2') format('woff2'),
+         url('fonts/ChesnaGrotesk-medium-webfont.woff') format('woff');
     font-weight: 500;
     font-style: normal;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @font-face {
     font-family: 'ChesnaGrotesk';
-    src: url('fonts/chesnagrotesk-mediumitalic-webfont.woff2') format('woff2'),
-         url('fonts/chesnagrotesk-mediumitalic-webfont.woff') format('woff');
+    src: url('fonts/ChesnaGrotesk-mediumitalic-webfont.woff2') format('woff2'),
+         url('fonts/ChesnaGrotesk-mediumitalic-webfont.woff') format('woff');
     font-weight: 500;
     font-style: italic;
 }
@@ -32,29 +32,24 @@
     src: url('fonts/PestoMafio-Regular.woff2') format('woff2'),
          url('fonts/PestoMafio-Regular.woff') format('woff');
     font-weight: 100;
-    font-style: italic;
-    
-    /* END FONTS */
+    font-style: regular;
+
 }
 html {
   font-size: clamp(16px, 1.2vw, 20px)
 }
 
 body {
-    font-family: 'chesnagrotesk', sans-serif;
+    font-family: 'ChesnaGrotesk', sans-serif;
     background-color: #afafaf;
     color: #5a4636;
     margin: 0;
-
     overflow-x: hidden;
     width: 100%;
-    
-    
-    
+  box-sizing: border-box;     
 }
 
 h1, h2, h3, h4, h5, h6 {
-
     margin-block-start: 0.2em;
     margin-block-end: 0.2em;
 }
@@ -62,15 +57,12 @@ a {
     text-decoration: none;
     color: inherit;
 }
-h1 {
-    
+h1 {    
     font-size: 7.45rem;
     font-weight: normal;
     font-family: 'PestoMafio';
     line-height: 1em;
-
-    color: #fff;
-    
+    color: #fff;   
 }
 h2 {
     font-size: 4.77rem;
@@ -95,7 +87,9 @@ h6 {
 p {
     margin-block-start: 0.2em;
     margin-block-end: 0.2em;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
 }
 
 body.main-view .gallery__container-grid {
@@ -111,7 +105,7 @@ body.category-view .gallery__container-grid {
 .page-content {
     max-width: 1200px;
     margin: 0 auto;
-  
+    padding: 3rem;
   
 }
 section:not(#header, #footer, #hero) {
@@ -120,39 +114,47 @@ section:not(#header, #footer, #hero) {
     
 }
 .section__content {
-    width: 100%;
+    display: block;
+    width : 100%;
     max-width: 1200px;
     margin: 0 auto;
     overflow-x: hidden;
+    padding: 5%;
 }
 #page-overlay {
   position: fixed;
- 
+
   bottom: 1rem;
   left: 1rem;
   right: 1rem;
   z-index: 5;
   
   pointer-events: none;
-   box-shadow: 0 0 0 100px rgb(0, 0, 0);
+   box-shadow: 0 0 0 100px #000219;
    border-radius: 40px;
    transition: top 0.4s ease, opacity 0.3s;
 }
-.page-wrapper {
-    width: 100%;
-
-    box-shadow: 0 0 0 9999px rgb(0, 0, 0);
+.page__wrapper__border {
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem ;
+    box-shadow: 0 0 0 100px #000219;
    border-radius: 40px;
+    pointer-events: none
+}
+.page__wrapper {
+    position: relative;
+    z-index: 1;
+    overflow-x: hidden;
 }
 /* Overlay shrink effect when header visible */
-.overlay-expanded {
-
-    top: 1rem;
-  
+.overlay--expanded {
+    top: 1rem;  
 }
-
-.overlay-shrunk {
- 
+.overlay--shrunk { 
   top: 3rem;
 }
 /* HEADER */
@@ -161,18 +163,16 @@ section:not(#header, #footer, #hero) {
   position: fixed;
   top: 0;
   width: 100%;
-
   transition: transform 0.4s ease, opacity 0.3s;
   z-index: 10;
 }
-.header-trigger {
+.header__trigger {
     position: absolute;
-    top: 0%;
+    top: 0;
     left: 0;
     right: 0;
     width: 100%;
   height: 6rem;
-
 }
 header.hidden {
   transform: translateY(-3rem);
@@ -187,25 +187,18 @@ header.visible {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    padding-left: 5%;
-    padding-right: 5%;
- 
-    height: 3rem;
-    
+    padding-left: 3rem;
+    padding-right: 3rem; 
+    height: 3rem;    
 }
 .header__logo{
     width: 20%;
     display: flex;
     opacity: 0.2;
-    transition: opacity 0.3s ease;
-    
+    transition: opacity 0.3s ease;    
 }
-.header__logo:hover {
-    
-    opacity: 1;
-    
-    
+.header__logo:hover {    
+    opacity: 1;     
 }
 .header__logo a {
     text-decoration: none;
@@ -213,9 +206,7 @@ header.visible {
     font-size: 1.2rem;
     font-weight: bold;
     display: flex;
-    align-items: center;
-    
-    
+    align-items: center;      
 }
 /* Container holding both left + right link groups */
 .header__nav-links {
@@ -256,6 +247,7 @@ header.visible {
 }
 
 .header__nav-links a {
+    font-family: 'PestoMafio';
   text-decoration: none;
   color: white;
   font-size: 0.9rem;
@@ -264,53 +256,6 @@ header.visible {
   transition: opacity 0.2s;
 }
 
-#projects-btn .arrow {
-    margin-left: 0.4rem;
-    font-size: 0.6rem;
-}
-
-.header__dropdown {
-    position: relative; /* Ensure the dropdown menu is positioned relative to the parent */
-  
-}
-.header__dropdown-menu {
-    position: absolute;
-    top: 100%;
-    background: #444;
-    list-style: none;
-    display: none;
-    box-sizing: border-box;
-    width: 160%; /* Ensure full width */
-    padding: 0;
-    z-index: 10;
- 
-}
-
-.header__dropdown:hover .header__dropdown-menu {
-    display: flex;
-    flex-direction: column;
-}
-
-.header__dropdown-menu li {
-    margin: 0;  /* Ensures no extra spacing */
-    padding: 0; /* Removes default padding */
-}
-
-.header__dropdown-menu a {
-    width: 100%;
-    color: white;
-    text-decoration: none;
-    font-weight: lighter;
-    font-size: small;
-    background: #444;
-    display: block; /* Ensure anchor tag takes full width */
-    padding: 5px; /* Add padding for better spacing */
-    box-sizing: border-box; /* Include padding in width */
-}
-
-.header__dropdown-menu a:hover {
-    background: #555;
-}
 
 /* Hamburger Menu */
 .header__hamburger {
@@ -367,54 +312,6 @@ header.visible {
     cursor: pointer;
 }
 
-/* Sidebar dropdown button */
-.sidebar__dropdown button {
-    display: flex;
-    justify-content: space-between; /* Separates text and arrow */
-    align-items: center;
-    background: #333;
-    color: white;
-    border: none;
-    padding: 20px;
-    width: 100%;
-    text-align: left;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/* Space out text and arrow */
-.sidebar__dropdown .text {
-    flex-grow: 1; /* Pushes text to the left */
-}
-
-.sidebar__dropdown .arrow {
-    transition: transform 0.3s ease;
-    font-size: 0.6em;
-}
-
-/* Rotate arrow when active */
-.sidebar__dropdown.active .arrow {
-    transform: rotate(180deg);
-}
-
-/* Sidebar dropdown */
-.sidebar__dropdown-menu {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    margin-left: 20px;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.5s ease-in-out;
-}
-
-.sidebar__dropdown.active .sidebar__dropdown-menu {
-    display: flex;
-}
-
-
 
 /* Close Button */
 .sidebar__close-btn {
@@ -449,15 +346,7 @@ header.visible {
 
 
 
-/* Responsive */
-@media (max-width: 768px) {
-    .header__nav-links {
-        display: none;
-    }
-    .header__hamburger {
-        display: block;
-    }
-}
+
 
 
 /* Scroll-to-top button */
@@ -540,44 +429,56 @@ header.visible {
     top: 0;
     left: 0;
     width: 100%;
-
-    height: 100vh;
-
+    height: 90vh;
  z-index: 2;
 
 }
-.hero-text {
+.hero__heading--xlarge {
    transition: transform 0.4s ease;
     transform-origin: center center;
   will-change: transform;
   backface-visibility: hidden;
 }
-.hero-text h1{
-
+.hero__heading--xlarge a h1{
     white-space: nowrap;
-    text-align: center;
-
-    
+    text-align: center;    
 }
-
-.hero__text--small {
-    position: absolute;
-    bottom: 2%;
-}
-.hero-text:hover{
+.hero__heading--xlarge:hover{
     transform: scale(1.2);
     cursor: pointer;
 }
-
+.hero__text {
+    position: absolute;
+    bottom: 2%;
+}
+.hero__heading--large {
+   transition: transform 0.4s ease;
+    transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.hero__heading--large a h1{
+    font-size: 5.69rem;
+    white-space: nowrap;
+    text-align: center;    
+}
+.hero__heading--large:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
 .logo img {
     max-width: 150px; /* Adjust the logo size */
     height: 100px; /* Maintain aspect ratio */
+}
+.services__title {
+    text-align: center;
 }
 .services__container {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   height: 80vh;
+  width: 100%;
 }
 
 .services__list {
@@ -607,6 +508,7 @@ header.visible {
 /* Title */
 .service__title {
   color: #ccc;
+  text-align: center;
   text-transform: uppercase;
   margin: 1rem 0;
   transition: color 0.3s ease;
@@ -888,6 +790,7 @@ header.visible {
 .category__container {
     text-align: left; /* Align content properly */
     margin-bottom: 30px; /* Add spacing between categories */
+    width: 100%;
     
 }
 /* Category title */
@@ -1046,6 +949,12 @@ footer nav a:hover {
     body.main-view .gallery__container-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
+    }
+    .header__nav-links {
+        display: none;
+    }
+    .header__hamburger {
+        display: block;
     }        
     .about-container {
         flex-direction: column; /* Stack the content vertically on small screens */
@@ -1075,7 +984,7 @@ footer nav a:hover {
         html {
     font-size: clamp(14px, 2vw, 16px); 
     }
-    .hero-text h1{
+    .hero__heading--xlarge h1{
             white-space: normal;
         max-width: 5ch;
         }
