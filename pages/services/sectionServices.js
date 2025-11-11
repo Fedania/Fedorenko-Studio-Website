@@ -19,14 +19,14 @@ export async function initServices(sectionSelector, pageKey, jsonPath = '../data
     section.innerHTML = `
       <div class="section__content">
         <div class="services__container">
-          <h3 class="services__title">Services:</h3>
+          <h4 class="services__title">Services:</h4>
           <div class="services__list">
             ${services
               .map(
                 (service) => `
                 <div class="service" data-id="${service.id}">
                   <div class="service__title__wrapper">
-                    <h4 class="service__title">${service.title}</h4>
+                    <h3 class="service__title">${service.title}</h3>
                   </div>
                   <div class="service__description">
                     <p>${service.description}</p>

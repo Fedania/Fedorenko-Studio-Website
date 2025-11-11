@@ -3,6 +3,7 @@ import { initScrollTop } from "./components/scrollTop.js";
 import { initCategories } from "./pages/categories/categories.js"; 
 import { initProjectPage } from './pages/project/projectPage.js';
 import { initHeader } from "./components/header.js";
+import { activateSidebar } from "./components/sidebar.js";
 import { qs } from "./components/domHelpers.js";
 import { initServices } from "./pages/services/sectionServices.js";
 import { initPageGallery } from "./pages/gallery/initPageGallery.js";
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Initial scrollY:", window.scrollY); 
 
   initHeader();
-  
+  activateSidebar();
 
   loadComponent("footer-container", "../components/footer.html", () => {
     console.log("Footer loaded");
@@ -30,12 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // Basic hamburger nav toggle (if exists)
-  const hamburger = qs(".hamburger");
-  const navLinks = qs(".nav-links");
-  if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => navLinks.classList.toggle("active"));
-  }
+
 
   //  Conditional page logic
   const path = window.location.pathname;
@@ -46,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Initializing project page");
     initProjectPage();
   }
-   else if (path.includes("index.html")) {
+   else if (path.includes("landing.html")) {
     console.log("Initializing landing page");
     initPageGallery("#gallery");
     initLandingVideo('#hero', {src: '../assets/landing_02.mp4',
@@ -59,5 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initServices("#services", 'think-big');
   } else if (path.includes("start-small.html")) {
     initServices("#services", 'start-small');
+  } else if (path.includes("landing.html")) {
+    initServices("#services", 'landing');
   }
 });

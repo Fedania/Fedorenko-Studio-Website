@@ -1,7 +1,7 @@
 export function initLandingVideo(options = {}) {
   const {
-    containerSelector = '.hero-container', // where video should live
-    selector = '#landing-video',            // video element selector
+    containerSelector = '.hero__container', // where video should live
+    selector = '#hero__bg-video',            // video element selector
     src = '../assets/landing_02.mp4',                               // video source
     playbackRate = 0.5,                     // slow motion speed
     overlayText = 'butt'                        // optional overlay text

@@ -2,7 +2,7 @@
 This project is a small static portfolio site. The goal of these instructions is to help AI coding agents make minimal, correct, and safe edits — especially around the HTML/JS components, data model in `data/projects.json`, and page initialization logic in `script.js`.
 
 ## Big picture (quick)
-- Static site (no build step in repo). Main entry points: `index.html`, `all-projects.html`, `project-page.html`.
+- Static site (no build step in repo). Main entry points: `landing.html`, `all-projects.html`, `project-page.html`.
 - `script.js` is the app router: on DOMContentLoaded it calls page initializers by checking `window.location.pathname` (e.g. `path.includes('project-page.html')` → `initProjectPage()`).
 - Reusable UI fragments are HTML partials in `components/` and are loaded at runtime with `loadComponent(...)` (see usages in `components/header.js` and `script.js`).
 - Data model: `data/projects.json` with top-level `project` array. Project pages fetch this file (e.g. `pages/project/projectPage.js`).
@@ -27,7 +27,7 @@ This project is a small static portfolio site. The goal of these instructions is
 
 ## Conventions & gotchas
 - Paths are relative and pages live at different nesting levels. Keep `..` vs `.` in imports/fetches consistent with file location. For example, `pages/project/projectPage.js` fetches `../data/projects.json` (not `/data/...`).
-- Module scripts: the root `index.html` uses `<script type="module" src="script.js"></script>` — prefer ES module syntax when adding files.
+- Module scripts: the root `landing.html` uses `<script type="module" src="script.js"></script>` — prefer ES module syntax when adding files.
 - UI fragments: HTML partials live under `components/` (e.g. `components/header.html`, `components/footer.html`). Use `loadComponent` to insert them so lifecycle hooks (callbacks) run consistently.
 - Project pages expect the project ID in the URL hash (e.g. `project-page.html#01-br-downtown`). Don't change the lookup method without updating `projectPage.js`.
 - Insertions: `data/projects.json` supports `insertions` with `type` values like `gif`, `mp4`, and `rive`. If adding new insertion types, search for all code that reads `insertions` (e.g. `pages/.../loadProjectImages.js`) and extend consistently.
@@ -39,7 +39,7 @@ This project is a small static portfolio site. The goal of these instructions is
 ```powershell
 # from repository root
 python -m http.server 8000
-# then open http://localhost:8000/index.html
+# then open http://localhost:8000/landing.html
 ```
 
 ## Editing guidance for agents

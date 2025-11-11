@@ -17,12 +17,18 @@ export function initHeader() {
     console.log("Header loaded");
 
     const header = headerContainer.querySelector("header");
-     const topTrigger = document.getElementById("header__trigger"); // The empty container at top
+    const headerNav = header?.querySelector(".header__nav");
     if (!header) {
       console.error("Header element not found after loading!");
       return;
     }
-    
+    // Create the trigger dynamically
+    const trigger = document.createElement("div");
+    trigger.id = "header__trigger";
+    trigger.classList.add("header__trigger");
+
+    // Insert it at the top of the nav
+    headerNav.insertBefore(trigger, headerNav.firstChild);
     activateSidebar();
 
     // === SCROLL BEHAVIOR ===

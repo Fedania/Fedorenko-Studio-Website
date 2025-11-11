@@ -1,49 +1,55 @@
-// --------------------------------------------
-// Sidebar + dropdown functionality
-// --------------------------------------------
+// sidebar.js
 export function activateSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  const overlay = document.getElementById("overlay");
-  const hamburger = document.getElementById("hamburger");
-  const closeBtn = document.getElementById("close-btn");
+  const headerNav = document.querySelector(".header__nav");
+  
+ // --- Create sidebar elements dynamically ---
+  const sidebar = document.createElement("aside");
+  sidebar.id = "sidebar";
 
+   const menuToggle = document.createElement("button");
+  menuToggle.className = "menu-toggle";
+  menuToggle.setAttribute("aria-label", "Menu");
+  menuToggle.textContent = "☰";
+  document.body.appendChild(menuToggle);
 
-  if (!sidebar) {
-    console.error("Sidebar element missing. Make sure it exists in header.html");
-  }
-  if (!overlay) {
-    console.error("Overlay element missing. Make sure it exists in header.html");
-  }
-  if (!hamburger) {
-    console.error("Hamburger element missing. Make sure it exists in header.html");
-  }
-  if (!closeBtn) {
-    console.error("Close button element missing. Make sure it exists in header.html");
-  }
+  const closeBtn = document.createElement("button");
+  closeBtn.id = "close-sidebar";
+  closeBtn.className = "close-sidebar";
+  closeBtn.setAttribute("aria-label", "Close menu");
+  closeBtn.textContent = "×";
 
-  if ([
-    sidebar,
-    overlay,
-    hamburger,
-    closeBtn
+  const sidebarNav = document.createElement("nav");
+  sidebarNav.className = "sidebar__nav";
 
-  ].some(el => !el)) {
-    return;
-  }
+  // Copy header nav contents dynamically
+  sidebarNav.innerHTML = headerNav.innerHTML;
 
+  sidebar.appendChild(closeBtn);
+  sidebar.appendChild(sidebarNav);
+  document.body.appendChild(sidebar);
+
+  // --- Create overlay dynamically ---
+  const overlay = document.createElement("div");
+  overlay.id = "overlay";
+  document.body.appendChild(overlay);
+
+  // --- Toggle functions ---
   const openSidebar = () => {
     sidebar.classList.add("active");
     overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
   };
 
   const closeSidebar = () => {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
+    document.body.style.overflow = "";
   };
 
-  hamburger.addEventListener("click", openSidebar);
+  // --- Event listeners ---
+  menuToggle.addEventListener("click", openSidebar);
   closeBtn.addEventListener("click", closeSidebar);
   overlay.addEventListener("click", closeSidebar);
 
-  
+  console.log("Sidebar initialized");
 }
