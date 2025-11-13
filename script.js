@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Initial scrollY:", window.scrollY); 
 
   initHeader();
-  activateSidebar();
+
 
   loadComponent("footer-container", "../components/footer.html", () => {
     console.log("Footer loaded");
