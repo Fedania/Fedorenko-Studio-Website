@@ -33,6 +33,7 @@ export async function createImageElement(container, src) {
     img.src = src;
     img.alt = "Project Image";
     container.appendChild(img);
+    
 }
 
 // 🔹 Helper function to create a Vimeo iframe
@@ -136,4 +137,5 @@ function insertMP4File(container, mp4Path) {
     video.src = mp4Path;
     video.controls = true;
     container.appendChild(video);
+    onerror="this.onerror=null; this.src='../assets/placeholder.jpg'"
 }

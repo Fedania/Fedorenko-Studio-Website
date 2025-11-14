@@ -1,36 +1,108 @@
 {
   "think-big": [
     {
-      "id": "pitch-decks",
+      "id": "pitch-decks-service",
       "title": "Pitch Decks & Presentation Templates",
-      "description": "We design investor-ready presentations and templates you can easily edit."
+      "description": "We design compelling, investor-ready presentations and branded presentation templates you can easily edit yourself."
     },
     {
-      "id": "websites",
+      "id": "websites-service",
       "title": "Websites & Landing Pages",
-      "description": "We build high-converting, responsive websites and landing pages."
+      "description": "We create clean, user-friendly websites that reflect your brand and drive action — whether it's sign-ups, sales, or awareness."
     },
     {
-      "id": "branding",
-      "title": "Branding Packages",
-      "description": "Complete branding sets including logos, palettes, and typography systems."
+      "id": "social-media-service",
+      "title": "Social Media Design",
+      "description": "We design scroll-stopping content templates and visuals that keep your brand consistent and engaging across all platforms."
+    },
+    {
+      "id": "newsletter-service",
+      "title": "Newsletter Design",
+      "description": "We build branded newsletter layouts that make your updates, stories, or campaigns look polished and easy to read."
+    },
+    {
+      "id": "campaigns-print",
+      "title": "Campaigns & Print",
+      "description": "We design impactful campaign visuals and print materials that extend your brand story into the real world — beautifully and strategically."
     }
   ],
   "start-small": [
     {
-      "id": "social-media",
-      "title": "Social Media Planning & Design",
-      "description": "We help you create a cohesive, visually appealing social media presence."
+      "id": "brand-strategy",
+      "title": "Brand Strategy & Positioning",
+      "description": "We define what your brand stands for, who it speaks to, and how it stands out — creating a clear foundation for every future decision."
     },
     {
-      "id": "newsletter",
-      "title": "Newsletter Layouts",
-      "description": "We create professional email campaigns that look great everywhere."
+      "id": "naming-messaging",
+      "title": "Naming & Messaging",
+      "description": "We craft names, taglines, and key messages that capture your brand's personality and connect emotionally with your audience."
     },
     {
-      "id": "ads",
-      "title": "Digital / Printed Ads",
-      "description": "We design attention-grabbing ads to promote your brand effectively."
+      "id": "visual-identity",
+      "title": "Visual Identity Design (Logo, CI, Color & Typography)",
+      "description": "We design the visual language of your brand — from logo to colors and fonts — to ensure a consistent and recognizable look across all touchpoints."
+    },
+    {
+      "id": "brand-guidelines",
+      "title": "Brand Guidelines & Rollout",
+      "description": "We create easy-to-follow rules and templates so your brand always looks cohesive, no matter who designs for it or where it appears."
+    },
+    {
+      "id": "communication-strategy",
+      "title": "Communication Strategy",
+      "description": "We plan how and where your brand communicates — so every channel tells the same story and supports your business goals."
+    }
+  ],
+  "all-services": [
+    {
+      "id": "brand-strategy",
+      "title": "Brand Strategy & Positioning",
+      "description": "We define what your brand stands for, who it speaks to, and how it stands out — creating a clear foundation for every future decision."
+    },
+    {
+      "id": "naming-messaging",
+      "title": "Naming & Messaging",
+      "description": "We craft names, taglines, and key messages that capture your brand's personality and connect emotionally with your audience."
+    },
+    {
+      "id": "visual-identity",
+      "title": "Visual Identity Design (Logo, CI, Color & Typography)",
+      "description": "We design the visual language of your brand — from logo to colors and fonts — to ensure a consistent and recognizable look across all touchpoints."
+    },
+    {
+      "id": "brand-guidelines",
+      "title": "Brand Guidelines & Rollout",
+      "description": "We create easy-to-follow rules and templates so your brand always looks cohesive, no matter who designs for it or where it appears."
+    },
+    {
+      "id": "communication-strategy",
+      "title": "Communication Strategy",
+      "description": "We plan how and where your brand communicates — so every channel tells the same story and supports your business goals."
+    },
+    {
+      "id": "pitch-decks-service",
+      "title": "Pitch Decks & Presentation Templates",
+      "description": "We design compelling, investor-ready presentations and branded presentation templates you can easily edit yourself."
+    },
+    {
+      "id": "websites-service",
+      "title": "Websites & Landing Pages",
+      "description": "We create clean, user-friendly websites that reflect your brand and drive action — whether it's sign-ups, sales, or awareness."
+    },
+    {
+      "id": "social-media-service",
+      "title": "Social Media Design",
+      "description": "We design scroll-stopping content templates and visuals that keep your brand consistent and engaging across all platforms."
+    },
+    {
+      "id": "newsletter-service",
+      "title": "Newsletter Design",
+      "description": "We build branded newsletter layouts that make your updates, stories, or campaigns look polished and easy to read."
+    },
+    {
+      "id": "campaigns-print",
+      "title": "Campaigns & Print",
+      "description": "We design impactful campaign visuals and print materials that extend your brand story into the real world — beautifully and strategically."
     }
   ]
 }

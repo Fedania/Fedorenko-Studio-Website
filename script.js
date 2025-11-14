@@ -3,8 +3,6 @@ import { initScrollTop } from "./components/scrollTop.js";
 import { initCategories } from "./pages/categories/categories.js"; 
 import { initProjectPage } from './pages/project/projectPage.js';
 import { initHeader } from "./components/header.js";
-import { activateSidebar } from "./components/sidebar.js";
-import { qs } from "./components/domHelpers.js";
 import { initServices } from "./pages/services/sectionServices.js";
 import { initPageGallery } from "./pages/gallery/initPageGallery.js";
 import { initLandingVideo } from "./pages/services/landingVideo.js";
@@ -49,13 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
       playbackRate: 0.5
       
    })
+    initServices("#services", 'landing');
    
   }
   if (path.includes("think-big.html")) {
     initServices("#services", 'think-big');
   } else if (path.includes("start-small.html")) {
     initServices("#services", 'start-small');
-  } else if (path.includes("landing.html")) {
-    initServices("#services", 'landing');
+  } else if (path.includes("services.html")) {
+    initServices("#services", 'all-services');
   }
+    
+
 });

@@ -20,6 +20,7 @@ export function renderProjectThumbnail(project) {
             src="../images/${project.id}/${project.id}-01.jpg" 
             alt="${project.title}" 
             loading="lazy"
+            onerror="this.onerror=null; this.src='../assets/placeholder.jpg'"
           />
           <div class="overlay">
             <h5>${project.title}</h5>

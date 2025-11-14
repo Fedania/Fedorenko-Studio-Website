@@ -49,11 +49,22 @@ project.layout.forEach(rowCount => {
         } else {
             imgContainer.classList.add("gallery__image");
             let imgSrc = `${imageFolder}${projectId}-${String(imgIndex).padStart(2, '0')}.jpg`;
-            createImageElement(imgContainer, imgSrc);
+
+            let img = document.createElement("img");
+            img.src = imgSrc;
+            img.loading = "lazy";
+
+            img.onerror = () => {
+                img.onerror = null;
+                img.src = "../assets/placeholder.jpg";
+            };
+
+            imgContainer.appendChild(img);
+
         }
 
         row.appendChild(imgContainer);
-        projectGallery.appendChild(row);
+        
 
         // 🔹 Check if there's a caption **after** this image
         let captionObj = captions.find(caption => caption.index === imgIndex);
@@ -68,7 +79,7 @@ project.layout.forEach(rowCount => {
             
             projectGallery.appendChild(captionWrapper); // Add caption *after* row
         }
-
+        projectGallery.appendChild(row);
         imgIndex++;
     }
 

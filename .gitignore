@@ -14,4 +14,6 @@ branding.html
 *.ico
 *.mp4
 node_modules/
+!assets/landing_02.mp4
+!assets/placeholder.jpg
 
