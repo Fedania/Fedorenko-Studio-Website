@@ -56,7 +56,7 @@ project.layout.forEach(rowCount => {
 
             img.onerror = () => {
                 img.onerror = null;
-                img.src = "../assets/placeholder.jpg";
+                img.src = "./assets/placeholder.jpg";
             };
 
             imgContainer.appendChild(img);

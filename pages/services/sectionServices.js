@@ -1,4 +1,4 @@
-export async function initServices(sectionSelector, pageKey, jsonPath = '../data/services.json') {
+export async function initServices(sectionSelector, pageKey, jsonPath = './data/services.json') {
   const section = document.querySelector(sectionSelector);
   if (!section) {
     console.warn(`Section "${sectionSelector}" not found`);

@@ -13,7 +13,7 @@ export function initHeader() {
   }
 
   // Load header component dynamically
-  loadComponent("header-container", "../components/header.html", () => {
+  loadComponent("header-container", "./components/header.html", () => {
     console.log("Header loaded");
 
     const header = headerContainer.querySelector("header");

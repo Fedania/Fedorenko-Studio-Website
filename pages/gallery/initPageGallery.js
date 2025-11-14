@@ -18,8 +18,8 @@ export async function initPageGallery() {
   try {
     // 2. Fetch data from JSON files
     const [pageProjectsRes, allProjectsRes] = await Promise.all([
-      fetch("../data/pageProjects.json"),
-      fetch("../data/projects.json"),
+      fetch("./data/pageProjects.json"),
+      fetch("./data/projects.json"),
     ]);
 
     const pageProjectsData = await pageProjectsRes.json();
