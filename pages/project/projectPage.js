@@ -9,11 +9,11 @@ export async function initProjectPage() {
 
         if (!projectId) {
             console.error("No project ID found in URL!");
-            window.location.href = "/all-projects.html";
+            window.location.href = "../../all-projects.html";
             return;
         }
 
-        const response = await fetch("../data/projects.json");
+        const response = await fetch("./data/projects.json");
         const data = await response.json();
         const project = data.project.find(p => p.id === projectId);
 

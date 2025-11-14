@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeader();
 
 
-  loadComponent("footer-container", "../components/footer.html", () => {
+  loadComponent("footer-container", "./components/footer.html", () => {
     console.log("Footer loaded");
     initScrollTop();
   });
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
    else if (path.includes("landing.html")) {
     console.log("Initializing landing page");
     initPageGallery("#gallery");
-    initLandingVideo('#hero', {src: '../assets/landing_02.mp4',
+    initLandingVideo('#hero', {src: './assets/landing_02.mp4',
       playbackRate: 0.5
       
    })

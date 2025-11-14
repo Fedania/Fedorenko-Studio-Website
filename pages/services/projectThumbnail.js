@@ -10,17 +10,17 @@
 export function renderProjectThumbnail(project) {
   const href = project.customUrl 
     ? project.customUrl 
-    : `/project-page.html#${project.id}`;
+    : `./project-page.html#${project.id}`;
 
   return `
     
       <a href="${href}" class="project__card" data-project-id="${project.id}" >
         
           <img 
-            src="../images/${project.id}/${project.id}-01.jpg" 
+            src="../../images/${project.id}/${project.id}-01.jpg" 
             alt="${project.title}" 
             loading="lazy"
-            onerror="this.onerror=null; this.src='../assets/placeholder.jpg'"
+            onerror="this.onerror=null; this.src='./assets/placeholder.jpg'"
           />
           <div class="overlay">
             <h5>${project.title}</h5>

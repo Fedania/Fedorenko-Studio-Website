@@ -2,7 +2,7 @@ export function initLandingVideo(options = {}) {
   const {
     containerSelector = '.hero__container', // where video should live
     selector = '#hero__bg-video',            // video element selector
-    src = '../assets/landing_02.mp4',                               // video source
+    src = './assets/landing_02.mp4',                               // video source
     playbackRate = 0.5,                     // slow motion speed
     overlayText = 'butt'                        // optional overlay text
   } = options;
@@ -27,7 +27,7 @@ export function initLandingVideo(options = {}) {
   video.autoplay = true;
   video.loop = true;
   video.muted = true;
-  video.playbackRate = 0;
+  video.playbackRate = 0.5;
 
   
 
