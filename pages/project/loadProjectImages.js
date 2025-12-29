@@ -11,7 +11,7 @@ export async function loadProjectImages(projectId, project) {
     }
 
     let imgIndex = 1;
-    let imageFolder = `../images/${projectId}/`;
+    let imageFolder = `images/${projectId}/`;
     const captions = project.captions || [];
     const insertions = project.insertions || [];
 
@@ -56,7 +56,7 @@ project.layout.forEach(rowCount => {
 
             img.onerror = () => {
                 img.onerror = null;
-                img.src = "./assets/placeholder.jpg";
+                img.src = "/assets/placeholder.jpg";
             };
 
             imgContainer.appendChild(img);

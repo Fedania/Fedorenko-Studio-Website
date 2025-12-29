@@ -1,0 +1,23 @@
+{
+  "projectID": "12-il-winter",
+  "title": "",
+  "blocks": [
+    {
+      "type": "heading",
+      "value": "Project Overview",
+      "class": "section-title"
+    },
+    {
+      "type": "text",
+      "value": "",
+      "class": "intro-text"
+    },
+    {
+      "type": "img",
+      "value": "01.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    }
+    
+  ]
+}

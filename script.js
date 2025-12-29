@@ -1,7 +1,8 @@
 import { loadComponent } from "./components/loadComponent.js";
 import { initScrollTop } from "./components/scrollTop.js";
 import { initCategories } from "./pages/categories/categories.js"; 
-import { initProjectPage } from './pages/project/projectPage.js';
+// import { initProjectPage } from './pages/project/projectPage.js';
+import { loadProject } from "./pages/project/projectPage.js";
 import { initHeader } from "./components/header.js";
 import { initServices } from "./pages/services/sectionServices.js";
 import { initPageGallery } from "./pages/gallery/initPageGallery.js";
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeader();
 
 
-  loadComponent("footer-container", "./components/footer.html", () => {
+  loadComponent("footer", "../components/footer.html", () => {
     console.log("Footer loaded");
     initScrollTop();
   });
@@ -38,7 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
     initCategories();
   } else if (path.includes("project-page.html")) {
     console.log("Initializing project page");
-    initProjectPage();
+    
+      function getProjectID() {
+        return window.location.hash.replace("#", "").trim();
+      }
+
+      const id = getProjectID();
+      console.log("Project ID:", id);
+      loadProject(id);
   }
    else if (path.includes("landing.html")) {
     console.log("Initializing landing page");

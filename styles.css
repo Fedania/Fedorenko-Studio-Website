@@ -60,6 +60,8 @@
   --color-text: #F8F1E7;
   --color-overlay: rgba(0, 2, 25, 0.3);
   --accent: #e63946;
+  --page-padding: 3rem;
+  --page-max-width: 1200px;
 }
 html,
 body {
@@ -124,7 +126,7 @@ h4 {
 }
 
 h5 {
-    font-size: 1.563rem;
+    font-size: 1rem;
 }
 
 h6 {
@@ -150,7 +152,7 @@ a {
    LAYOUT & PAGE STRUCTURE
    ============================================================================ */
 .page-content {
-    max-width: 1200px;
+    max-width: var(--page-max-width);
     margin: 0 auto;
     padding: 8%;
 }
@@ -179,9 +181,10 @@ a {
     bottom: 1rem;
     left: 1rem;
     right: 1rem;
-    z-index: 5;
+    z-index: 10;
     display: block;
     pointer-events: none;
+
     box-shadow: 0 0 0 100px var(--color-bg);
     border-radius: 40px;
     transition: top 0.4s ease, opacity 0.3s;
@@ -206,7 +209,7 @@ section:not(#header, #footer, #hero) {
     align-content: center;
     justify-content: flex-start;
     width: 100%;
-    max-width: 1000px;
+    max-width: var(--page-max-width);
     margin: 0 auto;
     padding: 2rem;
     box-sizing: border-box;
@@ -241,7 +244,7 @@ header {
     padding-left: 3rem;
     padding-right: 3rem;
     box-sizing: border-box;
-    z-index: 10;
+    z-index: 30;
     transition: transform 0.4s ease, opacity 0.3s;
 }
 
@@ -269,6 +272,7 @@ header.visible {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    z-index: 30;
 }
 
 .header__logo {
@@ -369,7 +373,7 @@ header.visible {
     justify-content: center;
     background: var(--color-bg);
     color: var(--color-text);
-    z-index: 1000;
+    z-index: 20;
     transition: left 0.6s ease;
 }
 
@@ -437,7 +441,7 @@ header.visible {
     background: var(--color-bg);
     opacity: 0;
     visibility: hidden;
-    z-index: 999;
+    z-index: 10;
     transition: opacity 0.3s ease, visibility 0s 0.3s;
 }
 
@@ -467,7 +471,7 @@ header.visible {
     color: var(--color-text);
     cursor: pointer;
     opacity: 0.8;
-    z-index: 1000;
+    z-index: 10;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -530,7 +534,7 @@ header.visible {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1000px;
+    max-width: var(--page-max-width);
     height: 90vh;
     padding: 0 6rem;
     z-index: 2;
@@ -542,7 +546,7 @@ header.visible {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--page-max-width);
     height: 90vh;
     z-index: 2;
 }
@@ -701,29 +705,34 @@ body.category-view .gallery__container-grid {
 }
 
 /* Project cards */
-.project__card {
+.project__card-wrapper {
     position: relative;
     display: block;
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: 1rem;
-    background: var(--color-text);
+
+
     box-shadow: 0 4px 12px var(--color-bg);
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform: translateZ(0);
 }
-
+.project__card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 .project__card:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 16px var(--color-bg);
 }
 
 .project__card img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    display: block;
+  width: 100%;
+  height: 100%;
     object-fit: cover;
     transform-origin: center center;
     will-change: transform;
@@ -743,8 +752,8 @@ body.category-view .gallery__container-grid {
     justify-content: center;
     padding: 1rem;
     text-align: center;
-    color: var(--color-text);
-    background: var(--color-bg);
+
+    background: var(--color-overlay);
     opacity: 0;
     z-index: 2;
     backdrop-filter: blur(5px);
@@ -964,23 +973,25 @@ body.category-view .gallery__container-grid {
    FOOTER
    ============================================================================ */
 footer {
-
+    position: relative;
     width: 100%;
     padding: 5px;
     background-color: var(--color-bg);
     color: var(--color-text);
     font-size: 14px;
-    text-align: center;
+
+    z-index: 20;
 }
 
 .footer__container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    min-width: 95%;
-    max-width: 800px;
+    flex-direction: row;
+    
+    
+
+    max-width: var(--page-max-width);
     margin: 0 auto;
+    
 }
 
 .footer__text {
@@ -989,13 +1000,16 @@ footer {
 }
 
 .footer__buttons {
-    flex-shrink: 0;
-    text-align: right;
+    
 }
 
-footer nav a {
+footer nav  {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    text-align: right;
     margin: 0 10px;
-    font-weight: bold;
+
     color: var(--accent);
     text-decoration: none;
     transition: color 0.3s ease-in-out;

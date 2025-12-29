@@ -1,6 +1,6 @@
 // header.js
-import { loadComponent } from "../components/loadComponent.js";
-import { activateSidebar } from "../components/sidebar.js";
+import { loadComponent } from "./loadComponent.js";
+import { activateSidebar } from "./sidebar.js";
 
 export function initHeader() {
   const headerContainer = document.getElementById("header-container");
@@ -13,7 +13,7 @@ export function initHeader() {
   }
 
   // Load header component dynamically
-  loadComponent("header-container", "./components/header.html", () => {
+  loadComponent("header-container", "/components/header.html", () => {
     console.log("Header loaded");
 
     const header = headerContainer.querySelector("header");

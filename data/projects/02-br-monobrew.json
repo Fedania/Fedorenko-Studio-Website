@@ -1,0 +1,112 @@
+{
+  "projectID": "02-br-monobrew",
+  "title": "Monobrew",
+  "blocks": [
+    {
+      "type": "heading",
+      "value": "Project Overview",
+      "class": "section-title"
+    },
+    {
+      "type": "text",
+      "value": "This project presents the branding visuals and animated elements designed for the campaign.",
+      "class": "intro-text"
+    },
+    {
+      "type": "img",
+      "value": "01.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "imgRow",
+      "value": ["02.jpg", "03.jpg"],
+      "alt": ["Tablet close-up", "Packaging"],
+      "class": "two-columns"
+    },
+    {
+      "type": "img",
+      "value": "02.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "03.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "04.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "05.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "06.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "07.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "08.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "09.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "10.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "11.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "12.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "13.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "14.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "15.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    }
+  ]
+}

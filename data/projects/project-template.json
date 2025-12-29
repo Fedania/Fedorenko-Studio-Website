@@ -1,0 +1,71 @@
+{
+  "projectID": "project-template",
+  "title": "",
+  "blocks": [
+    {
+      "type": "heading",
+      "value": "Project Overview",
+      "class": "section-title"
+    },
+    {
+      "type": "text",
+      "value": "",
+      "class": "intro-text"
+    },
+    {
+      "type": "img",
+      "value": "01.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "imgRow",
+      "value": ["02.jpg", "03.jpg"],
+      "alt": ["Tablet close-up", "Packaging"],
+      "class": "two-columns"
+    },
+    {
+      "type": "gif",
+      "value": "04.gif",
+      "alt": "Animated dosage icon",
+      "class": "centered"
+    },
+    {
+      "type": "video",
+      "value": "demo.mp4",
+      "poster": "video-poster.jpg",
+      "autoplay": false,
+      "loop": true,
+      "muted": true,
+      "controls": true,
+      "class": "full-video"
+    },
+    {
+      "type": "imgRow",
+      "value": ["05.jpg", "06.jpg", "07.jpg"],
+      "class": "three-columns",
+      "caption": "Color variations of the brand packaging"
+    },
+    {
+      "type": "spacer",
+      "size": "large"
+    },
+    {
+      "type": "heading",
+      "value": "Process",
+      "class": "section-title"
+    },
+    {
+      "type": "text",
+      "value": "Below are some behind-the-scenes visuals including raw renders and sketches.",
+      "class": ""
+    },
+    {
+      "type": "img",
+      "value": "08.jpg",
+      "alt": "Sketches",
+      "class": ""
+    }
+    
+  ]
+}

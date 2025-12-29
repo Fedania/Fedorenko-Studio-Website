@@ -1,0 +1,53 @@
+{
+  "projectID": "14-po-social",
+  "title": "",
+  "blocks": [
+    {
+      "type": "heading",
+      "value": "Project Overview",
+      "class": "section-title"
+    },
+    {
+      "type": "text",
+      "value": "",
+      "class": "intro-text"
+    },
+    {
+      "type": "img",
+      "value": "01.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "02.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "03.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "04.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "05.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    },
+    {
+      "type": "img",
+      "value": "06.jpg",
+      "alt": "",
+      "class": "gallery__image"
+    }
+    
+  ]
+}
