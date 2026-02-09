@@ -1,0 +1,265 @@
+/* ============================================================================
+   FONTS & IMPORTS
+   ============================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+@font-face {
+    font-family: ChesnaGrotesk;
+    src: url('/fonts/ChesnaGrotesk-medium-webfont.woff2') format('woff2'),
+         url('/fonts/ChesnaGrotesk-medium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: ChesnaGrotesk;
+    src: url('/fonts/ChesnaGrotesk-mediumitalic-webfont.woff2') format('woff2'),
+         url('/fonts/ChesnaGrotesk-mediumitalic-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Charmanserif;
+    src: url('/fonts/charmanserif-thin-webfont.woff2') format('woff2'),
+         url('/fonts/charmanserif-thin-webfont.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Charmanserif;
+    src: url('/fonts/charmanserif-thinitalic-webfont.woff2') format('woff2'),
+         url('/fonts/charmanserif-thinitalic-webfont.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: PestoMafio;
+    src: url('/fonts/PestoMafio-Regular.woff2') format('woff2'),
+         url('/fonts/PestoMafio-Regular.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+/* ============================================================================
+   RESET & BASE STYLES
+   ============================================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    
+    --black: #000219;
+    --color-text: #fffce4;
+    --white: #fffce4;
+    --color-accent: #fffce4;
+
+    --font-main: Manrope, sans-serif;
+    --font-headings: Pestomafio, Arial, sans-serif;
+    --font-accent: Charmanserif, Georgia, sans-serif;
+    --heading-h1: clamp(2.4rem, 2rem + 8vw, 10rem);
+    --heading-h2: calc(var(--heading-h1) / var(--1gr));
+    --heading-h3: calc(var(--heading-h2) / var(--1gr));
+    --heading-h4: calc(var(--heading-h3) / var(--2gr));
+    --heading-h5: calc(var(--heading-h4) / var(--2gr));
+
+    --p-text-big: calc(var(--heading-h5) / var(--2gr));
+    --p-text-medium: calc(var(--p-text-big) / var(--2gr));
+    --p-text-small: calc(var(--p-text-medium) / var(--2gr));    
+    
+    
+    
+    --border-radius-large: var(--large);
+    --xxxlarge: calc(var(--xxlarge) * var(--1gr));
+    --xxlarge: calc(var(--xlarge) * var(--1gr));
+    --xlarge: calc(var(--large) * var(--1gr));
+    --large: calc(var(--medium) * var(--1gr));
+    --medium: 2rem;
+    --small: calc(var(--medium) / var(--1gr));
+    --xsmall: calc(var(--small) / var(--1gr));    
+    --xxsmall: calc(var(--xsmall) / var(--1gr));
+    --xxxsmall: calc(var(--xxsmall) / var(--1gr));
+    --1gr: 1.25;
+    --2gr: 1.5625; 
+    
+    --border-radius-medium: var(--medium);
+    --border-radius-small: var(--small);
+    --page-max-width: 1200px;
+    --frame-thk: var(--small);
+    --page-padding: 3rem;
+
+
+    --font-display: Charmanserif, sans-serif;
+    --font-ui: PestoMafio, sans-serif;
+    --font-body: Manrope, sans-serif;
+  
+}
+body {
+    background-color: var(--black);
+    color: var(--color-text);
+    font-family: Manrope, sans-serif;
+    font-size: var(--p-text-medium);
+    letter-spacing: .02em;
+    
+
+}
+
+h1 {
+  font-family: var(--font-headings);
+  font-size: var(--heading-h1);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1em;
+}
+
+h2 {
+  font-family: var(--font-headings);
+  font-size: var(--heading-h2);
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  line-height: 1em;
+}
+
+h3 {
+  font-family: var(--font-headings);
+  font-size: var(--heading-h3);
+  text-align: center;
+  letter-spacing: .02em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  line-height: 1.2em;
+}
+
+h4 {
+  margin-top: var(--xxxsmall);
+  margin-bottom: var(--xxxsmall);
+  font-family: var(--font-accent);
+  font-size: var(--heading-h4);
+  text-align: center;
+  font-weight: 400;
+  line-height: 1em;
+}
+
+h5 {
+  font-size: var(--heading-h5);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: 1.2em;
+}
+
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: var(--p-text-big);
+  font-weight: 500;
+  line-height: 28px;
+}
+
+p {
+  font-size: var(--p-text-medium);
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: opacity .2s;
+  display: block;
+}
+
+ul {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 40px;
+  list-style-type: disc;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+img {
+  display: block;
+}
+
+label {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+blockquote {
+  border-left: 5px solid #e2e2e2;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 15px 30px;
+  font-size: 20px;
+  line-height: 34px;
+}
+
+figure {
+  margin-top: 25px;
+  padding-bottom: 20px;
+}
+
+figcaption {
+  opacity: .6;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 26px;
+}
+.paragraph-big {
+  font-size: var(--p-text-big);
+  line-height: 34px;
+}
+.paragraph-medium {
+  font-size: var(--p-text-medium);
+  line-height: 30px;
+}
+.paragraph-small {
+  font-size: var(--p-text-small);
+  line-height: 26px;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+@media (max-width: 1280px) {
+  html {
+      font-size: clamp(12px, 1vw + 10px, 24px);
+  }
+  body {
+        --page-padding: 2.4rem;
+        --medium: 1.6rem; 
+    }
+    
+}
+
+@media (max-width: 768px) {
+    /* Gallery */
+    body.main-view .gallery__container-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+    body {
+        --page-padding: 2rem;
+        --medium: 1.2rem; 
+    }
+    
+}
+
+

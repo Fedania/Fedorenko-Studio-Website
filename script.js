@@ -1,20 +1,34 @@
-import { loadComponent } from "./components/loadComponent.js";
+import { loadComponent } from "./utilities/loadComponent.js";
+
 import { initScrollTop } from "./components/scrollTop.js";
 import { initCategories } from "./pages/categories/categories.js"; 
 // import { initProjectPage } from './pages/project/projectPage.js';
 import { loadProject } from "./pages/project/projectPage.js";
 import { initHeader } from "./components/header.js";
+import {initSidebar} from "./components/sidebar.js";  
 import { initServices } from "./pages/services/sectionServices.js";
 import { initPageGallery } from "./pages/gallery/initPageGallery.js";
-import { initLandingVideo } from "./pages/services/landingVideo.js";
+import { initLandingPage } from "./pages/landing/landingPage.js";
+import { initLandingVideo } from "./pages/landing/landingVideo.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Initial scrollY:", window.scrollY); 
 
-  initHeader();
+const mobileMQ = window.matchMedia("(max-width: 768px)");
+  function renderNav() {
+    if (mobileMQ.matches) {
+      initSidebar();
+      
+    } else {
+      initHeader();
+    }
+  
+  }
+  renderNav(); // initial render
+  mobileMQ.addEventListener("change", renderNav); // re-render on resize
 
-
-  loadComponent("footer", "../components/footer.html", () => {
+  loadComponent("#footer", "/components/footer.html", () => {
     console.log("Footer loaded");
     initScrollTop();
   });
@@ -50,21 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
    else if (path.includes("landing.html")) {
     console.log("Initializing landing page");
-    initPageGallery("#gallery");
+    initLandingPage();
+    initServices();
+
     initLandingVideo('#hero', {src: './assets/landing_02.mp4',
       playbackRate: 0.5
       
    })
-    initServices("#services", 'landing');
+
    
   }
-  if (path.includes("think-big.html")) {
-    initServices("#services", 'think-big');
-  } else if (path.includes("start-small.html")) {
-    initServices("#services", 'start-small');
-  } else if (path.includes("services.html")) {
-    initServices("#services", 'all-services');
+  if (path.includes("services.html")) {
+    initServices();
   }
-    
+  
 
 });

@@ -1,35 +1,37 @@
 // header.js
-import { loadComponent } from "./loadComponent.js";
-import { activateSidebar } from "./sidebar.js";
+import { loadComponent } from "/utilities/loadComponent.js";
+
 
 export function initHeader() {
-  const headerContainer = document.getElementById("header-container");
+  const headerContainer = document.getElementById("header");
   const overlay = document.getElementById("page-overlay");
- 
 
-  if (!headerContainer || !overlay ) {
-    console.error("Header, overlay, or top trigger not found");
+  if (!headerContainer || !overlay) {
+    console.error("Header container or overlay not found");
     return;
   }
 
-  // Load header component dynamically
-  loadComponent("header-container", "/components/header.html", () => {
+  loadComponent("#header", "/components/header.html", () => {
     console.log("Header loaded");
 
-    const header = headerContainer.querySelector("header");
-    const headerNav = header?.querySelector(".header__nav");
-    if (!header) {
-      console.error("Header element not found after loading!");
+    // The header IS the container
+    const headerNav = headerContainer.querySelector(".header__nav");
+
+    if (!headerNav) {
+      console.error("Header nav not found after loading!");
       return;
     }
-    // Create the trigger dynamically
-    const trigger = document.createElement("div");
-    trigger.id = "header__trigger";
-    trigger.classList.add("header__trigger");
 
-    // Insert it at the top of the nav
-    headerNav.insertBefore(trigger, headerNav.firstChild);
-    activateSidebar();
+    // Avoid duplicate trigger if init runs twice
+    if (!headerNav.querySelector(".header__trigger")) {
+      const trigger = document.createElement("div");
+      trigger.id = "header__trigger";
+      trigger.className = "header__trigger";
+
+      headerNav.insertBefore(trigger, headerNav.firstChild);
+    }
+    
+
 
     // === SCROLL BEHAVIOR ===
     let lastScrollY = window.scrollY;

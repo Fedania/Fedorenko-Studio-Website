@@ -1,55 +1,81 @@
 // sidebar.js
-export function activateSidebar() {
-  const headerNav = document.querySelector(".header__nav");
-  
- // --- Create sidebar elements dynamically ---
-  const sidebar = document.createElement("aside");
-  sidebar.id = "sidebar";
+import { loadComponent } from "/utilities/loadComponent.js";
 
-   const menuToggle = document.createElement("button");
-  menuToggle.className = "menu-toggle";
-  menuToggle.setAttribute("aria-label", "Menu");
-  menuToggle.textContent = "☰";
-  document.body.appendChild(menuToggle);
+export function initSidebar() {
+  const headerContainer = document.getElementById("header");
+  const overlay = document.getElementById("page-overlay");
+  overlay.classList.add("overlay--shrunk");
+  if (!headerContainer) {
+    console.error("initSidebar: headerContainer missing");
+    return;
+  }
 
-  const closeBtn = document.createElement("button");
-  closeBtn.id = "close-sidebar";
-  closeBtn.className = "close-sidebar";
-  closeBtn.setAttribute("aria-label", "Close menu");
-  closeBtn.textContent = "×";
+  // Prevent duplicate sidebar
+  if (headerContainer.querySelector("sidebar")) return;
 
-  const sidebarNav = document.createElement("nav");
-  sidebarNav.className = "sidebar__nav";
+  // --- Load sidebar HTML dynamically ---
+  // You can create a separate sidebar.html if you want full separation
+  loadComponent("#header", "/components/header.html", () => {
+      console.log("Sidebar loaded");
+    // After loading HTML, create sidebar elements
+    const sidebar = document.createElement("aside");
+    sidebar.id = "sidebar";
+    sidebar.setAttribute("aria-hidden", "true");
 
-  // Copy header nav contents dynamically
-  sidebarNav.innerHTML = headerNav.innerHTML;
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "close-sidebar";
+    closeBtn.setAttribute("aria-label", "Close menu");
+    closeBtn.textContent = "×";
 
-  sidebar.appendChild(closeBtn);
-  sidebar.appendChild(sidebarNav);
-  document.body.appendChild(sidebar);
+    const headerNav = headerContainer.querySelector(".header__nav");
+  if (!headerNav) {
+    console.error("initSidebar: .header__nav not found");
+    return;
+  }
+  sidebar.appendChild(headerNav);
+    // Insert the sidebar into the header container
+    sidebar.append(closeBtn, headerNav);
+    headerContainer.appendChild(sidebar);
 
-  // --- Create overlay dynamically ---
-  const overlay = document.createElement("div");
-  overlay.id = "overlay";
-  document.body.appendChild(overlay);
+    // Optional: overlay inside sidebar for clicking outside
+    const overlay = document.createElement("div");
+    overlay.id = "sidebar-overlay";
+    sidebar.appendChild(overlay);
+    
 
-  // --- Toggle functions ---
-  const openSidebar = () => {
-    sidebar.classList.add("active");
-    overlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-  };
+    
 
-  const closeSidebar = () => {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-    document.body.style.overflow = "";
-  };
+    // --- Menu toggle button ---
+    if (!headerContainer.querySelector(".menu-toggle")) {
+      const menuToggle = document.createElement("button");
+      menuToggle.className = "menu-toggle";
+      menuToggle.setAttribute("aria-label", "Open menu");
+      menuToggle.textContent = "☰";
 
-  // --- Event listeners ---
-  menuToggle.addEventListener("click", openSidebar);
-  closeBtn.addEventListener("click", closeSidebar);
-  overlay.addEventListener("click", closeSidebar);
+      headerContainer.prepend(menuToggle);
 
-  console.log("Sidebar initialized");
+      menuToggle.addEventListener("click", openSidebar);
+    }
+
+    // Close behavior
+    closeBtn.addEventListener("click", closeSidebar);
+    sidebar.addEventListener("click", (e) => {
+      if (e.target === sidebar) closeSidebar();
+    });
+
+    function openSidebar() {
+      sidebar.classList.add("is-open");
+      sidebar.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeSidebar() {
+  // move focus first
+    document.querySelector(".menu-toggle")?.focus();
+
+    sidebar.classList.remove("is-open");
+    sidebar.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+}
+  });
 }

@@ -1,7 +1,7 @@
 // pages/categories/categories.js
-import { fetchProjects } from "../services/fetchProjects.js";
-import { filterCategory } from "./filterCategory.js";
-import { renderProjects } from "./renderProjects.js";
+import { fetchProjects } from "/pages/services/fetchProjects.js";
+import { filterCategory } from "/pages/categories/filterCategory.js";
+import { renderProjects } from "/pages/categories/renderProjects.js";
 
 export async function initCategories() {
   const projects = await fetchProjects();

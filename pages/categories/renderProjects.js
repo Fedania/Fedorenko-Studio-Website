@@ -1,5 +1,5 @@
 // pages/categories/renderProjects.js
-import { renderProjectThumbnail } from "../services/projectThumbnail.js";
+import { renderProjectThumbnail } from "/pages/services/projectThumbnail.js";
 
 /**
  * Renders all project categories or a single category view.
@@ -46,7 +46,7 @@ function renderCategory(category, projects, container, showMore = false) {
   const thumbnailsHTML = projects.map(renderProjectThumbnail).join("");
 
   section.innerHTML = `
-    <h2 class="category__title">${category}</h2>
+    <h4 class="category__title">${category}</h4>
     <div class="gallery__container-grid">
       ${thumbnailsHTML}
     </div>

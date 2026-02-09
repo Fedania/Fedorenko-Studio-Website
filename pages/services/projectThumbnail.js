@@ -10,7 +10,7 @@
 export function renderProjectThumbnail(project) {
   const href = project.customUrl 
     ? project.customUrl 
-    : `/project-page.html#${project.id}`;
+    : `/pages/project-page.html#${project.id}`;
 
   return `
     <div class="project__card-wrapper">

@@ -16,7 +16,7 @@
       "type": "img",
       "value": "01.jpg",
       "alt": "",
-      "class": "gallery__image"
+      "class": "gallery__image" 
     },
     {
       "type": "imgRow",

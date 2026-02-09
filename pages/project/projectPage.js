@@ -56,9 +56,9 @@ import {
 } from './renderElement.js';
 
 export async function loadProject(projectID) {
-  const container = document.getElementById("project-content");
+  const container = document.getElementById("project-page__content");
   if (!container) {
-    console.error('No #project-content element found in DOM.');
+    console.error('No #project-page__content element found in DOM.');
     return;
   }
 

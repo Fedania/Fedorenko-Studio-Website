@@ -1,6 +1,6 @@
 // pages/categories/templates.js
 export function projectTemplate(project) {
-  const href = project.customUrl ? project.customUrl : `/project-page.html#${project.id}`;
+  const href = project.customUrl ? project.customUrl : `/pages/project-page.html#${project.id}`;
   return `
     <a href="${href}" class="project-card">
       <img class="project__card" src="${project.thumbnail}" alt="${project.title}">

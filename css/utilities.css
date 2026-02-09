@@ -1,0 +1,131 @@
+/* ============================================================================
+UTILITIES
+============================================================================ */
+.spacer-medium {
+  height: var(--medium);
+  width: 100%;
+}
+
+.spacer-small {
+  height: var(--xsmall);
+  width: 100%;
+}
+
+.spacer--large {
+  height: var(--large);
+  width: 100%;
+}
+.content-frame {
+  left: var(--frame-thk);
+  top: var(--frame-thk);
+  right: var(--frame-thk);
+  bottom: var(--frame-thk);
+  border-radius: var(--border-radius-large);
+  box-shadow: 0 0 5px var(--xxxlarge) var(--black);
+  pointer-events: none;
+  position: absolute;
+}
+.grid--two-column {
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+    .text-align--left {
+    text-align: left;
+    }
+
+/* ============================================================================
+   SCROLL-TO-TOP BUTTON
+   ============================================================================ */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--black);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    cursor: pointer;
+    opacity: 0.8;
+    z-index: 10;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.scroll-top-btn.hidden {
+    display: none;
+}
+
+/* ============================================================================
+   GALLERY INSERTIONS
+   ============================================================================ */
+.gallery__inserted {
+    width: 100%;
+    height: auto;
+}
+
+.gallery__inserted.gif img {
+    width: 100%;
+    height: auto;
+}
+
+.gallery__inserted.mp4 video {
+    width: 100%;
+}
+
+.gallery__inserted.rive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.rive-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    position: relative;
+    background-color: var(--black);
+}
+
+.rive-wrapper canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.image-container.image img {
+    width: 100%;
+    height: auto;
+}
+
+.image-container.vimeo iframe {
+    width: 100%;
+    height: 360px;
+    border-radius: 10px;
+}
+
+.image-container.gif img {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    margin-bottom: 2vw;
+}
+
+.image-container.rive canvas {
+    width: 100%;
+    background-color: transparent;
+}
+
