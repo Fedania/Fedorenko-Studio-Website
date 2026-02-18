@@ -1,16 +1,7 @@
 dist/
 test.html
 branding.html
-# Ignore all images
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.svg
-*.bmp
-*.tiff
-*.ico
-*.mp4
+
 node_modules/
 !assets/landing_02.mp4
 !assets/placeholder.jpg

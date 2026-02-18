@@ -484,7 +484,7 @@ body.category-view .gallery__container-grid {
 }
 
 .category__title {
-    margin: 20px 0;
+    text-align: start;
     
 }
 
@@ -563,7 +563,7 @@ body.category-view .gallery__container-grid {
 }
 
 .see-more:hover {
-    background: var(--color-bg);
+    background: var(--color-ui-bg);
 }
 
 /* ============================================================================
