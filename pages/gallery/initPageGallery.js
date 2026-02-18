@@ -1,5 +1,5 @@
 // components/initPageGallery.js
-import { renderProjectThumbnail } from "/pages/services/projectThumbnail.js";
+import { renderProjectThumbnail } from "/utilities/projectThumbnail.js";
 export async function initPageGallery() {
   const section = document.getElementById("gallery");
   if (!section) return console.warn("No #gallery section found.");

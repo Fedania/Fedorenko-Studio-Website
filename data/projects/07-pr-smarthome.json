@@ -4,13 +4,13 @@
   "blocks": [
     {
       "type": "heading",
-      "value": "Project Overview",
+      "value": "\"smart home\"",
       "class": "section-title"
     },
     {
       "type": "text",
       "value": "",
-      "class": "intro-text"
+      "class": "subheading"
     },
     {
       "type": "img",

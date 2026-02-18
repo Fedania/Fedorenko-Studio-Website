@@ -1,28 +1,31 @@
 // services.js
 import { initAccordion } from './accordion.js';
 
-export async function initServices(
-  jsonPath = '/data/services.json'
-) {
-  try {
-    const response = await fetch(jsonPath);
-    const data = await response.json();
+export async function initServices  
+(jsonPath = '/data/services.json'  ) {
+    try {
+      const response = await fetch(jsonPath);
+      const data = await response.json();
 
-    Object.entries(data).forEach(([pageKey, services]) => {
-      const containerId = `${pageKey}__container`;
-      const container = document.getElementById(containerId);
+      Object.entries(data).forEach(([pageKey, services]) => {
+        const containerId = `${pageKey}__container`;
+        const container = document.getElementById(containerId);
 
-      if (!container) return;
+        if (!container) return;
 
-      container.innerHTML = renderServices(services);
+        container.innerHTML = renderServices(services);
 
-      // 👇 plug-in behavior
-      initAccordion(container);
-    });
-
-  } catch (err) {
-    console.error('Error loading services:', err);
-  }
+        // 👇 plug-in behavior
+        initAccordion(container);
+        if (container.dataset.initialized) return;
+    container.dataset.initialized = "true";
+      });
+      
+    } 
+    catch (err) {
+      console.error('Error loading services:', err);
+    }
+    
 }
 function renderServices(services) {
   return `

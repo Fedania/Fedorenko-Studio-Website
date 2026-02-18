@@ -1,16 +1,17 @@
 {
     "project": [
-    {
-        "id": "01-br-downtown",
-        "title": "Downtown",
-        "categories": ["Branding"],
-        "thumbnail": "images/01-br-downtown/01-br-downtown-01.jpg"
-    },
+    
     {
         "id": "02-br-monobrew",
         "title": "Monobrew",
         "categories": ["Branding"],
         "thumbnail": "images/02-br-monobrew/02-br-monobrew-01.jpg"
+    },
+    {
+        "id": "01-br-downtown",
+        "title": "Downtown",
+        "categories": ["Branding"],
+        "thumbnail": "images/01-br-downtown/01-br-downtown-01.jpg"
     },
     {
         "id": "03-br-necu",

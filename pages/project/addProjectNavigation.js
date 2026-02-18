@@ -1,46 +1,67 @@
-// addProjectNavigation.js
-console.log("addProjectNavigation.js loaded");
+import { createIcon } from "/utilities/createIcon.js";
 export function addProjectNavigation(projects) {
-  // Function code here
 
+  // Safety guard
+  if (!Array.isArray(projects) || projects.length === 0) {
+    console.error("addProjectNavigation: invalid projects array", projects);
+    return;
+  }
 
-// 🔹 NEW: Function to add navigation buttons
-function addProjectNavigation(projects) {
-    const projectId = window.location.hash.substring(1);
-    const projectNumber = parseInt(projectId.split('-')[0], 10); // Extract number (e.g., "01" → 1)
+  const projectId = window.location.hash.substring(1);
+  if (!projectId) return;
 
-    if (isNaN(projectNumber)) return; // Exit if no valid number
+  // Find current project index in the master list
+  const currentIndex = projects.findIndex(p => p.id === projectId);
 
-    // Find previous and next projects based on numbers
-    const prevProject = projects.find(p => parseInt(p.id.split('-')[0], 10) === projectNumber - 1);
-    const nextProject = projects.find(p => parseInt(p.id.split('-')[0], 10) === projectNumber + 1);
+  if (currentIndex === -1) {
+    console.error("Project not found in list:", projectId);
+    return;
+  }
 
-    // Create navigation container
-    const navContainer = document.createElement("div");
-    navContainer.classList.add("project-navigation");
+  const prevProject = projects[currentIndex - 1] || null;
+  const nextProject = projects[currentIndex + 1] || null;
 
-    // Create "Previous Project" button if applicable
-    const prevButton = document.createElement("a");
-    prevButton.href = prevProject ? `/project-page.html#${prevProject.id}` : "#";
-    prevButton.classList.add("nav-button", "prev");
-    prevButton.setAttribute("aria-label", "Previous Project");
-    if (!prevProject) prevButton.classList.add("disabled");
-    navContainer.appendChild(prevButton);
+  // Create navigation container
+  const navContainer = document.createElement("div");
+  navContainer.classList.add("project-navigation");
 
-    // Create "Next Project" button if applicable
-    const nextButton = document.createElement("a");
-    nextButton.href = nextProject ? `/project-page.html#${nextProject.id}` : "#";
-    nextButton.classList.add("nav-button", "next");
-    nextButton.setAttribute("aria-label", "Next Project");
-    if (!nextProject) nextButton.classList.add("disabled");
-    navContainer.appendChild(nextButton);
+  // Previous button
+  const prevButton = document.createElement("a");
+  prevButton.classList.add("nav-button", "prev");
+  prevButton.setAttribute("aria-label", "Previous Project");
+  prevButton.appendChild(createIcon("arrow-left"));
 
-    // 🔹 Insert buttons into the "nav-buttons" section
-    const navButtonsSection = document.getElementById("nav-buttons"); // Select the section by ID
-    if (navButtonsSection) {
-        navButtonsSection.appendChild(navContainer); // Append the navigation container into the section
-    } else {
-        console.error("Nav buttons section not found!");
-    }
-}
+  if (prevProject) {
+    prevButton.href = `/pages/project-page.html#${prevProject.id}`;
+  } else {
+    prevButton.href = "#";
+    prevButton.classList.add("disabled");
+  }
+
+  navContainer.appendChild(prevButton);
+
+  // Next button
+  const nextButton = document.createElement("a");
+  nextButton.classList.add("nav-button", "next");
+  nextButton.setAttribute("aria-label", "Next Project");
+  nextButton.appendChild(createIcon("arrow-right"));
+
+  if (nextProject) {
+    nextButton.href = `/pages/project-page.html#${nextProject.id}`;
+  } else {
+    nextButton.href = "#";
+    nextButton.classList.add("disabled");
+  }
+
+  navContainer.appendChild(nextButton);
+
+  // Insert into DOM
+  const navButtonsSection = document.getElementById("nav-buttons");
+
+  if (navButtonsSection) {
+    navButtonsSection.innerHTML = ""; // prevent duplicates
+    navButtonsSection.appendChild(navContainer);
+  } else {
+    console.error("Nav buttons section not found!");
+  }
 }

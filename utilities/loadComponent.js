@@ -19,9 +19,11 @@ export async function loadComponent(target, file, callback) {
 
     container.innerHTML = await response.text();
     callback?.();
+    return container;
   } catch (error) {
     console.error(`Error loading ${file}:`, error);
   }
+  
 }
 
 

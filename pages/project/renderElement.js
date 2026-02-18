@@ -14,7 +14,7 @@ function createBlockWrapper(type, block) {
 
 export function renderHeading(block, container) {
   const { outer, wrapper } = createBlockWrapper("text", block);
-  const el = document.createElement("h2");
+  const el = document.createElement("h5");
   el.textContent = block.value;
   wrapper.appendChild(el);
   container.appendChild(outer);
@@ -22,8 +22,12 @@ export function renderHeading(block, container) {
 
 export function renderText(block, container) {
   const { outer, wrapper } = createBlockWrapper("text", block);
-  const el = document.createElement("p");
-  el.textContent = block.value;
+
+  const el = document.createElement("div"); 
+  // use div instead of p because markdown may contain multiple elements
+
+  el.innerHTML = marked.parse(block.value);
+
   wrapper.appendChild(el);
   container.appendChild(outer);
 }
@@ -85,4 +89,20 @@ export function renderSpacer(block, container) {
   const el = document.createElement("div");
   el.className = `spacer ${block.size || "medium"}`;
   container.appendChild(el);
+}
+
+export async function renderHTML(block, container, projectID) {
+  const { outer, wrapper } = createBlockWrapper("html", block);
+
+  const response = await fetch(`/images/${projectID}/${block.value}`);
+  const html = await response.text();
+
+  const host = document.createElement("div");
+  host.className = "html-insert";
+  if (block.class) host.classList.add(block.class);
+
+  host.innerHTML = html;
+
+  wrapper.appendChild(host);
+  container.appendChild(outer);
 }

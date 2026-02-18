@@ -3,8 +3,8 @@ export function projectTemplate(project) {
   const href = project.customUrl ? project.customUrl : `/pages/project-page.html#${project.id}`;
   return `
     <a href="${href}" class="project-card">
-      <img class="project__card" src="${project.thumbnail}" alt="${project.title}">
-      <div class="project__card overlay">${project.title}</div>
+      <img class="project-card" src="${project.thumbnail}" alt="${project.title}">
+      <div class="project-card overlay">${project.title}</div>
     </a>
   `;
 }

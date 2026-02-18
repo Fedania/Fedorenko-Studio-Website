@@ -10,7 +10,7 @@
     {
       "type": "text",
       "value": "",
-      "class": "intro-text"
+      "class": "subheading"
     },
     {
       "type": "img",
@@ -41,7 +41,16 @@
       "type": "img",
       "value": "06.jpg",
       "alt": ""
+    },
+    {
+      "type": "video",
+      "value": "07.mp4",
+      "poster": "01.jpg",
+      "autoplay": true,
+      "loop": true,
+      "muted": true,
+      "controls": false,
+      "class": "small"
     }
-    
   ]
 }

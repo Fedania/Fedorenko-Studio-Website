@@ -4,13 +4,13 @@
   "blocks": [
     {
       "type": "heading",
-      "value": "Project Overview",
+      "value": "anniversary invitation card",
       "class": "section-title"
     },
     {
       "type": "text",
       "value": "",
-      "class": "intro-text"
+      "class": "subheading"
     },
     {
       "type": "img",
@@ -38,18 +38,15 @@
       "alt": ""
     },
     {
-      "type": "img",
-      "value": "06.jpg",
-      "alt": ""
+      "type": "imgRow",
+      "value": ["06.jpg", "07.jpg"],
+      "alt": [""],
+      "class": "two-columns"
     },
     {
-      "type": "img",
-      "value": "07.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "08.jpg",
+      "type": "gif",
+      "value": "08.gif",
+      "class": "small",
       "alt": ""
     }
     

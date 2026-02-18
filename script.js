@@ -4,79 +4,94 @@ import { initScrollTop } from "./components/scrollTop.js";
 import { initCategories } from "./pages/categories/categories.js"; 
 // import { initProjectPage } from './pages/project/projectPage.js';
 import { loadProject } from "./pages/project/projectPage.js";
-import { initHeader } from "./components/header.js";
-import {initSidebar} from "./components/sidebar.js";  
+// import { initHeader } from "./components/header.js";
+// import {initSidebar} from "./components/sidebar.js";  
 import { initServices } from "./pages/services/sectionServices.js";
-import { initPageGallery } from "./pages/gallery/initPageGallery.js";
 import { initLandingPage } from "./pages/landing/landingPage.js";
 import { initLandingVideo } from "./pages/landing/landingVideo.js";
 
+import { initHeaderBase } from "/components/headerBase.js";
+import { initLayoutController } from "/utilities/layoutController.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Initial scrollY:", window.scrollY); 
 
-const mobileMQ = window.matchMedia("(max-width: 768px)");
-  function renderNav() {
-    if (mobileMQ.matches) {
-      initSidebar();
-      
+document.addEventListener("DOMContentLoaded", async () => {
+  console.log("Initial scrollY:", window.scrollY);
+
+  let pageReadyCallbacks = [];
+  let pageIsReady = false;
+
+  function afterPageReady(fn) {
+    if (pageIsReady) {
+      fn();
     } else {
-      initHeader();
+      pageReadyCallbacks.push(fn);
     }
-  
   }
-  renderNav(); // initial render
-  mobileMQ.addEventListener("change", renderNav); // re-render on resize
 
-  loadComponent("#footer", "/components/footer.html", () => {
-    console.log("Footer loaded");
-    initScrollTop();
-  });
+  // =========================
+  // LOAD SHARED LAYOUT
+  // =========================
 
-  // Project click → navigate to page
-  document.body.addEventListener("click", (event) => {
-    const projectImg = event.target.closest(".project");
-    if (projectImg) {
-      const url = projectImg.getAttribute("data-url");
-      if (url) window.location.href = url;
-    }
-  });
+  const headerContext = await initHeaderBase();
+console.log("Header context:", headerContext);
+  if (headerContext) {
+    initLayoutController(headerContext);
+    console.log("Header loaded");
+  }
 
+  await loadComponent("#footer", "/components/footer.html");
+  initScrollTop();
 
+  // Page is now fully assembled
+  pageIsReady = true;
+  pageReadyCallbacks.forEach(fn => fn());
+  pageReadyCallbacks = [];
 
+  // =========================
+  // PAGE-SPECIFIC LOGIC
+  // =========================
 
-
-  //  Conditional page logic
   const path = window.location.pathname;
-  if (path.includes("all-projects.html")) {
-    console.log("Initializing categories page");
-    initCategories();
-  } else if (path.includes("project-page.html")) {
-    console.log("Initializing project page");
-    
-      function getProjectID() {
-        return window.location.hash.replace("#", "").trim();
-      }
 
-      const id = getProjectID();
-      console.log("Project ID:", id);
+  afterPageReady(() => {
+    if (path.includes("all-projects.html")) {
+      console.log("Initializing categories page");
+      initCategories();
+    }
+
+    if (path.includes("project-page.html")) {
+      console.log("Initializing project page");
+
+      const id = window.location.hash.replace("#", "").trim();
       loadProject(id);
-  }
-   else if (path.includes("landing.html")) {
-    console.log("Initializing landing page");
-    initLandingPage();
-    initServices();
+    }
+  });
 
-    initLandingVideo('#hero', {src: './assets/landing_02.mp4',
-      playbackRate: 0.5
-      
-   })
+  afterPageReady(async () => {
+    if (path.includes("landing.html")) {
+      console.log("Initializing landing page");
 
-   
-  }
-  if (path.includes("services.html")) {
-    initServices();
-  }
-  
+      await initLandingPage();
+      await initServices();
 
+      initLandingVideo("#hero", {
+        src: "/assets/landing_02.mp4",
+        playbackRate: 0.5
+      });
+    }
+
+    if (path.includes("services.html")) {
+      await initServices();
+    }
+  });
+
+  // =========================
+  // HASH NAVIGATION
+  // =========================
+
+  window.addEventListener("hashchange", () => {
+    const projectId = window.location.hash.substring(1);
+    loadProject(projectId);
+  });
 });
+

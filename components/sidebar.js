@@ -3,7 +3,7 @@ import { loadComponent } from "/utilities/loadComponent.js";
 
 export function initSidebar() {
   const headerContainer = document.getElementById("header");
-  const overlay = document.getElementById("page-overlay");
+  const overlay = document.getElementById("page__overlay");
   overlay.classList.add("overlay--shrunk");
   if (!headerContainer) {
     console.error("initSidebar: headerContainer missing");
@@ -15,7 +15,7 @@ export function initSidebar() {
 
   // --- Load sidebar HTML dynamically ---
   // You can create a separate sidebar.html if you want full separation
-  loadComponent("#header", "/components/header.html", () => {
+  return loadComponent("#header", "/components/header.html", () => {
       console.log("Sidebar loaded");
     // After loading HTML, create sidebar elements
     const sidebar = document.createElement("aside");
@@ -27,9 +27,9 @@ export function initSidebar() {
     closeBtn.setAttribute("aria-label", "Close menu");
     closeBtn.textContent = "×";
 
-    const headerNav = headerContainer.querySelector(".header__nav");
+    const headerNav = headerContainer.querySelector(".nav__container");
   if (!headerNav) {
-    console.error("initSidebar: .header__nav not found");
+    console.error("initSidebar: .nav__container not found");
     return;
   }
   sidebar.appendChild(headerNav);

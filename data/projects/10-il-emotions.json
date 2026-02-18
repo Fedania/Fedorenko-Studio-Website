@@ -10,12 +10,17 @@
     {
       "type": "text",
       "value": "",
-      "class": "intro-text"
+      "class": "subheading"
     },
     {
       "type": "img",
       "value": "01.jpg",
       "alt": ""
+    },
+    {
+      "type": "text",
+      "value": "Some text",
+      "class": ""
     },
     {
       "type": "img",

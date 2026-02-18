@@ -1,6 +1,7 @@
 {
   "projectID": "02-br-monobrew",
   "title": "Monobrew",
+  "bodyClass": "white",
   "blocks": [
     {
       "type": "heading",
@@ -10,7 +11,7 @@
     {
       "type": "text",
       "value": "This project presents the branding visuals and animated elements designed for the campaign.",
-      "class": "intro-text"
+      "class": "subheading"
     },
     {
       "type": "img",
@@ -89,8 +90,8 @@
       "alt": ""
     },
     {
-      "type": "img",
-      "value": "15.jpg",
+      "type": "gif",
+      "value": "15.gif",
       "alt": ""
     }
   ]

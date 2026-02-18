@@ -52,11 +52,13 @@ import {
   renderSpacer,
   renderHeading,
   renderText,
-  renderImageRow
+  renderImageRow,
+  renderHTML,
 } from './renderElement.js';
-
+import { addProjectNavigation } from './addProjectNavigation.js';
 export async function loadProject(projectID) {
   const container = document.getElementById("project-page__content");
+  const body = document.body;
   if (!container) {
     console.error('No #project-page__content element found in DOM.');
     return;
@@ -91,35 +93,74 @@ export async function loadProject(projectID) {
       return;
     }
 
+    body.className = ""; // clear previous project classes
+
+    if (data.bodyClass && data.bodyClass.trim() !== "") {
+      body.classList.add(data.bodyClass);
+    }
+
     // render
     renderProject(data, projectID, container);
+    // After rendering project content
+
+    const listResponse = await fetch('/data/projects.json');
+    const listData = await listResponse.json();
+
+    addProjectNavigation(listData.project);
 
   } catch (err) {
     console.error("Error loading project:", err);
     container.innerHTML = "<p>Error loading project.</p>";
   }
+
 }
 
-/* Keep renderProject as a top-level function (cleanly separated). */
-function renderProject(data, projectID, container) {
-  data.blocks.forEach((block, i) => {
+async function renderProject(data, projectID, container) {
+  for (const [i, block] of data.blocks.entries()) {
     if (!block || !block.type) {
       console.warn("Skipping invalid block at index", i, block);
-      return;
+      continue;
     }
 
     switch (block.type) {
-      case "heading":     renderHeading(block, container); break;
-      case "text":        renderText(block, container); break;
-      case "img":         renderImage(block, container, projectID); break;
-      case "imgRow":      renderImageRow(block, container, projectID); break;
-      case "gif":         renderGif(block, container, projectID); break;
-      case "video":       renderVideo(block, container, projectID); break;
-      case "spacer":      renderSpacer(block, container); break;
+      case "heading":
+        renderHeading(block, container);
+        break;
+
+      case "text":
+        renderText(block, container);
+        break;
+
+      case "img":
+        renderImage(block, container, projectID);
+        break;
+
+      case "imgRow":
+        renderImageRow(block, container, projectID);
+        break;
+
+      case "gif":
+        renderGif(block, container, projectID);
+        break;
+
+      case "video":
+        renderVideo(block, container, projectID);
+        break;
+
+      case "spacer":
+        renderSpacer(block, container);
+        break;
+
+      case "html":
+        await renderHTML(block, container, projectID);
+        break;
+
       default:
         console.warn("Unknown block type:", block.type);
     }
-  });
+  }
+
+  
 }
 
 

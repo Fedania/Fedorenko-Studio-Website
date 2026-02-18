@@ -1,22 +1,29 @@
 {
   "projectID": "01-br-downtown",
   "title": "",
+  
   "blocks": [
     {
       "type": "heading",
-      "value": "Project Overview",
+      "value": "down town club",
       "class": "section-title"
     },
     {
       "type": "text",
       "value": "",
-      "class": "intro-text"
+      "class": "branding"
     },
     {
       "type": "img",
       "value": "01.jpg",
       "alt": ""
     },
+    {
+      "type": "text",
+      "value": "Down Town is a night club in the middle of Magdeburg city, that connects students, working people and everybody who wants to meet new people and spend some time with friends. It's a place where everybody can be themselves and have fun in a good company.",
+      "class": "paragraph-medium"
+    },
+    
     {
       "type": "img",
       "value": "02.jpg",
@@ -53,40 +60,12 @@
       "alt": ""
     },
     {
-      "type": "img",
-      "value": "09.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "10.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "11.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "12.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "13.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "14.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "15.jpg",
-      "alt": ""
+      "type": "imgRow",
+      "value": ["09.jpg", "10.jpg"],
+      "class": "two-columns",
+      "caption": ""
     }
+    
     
   ]
 }

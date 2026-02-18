@@ -10,7 +10,7 @@
     {
       "type": "text",
       "value": "",
-      "class": "intro-text"
+      "class": "subheading"
     },
     {
       "type": "img",
@@ -46,6 +46,16 @@
       "type": "img",
       "value": "07.jpg",
       "alt": ""
+    },
+    {
+      "type": "video",
+      "value": "08.mp4",
+      
+      "autoplay": false,
+      "loop": true,
+      "muted": true,
+      "controls": true,
+      "class": "full-video"
     }
     
   ]

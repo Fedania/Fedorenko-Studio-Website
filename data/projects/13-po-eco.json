@@ -1,16 +1,16 @@
 {
   "projectID": "13-po-eco",
-  "title": "",
+  "title": "eco poster",
   "blocks": [
     {
       "type": "heading",
-      "value": "Project Overview",
+      "value": "eco poster",
       "class": "section-title"
     },
     {
       "type": "text",
-      "value": "",
-      "class": "intro-text"
+      "value": "Various posters for poster competitions",
+      "class": "subheading"
     },
     {
       "type": "img",
@@ -28,14 +28,32 @@
       "alt": ""
     },
     {
+      "type": "gif",
+      "value": "03.gif",
+      "alt": "",
+      "class": "small"
+    },
+    {
       "type": "img",
       "value": "04.jpg",
       "alt": ""
     },
     {
+      "type": "gif",
+      "value": "04.gif",
+      "alt": "",
+      "class": "small"
+    },
+    {
       "type": "img",
       "value": "05.jpg",
       "alt": ""
+    },
+    {
+      "type": "gif",
+      "value": "05.gif",
+      "alt": "",
+      "class": "small"
     },
     {
       "type": "img",

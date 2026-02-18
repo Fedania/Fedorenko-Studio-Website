@@ -13,8 +13,9 @@ export function renderProjectThumbnail(project) {
     : `/pages/project-page.html#${project.id}`;
 
   return `
-    <div class="project__card-wrapper">
-      <a href="${href}" class="project__card" data-project-id="${project.id}" >
+    <div class="project-card">
+      
+      <a href="${href}" data-project-id="${project.id}" >
         
           <img 
             src="/images/${project.id}/01.jpg" 
@@ -22,8 +23,8 @@ export function renderProjectThumbnail(project) {
             loading="lazy"
             onerror="this.onerror=null; this.src='/assets/placeholder.jpg'"
           />
-          <div class="overlay">
-            <h5>${project.title}</h5>
+          <div class="project-card__overlay">
+            <h6>${project.title}</h6>
           </div>
         
       </a> 

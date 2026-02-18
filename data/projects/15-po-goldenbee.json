@@ -9,8 +9,13 @@
     },
     {
       "type": "text",
-      "value": "",
-      "class": "intro-text"
+      "value": "It's an experimental poster project created with Golden Bee Academy 2018 in Chaumont.",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "text",
+      "value": "All posters were painted analogue with black and red color in A1 format. All original posters were exhibited in Le Signe, centre national du graphisme in Chaumont.",
+      "class": "paragraph-medium"
     },
     {
       "type": "img",
@@ -38,19 +43,50 @@
       "alt": ""
     },
     {
+      "type": "imgRow",
+      "value": ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"],
+      "class": "five-columns cropped"
+      
+    },
+    {
       "type": "img",
       "value": "06.jpg",
-      "alt": ""
+      "alt": "The Gulag Archipelago"
+    },
+    {
+      "type": "text",
+      "value": "The Gulag Archipelago",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "text",
+      "value": "the posters are dedicated to Aleksandr Solzhenitsyn (1918 — 1956), his book \"The Gulag Archipelago\" and one of the darkest sides of Soviet system.",
+      "class": "paragraph-medium"
     },
     {
       "type": "img",
       "value": "07.jpg",
-      "alt": ""
+      "alt": "Щ262"
+    },
+    {
+      "type": "text",
+      "value": "Poster Щ262 is about prisoners of GULAG",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "text",
+      "value": "it is a portrait of Solzhenitsyn himself, showing how he lost his identity behind his identity number and was less important, than his  cotton wool-padded jacket, called \"Vatnik\".",
+      "class": "paragraph-medium"
     },
     {
       "type": "img",
       "value": "08.jpg",
       "alt": ""
+    },
+    {
+      "type": "text",
+      "value": "Black and red poster were made in collaboration with Daria Tuychieva and called \"I know of no other such country where a man can breathe so freely\", last couplet from a patriotic soviet song \"Wide is My Motherland\" (1936).",
+      "class": "paragraph-medium"
     }
     
   ]

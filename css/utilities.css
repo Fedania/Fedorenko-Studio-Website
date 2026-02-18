@@ -20,8 +20,8 @@ UTILITIES
   top: var(--frame-thk);
   right: var(--frame-thk);
   bottom: var(--frame-thk);
-  border-radius: var(--border-radius-large);
-  box-shadow: 0 0 5px var(--xxxlarge) var(--black);
+  border-radius: var(--frame-thk);
+  box-shadow: 0 0 5px var(--xxxlarge) var(--color-ui-bg);
   pointer-events: none;
   position: absolute;
 }
@@ -52,12 +52,12 @@ UTILITIES
     align-items: center;
     border: none;
     border-radius: 50%;
-    background: var(--black);
+    background: var(--color-ui-bg);
     font-size: 1.5rem;
-    color: var(--color-text);
+    color: var(--color-ui-text);
     cursor: pointer;
     opacity: 0.8;
-    z-index: 10;
+    z-index: 60;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -98,7 +98,7 @@ UTILITIES
     width: 100%;
     aspect-ratio: 3 / 2;
     position: relative;
-    background-color: var(--black);
+    background-color: var(--color-bg);
 }
 
 .rive-wrapper canvas {

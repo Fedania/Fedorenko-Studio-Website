@@ -1,5 +1,5 @@
 // pages/categories/renderProjects.js
-import { renderProjectThumbnail } from "/pages/services/projectThumbnail.js";
+import { renderProjectThumbnail } from "/utilities/projectThumbnail.js";
 
 /**
  * Renders all project categories or a single category view.
@@ -15,19 +15,29 @@ export function renderProjects(categories, selectedCategory = null) {
 
   container.innerHTML = "";
 
-  // Toggle view states on body (used for styling/layout)
+  // Toggle view states on body
   document.body.classList.toggle("category-view", !!selectedCategory);
   document.body.classList.toggle("main-view", !selectedCategory);
 
-  // If a single category is selected, render only that
+  // Single category view → show all projects
   if (selectedCategory && categories[selectedCategory]) {
-    renderCategory(selectedCategory, categories[selectedCategory], container, false);
+    renderCategory(
+      selectedCategory,
+      categories[selectedCategory],
+      container,
+      false // showMore = false → render all
+    );
     return;
   }
 
-  // Otherwise, render all categories
+  // Main view → show only first 4 per category
   Object.entries(categories).forEach(([category, projects]) => {
-    renderCategory(category, projects, container, true);
+    renderCategory(
+      category,
+      projects,
+      container,
+      true // showMore = true → limit to 4
+    );
   });
 }
 
@@ -36,14 +46,18 @@ export function renderProjects(categories, selectedCategory = null) {
  * @param {string} category - Category name.
  * @param {Array} projects - Array of project objects.
  * @param {HTMLElement} container - Parent container to append to.
- * @param {boolean} showMore - Whether to show the "See more" link.
+ * @param {boolean} showMore - Whether this is preview mode (limit to 4 + show button).
  */
 function renderCategory(category, projects, container, showMore = false) {
   const section = document.createElement("div");
   section.classList.add("category__container");
 
-  // Use the thumbnail module here
-  const thumbnailsHTML = projects.map(renderProjectThumbnail).join("");
+  // Limit projects only if showMore is true
+  const projectsToRender = showMore ? projects.slice(0, 4) : projects;
+
+  const thumbnailsHTML = projectsToRender
+    .map(renderProjectThumbnail)
+    .join("");
 
   section.innerHTML = `
     <h4 class="category__title">${category}</h4>
@@ -51,7 +65,7 @@ function renderCategory(category, projects, container, showMore = false) {
       ${thumbnailsHTML}
     </div>
     ${
-      showMore
+      showMore && projects.length > 4
         ? `<a class="see-more" href="?category=${encodeURIComponent(category)}">
              See more ${category} projects
            </a>`

@@ -10,7 +10,7 @@
     {
       "type": "text",
       "value": "",
-      "class": "intro-text"
+      "class": "subheading"
     },
     {
       "type": "img",
@@ -19,27 +19,27 @@
     },
     {
       "type": "img",
-      "value": "02.jpg",
+      "value": "02.png",
       "alt": ""
     },
     {
       "type": "img",
-      "value": "03.jpg",
+      "value": "03.png",
       "alt": ""
     },
     {
       "type": "img",
-      "value": "04.jpg",
+      "value": "04.png",
       "alt": ""
     },
     {
       "type": "img",
-      "value": "05.jpg",
+      "value": "05.png",
       "alt": ""
     },
     {
       "type": "img",
-      "value": "06.jpg",
+      "value": "06.png",
       "alt": ""
     },
     {

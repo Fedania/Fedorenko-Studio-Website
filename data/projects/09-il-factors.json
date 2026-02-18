@@ -10,11 +10,11 @@
     {
       "type": "text",
       "value": "",
-      "class": "intro-text"
+      "class": "subheading"
     },
     {
-      "type": "img",
-      "value": "01.jpg",
+      "type": "html",
+      "value": "laptop-mockup.html",
       "alt": ""
     },
     {

@@ -1,37 +1,59 @@
 {
   "projectID": "04-br-pr-medicine",
   "title": "",
+  "bodyClass": "beige",
   "blocks": [
     {
       "type": "heading",
-      "value": "Project Overview",
+      "value": "\"Erfundene Krankheiten\"",
       "class": "section-title"
     },
     {
       "type": "text",
-      "value": "",
-      "class": "intro-text"
+      "value": "MODERN GERMAN COMMON ILLNESSES",
+      "class": "subheading"
     },
+    
+    {
+      "type": "text",
+      "value": "is a project about fictional illnesses created to expose german society's problems. These problems have over time become diseases with real symptoms. In order to treat these diseases I invented a pharmaceutical company called \"Bürgermed\".",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "text",
+      "value": "Bürgermed offers medication which cures german society's fictional illnesses and can be purchased at the Bürgermed website.",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "gif",
+      "value": "00.gif",
+      "alt": ""
+    },
+    {
+      "type": "text",
+      "value": "ERFUNDENE KRANKHEITEN",
+      "class": "subheading"
+    },
+    {
+      "type": "text",
+      "value": "ist ein sozialkritisches Projekt, das „typisch deutsch“ definiert und als eine Krankheit darstellt. Es wurden 6 Krankheiten erfunden zu jedem ein Krankheitsbild zusammengefasst. Jede Krankheit bekommt einen Namen und wird mit neuen Medikamenten bekämpft, die die fiktive Firma Bürgermed GmbH herstellt.",
+      "class": "paragraph-medium"
+    },
+    
+    
     {
       "type": "img",
       "value": "01.jpg",
       "alt": ""
     },
+    
     {
-      "type": "img",
-      "value": "02.jpg",
-      "alt": ""
+      "type": "imgRow",
+      "value": ["02.jpg", "03.jpg", "04.jpg"],
+      "alt": [""],
+      "class": "three-columns"
     },
-    {
-      "type": "img",
-      "value": "03.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "04.jpg",
-      "alt": ""
-    },
+    
     {
       "type": "img",
       "value": "05.jpg",
@@ -43,6 +65,12 @@
       "alt": ""
     },
     {
+      "type": "text",
+      "value": "Ein großes Teil des Projekts sind die Verpackungen für die erfundenen Präparate. Jedes Präparat hat eigene Farbe und wird in 3 verschiedenen Anwendungsformen „hergestellt“.",
+      "class": "paragraph-medium"
+    },
+    
+    {
       "type": "img",
       "value": "07.jpg",
       "alt": ""
@@ -53,49 +81,53 @@
       "alt": ""
     },
     {
+      "type": "text",
+      "value": "\"MODERNE DEUTSCHE VOLKSKRANKHEITEN\"",
+      "class": "subheading"
+    },
+    {
+      "type": "text",
+      "value": "ist ein Buch, in dem im Rahmen der Bachelorarbeit entwickelte Krankheiten zusammengefasst wurden, die den Alltag der Deutschen kritisieren. In diesem Buch kann man sich nicht nur über alle Symptome und Ursachen informieren, sondern auch sich über die Therapiemöglichkeiten erkundigen.",
+      "class": "paragraph-medium"
+    },
+       
+    {
       "type": "img",
       "value": "09.jpg",
       "alt": ""
     },
     {
-      "type": "img",
-      "value": "10.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "11.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "12.jpg",
-      "alt": ""
+      "type": "imgRow",
+      "value": ["10.jpg", "11.jpg", "12.jpg"],
+      "alt": [""],
+      "class": "three-columns"
     },
     {
       "type": "img",
       "value": "13.jpg",
       "alt": ""
     },
+    
     {
-      "type": "img",
-      "value": "14.jpg",
-      "alt": ""
+      "type": "imgRow",
+      "value": ["14.jpg", "15.jpg", "16.jpg"],
+      "alt": [""],
+      "class": "three-columns"
     },
     {
-      "type": "img",
-      "value": "15.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "16.jpg",
-      "alt": ""
+      "type": "text",
+      "value": "Die Website bietet an die vorgegebenen Präparate zu kaufen. Man findet die Beschreibung von den Medikamenten und deren Wirkungen und auch von den Krankheiten selbst. Man wird aber nur bis zum Warenkorb geleitet. Danach kann man mehr über das eigentliche Projekt erfahren.",
+      "class": "paragraph-medium"
     },
     {
       "type": "img",
       "value": "17.jpg",
       "alt": ""
+    },
+    {
+      "type": "text",
+      "value": "Die Website bietet an die vorgegebenen Präparate zu kaufen. Man findet die Beschreibung von den Medikamenten und deren Wirkungen und auch von den Krankheiten selbst. Man wird aber nur bis zum Warenkorb geleitet. Danach kann man mehr über das eigentliche Projekt erfahren.",
+      "class": "paragraph-medium"
     },
     {
       "type": "img",
