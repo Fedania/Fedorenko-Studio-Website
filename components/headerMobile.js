@@ -1,10 +1,11 @@
 import { createIcon } from "/utilities/createIcon.js";
+import { loadComponent } from "/utilities/loadComponent.js";
 
 let sidebar = null;
 let hamburger = null;
 
 export function enableMobile({ navigation, headerNav, overlay }) {
-  if (sidebar) return;
+if (document.getElementById("sidebar")) return;
 
   sidebar = document.createElement("aside");
   sidebar.id = "sidebar";
@@ -27,6 +28,8 @@ export function enableMobile({ navigation, headerNav, overlay }) {
   closeBtn.addEventListener("click", () => {
     sidebar.classList.remove("is-open");
   });
+  
+  loadComponent(sidebar, "/components/footer.html");
 
   overlay.classList.remove("overlay--expanded");
   overlay.classList.add("overlay--shrunk");

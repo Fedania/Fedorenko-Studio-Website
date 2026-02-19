@@ -1,0 +1,61 @@
+{
+  "projectID": "17-br-cockpit",
+  "title": "",
+  "bodyClass": "beige",
+  "blocks": [
+    {
+      "type": "heading",
+      "value": "Consulting Cockpit",
+      "class": "section-title"
+    },
+    {
+      "type": "text",
+      "value": "Brand Identity & Tone of Voice",
+      "class": "subheading"
+    },
+    {
+      "type": "text",
+      "value": "Development of a playful yet professional brand identity for Consulting Cockpit — a brand that combines IT expertise with self-ironic humour.",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "text",
+      "value": "The visual and verbal identity reflects a tone that's clever, approachable, and slightly chaotic in the best way possible. Clear design meets witty storytelling, creating a brand that doesn't take itself too seriously - but takes its work seriously.",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "img",
+      "value": "01.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "02.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "03.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "04.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "05.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "06.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "07.jpg",
+      "alt": ""
+    }
+]}
