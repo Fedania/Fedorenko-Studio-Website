@@ -1,5 +1,5 @@
 // pages/categories/renderProjects.js
-import { renderProjectThumbnail } from "/utilities/projectThumbnail.js";
+import { renderProjectThumbnail } from "../../utilities/projectThumbnail.js";
 
 /**
  * Renders all project categories or a single category view.

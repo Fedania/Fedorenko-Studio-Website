@@ -2,7 +2,7 @@
 import { initAccordion } from './accordion.js';
 
 export async function initServices  
-(jsonPath = '/data/services.json'  ) {
+(jsonPath = '../data/services.json'  ) {
     try {
       const response = await fetch(jsonPath);
       const data = await response.json();

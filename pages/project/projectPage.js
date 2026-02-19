@@ -73,7 +73,7 @@ export async function loadProject(projectID) {
   container.innerHTML = "";
 
   // Use an absolute path from the site root to match your folder structure
-  const jsonPath = `/data/projects/${projectID}.json`;
+  const jsonPath = `../data/projects/${projectID}.json`;
 
   try {
     const response = await fetch(jsonPath, { cache: "no-cache" });

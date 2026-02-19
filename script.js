@@ -10,8 +10,8 @@ import { initServices } from "./pages/services/sectionServices.js";
 import { initLandingPage } from "./pages/landing/landingPage.js";
 import { initLandingVideo } from "./pages/landing/landingVideo.js";
 
-import { initHeaderBase } from "/components/headerBase.js";
-import { initLayoutController } from "/utilities/layoutController.js";
+import { initHeaderBase } from "./components/headerBase.js";
+import { initLayoutController } from "./utilities/layoutController.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
