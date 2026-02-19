@@ -1,7 +1,6 @@
 test.html
 branding.html
-
 node_modules/
 !assets/landing_02.mp4
 !assets/placeholder.jpg
-
+/.idea

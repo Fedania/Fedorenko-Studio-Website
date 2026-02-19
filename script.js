@@ -40,6 +40,7 @@ console.log("Header context:", headerContext);
   }
 
   await loadComponent("#footer", "/components/footer.html");
+  
   initScrollTop();
 
   // Page is now fully assembled
@@ -84,6 +85,7 @@ console.log("Header context:", headerContext);
       await initServices();
     }
   });
+  
 
   // =========================
   // HASH NAVIGATION

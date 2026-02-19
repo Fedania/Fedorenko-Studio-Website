@@ -90,6 +90,18 @@
         "title": "Poster Series",
         "categories": ["Posters"],
         "thumbnail": "images/15-po-goldenbee/15-po-goldenbee-01.jpg"
+    },
+    {
+        "id": "16-po-people",
+        "title": "People and culture festival",
+        "categories": ["Posters"],
+        "thumbnail": "images/15-po-goldenbee/15-po-goldenbee-01.jpg"
+    },
+    {
+        "id": "17-br-cockpit",
+        "title": "Consulting Cockpit",
+        "categories": ["Branding"],
+        "thumbnail": "images/15-po-goldenbee/15-po-goldenbee-01.jpg"
     }
     ]
 }

@@ -1,23 +1,6 @@
 /* ============================================================================
    FONTS & IMPORTS
    ============================================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
-@font-face {
-    font-family: ChesnaGrotesk;
-    src: url('/fonts/ChesnaGrotesk-medium-webfont.woff2') format('woff2'),
-         url('/fonts/ChesnaGrotesk-medium-webfont.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: ChesnaGrotesk;
-    src: url('/fonts/ChesnaGrotesk-mediumitalic-webfont.woff2') format('woff2'),
-         url('/fonts/ChesnaGrotesk-mediumitalic-webfont.woff') format('woff');
-    font-weight: 500;
-    font-style: italic;
-}
 
 @font-face {
     font-family: Charmanserif;
@@ -102,10 +85,12 @@
     --font-body: Manrope, sans-serif;
   
 }
+
+
 body {
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: Manrope, sans-serif;
+    font-family: var(--font-main);
     font-size: var(--p-text-medium);
     letter-spacing: .02em;
     

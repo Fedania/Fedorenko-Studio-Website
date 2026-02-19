@@ -17,13 +17,16 @@ export async function loadComponent(target, file, callback) {
       throw new Error(`${file} not found`);
     }
 
-    container.innerHTML = await response.text();
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = await response.text();
+
+    container.append(...wrapper.children);
+
     callback?.();
     return container;
   } catch (error) {
     console.error(`Error loading ${file}:`, error);
   }
-  
 }
 
 

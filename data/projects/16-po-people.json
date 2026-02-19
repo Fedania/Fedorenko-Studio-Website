@@ -1,0 +1,55 @@
+{
+  "projectID": "16-po-people",
+  "title": "",
+  "blocks": [
+    {
+      "type": "heading",
+      "value": "Project Overview",
+      "class": "section-title"
+    },
+    {
+      "type": "text",
+      "value": "It's an experimental poster project created with Golden Bee Academy 2018 in Chaumont.",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "text",
+      "value": "All posters were painted analogue with black and red color in A1 format. All original posters were exhibited in Le Signe, centre national du graphisme in Chaumont.",
+      "class": "paragraph-medium"
+    },
+    {
+      "type": "img",
+      "value": "00.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "02.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "03.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "04.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "05.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "06.jpg",
+      "alt": ""
+    },
+    {
+      "type": "img",
+      "value": "07.jpg",
+      "alt": ""
+    }
+]}
