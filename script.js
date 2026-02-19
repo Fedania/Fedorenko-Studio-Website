@@ -1,18 +1,12 @@
 import { loadComponent } from "./utilities/loadComponent.js";
-
 import { initScrollTop } from "./components/scrollTop.js";
 import { initCategories } from "./pages/categories/categories.js"; 
-// import { initProjectPage } from './pages/project/projectPage.js';
 import { loadProject } from "./pages/project/projectPage.js";
-// import { initHeader } from "./components/header.js";
-// import {initSidebar} from "./components/sidebar.js";  
 import { initServices } from "./pages/services/sectionServices.js";
 import { initLandingPage } from "./pages/landing/landingPage.js";
-import { initLandingVideo } from "./pages/landing/landingVideo.js";
-
 import { initHeaderBase } from "./components/headerBase.js";
 import { initLayoutController } from "./utilities/layoutController.js";
-import { handleRoute } from "./core/router.js";
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("Initial scrollY:", window.scrollY);
@@ -33,22 +27,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 3️⃣ Initialize only what's needed
 
-  if (path.includes("landing.html") || path === "/") {
+  if (path.endsWith("/landing") || path.endsWith("/landing.html") || path === "/") {
     console.log("Initializing landing page");
     await initLandingPage();
     await initServices();
   }
 
-  if (path.includes("services.html")) {
+  
+    if (path.endsWith("/services") || path.endsWith("/services.html") || path === "/") {
     await initServices();
   }
 
-  if (path.includes("all-projects.html")) {
+  if (path.endsWith("/all-projects") || path.endsWith("/all-projects.html") || path === "/") {
     console.log("Initializing categories page");
     await initCategories();
   }
 
-  if (path.includes("project-page.html")) {
+  if (path.endsWith("/project-page") || path.endsWith("/project-page.html") || path === "/") {
     console.log("Initializing project page");
 
     const id = window.location.hash.replace("#", "").trim();
