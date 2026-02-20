@@ -1,5 +1,5 @@
 // pages/categories/renderProjects.js
-import { renderProjectThumbnail } from "/utilities/projectThumbnail.js";
+import { renderProjectThumbnail } from "../../utilities/projectThumbnail.js";
 
 /**
  * Renders all project categories or a single category view.
@@ -66,9 +66,9 @@ function renderCategory(category, projects, container, showMore = false) {
     </div>
     ${
       showMore && projects.length > 4
-        ? `<a class="see-more" href="?category=${encodeURIComponent(category)}">
+        ? `<button class="see-more"><a href="?category=${encodeURIComponent(category)}">
              See more ${category} projects
-           </a>`
+           </a></button>`
         : ""
     }
   `;

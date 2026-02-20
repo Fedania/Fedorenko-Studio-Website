@@ -1,96 +1,54 @@
 import { loadComponent } from "./utilities/loadComponent.js";
-
 import { initScrollTop } from "./components/scrollTop.js";
 import { initCategories } from "./pages/categories/categories.js"; 
-// import { initProjectPage } from './pages/project/projectPage.js';
 import { loadProject } from "./pages/project/projectPage.js";
-// import { initHeader } from "./components/header.js";
-// import {initSidebar} from "./components/sidebar.js";  
 import { initServices } from "./pages/services/sectionServices.js";
 import { initLandingPage } from "./pages/landing/landingPage.js";
-import { initLandingVideo } from "./pages/landing/landingVideo.js";
-
-import { initHeaderBase } from "/components/headerBase.js";
-import { initLayoutController } from "/utilities/layoutController.js";
+import { initHeaderBase } from "./components/headerBase.js";
+import { initLayoutController } from "./utilities/layoutController.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("Initial scrollY:", window.scrollY);
 
-  let pageReadyCallbacks = [];
-  let pageIsReady = false;
+  
 
-  function afterPageReady(fn) {
-    if (pageIsReady) {
-      fn();
-    } else {
-      pageReadyCallbacks.push(fn);
-    }
-  }
-
-  // =========================
-  // LOAD SHARED LAYOUT
-  // =========================
-
+   // 1️⃣ Load shared layout
   const headerContext = await initHeaderBase();
-console.log("Header context:", headerContext);
   if (headerContext) {
     initLayoutController(headerContext);
-    console.log("Header loaded");
   }
 
   await loadComponent("#footer", "/components/footer.html");
-  
   initScrollTop();
 
-  // Page is now fully assembled
-  pageIsReady = true;
-  pageReadyCallbacks.forEach(fn => fn());
-  pageReadyCallbacks = [];
-
-  // =========================
-  // PAGE-SPECIFIC LOGIC
-  // =========================
-
+  // 2️⃣ Detect current page
   const path = window.location.pathname;
 
-  afterPageReady(() => {
-    if (path.includes("all-projects.html")) {
-      console.log("Initializing categories page");
-      initCategories();
-    }
+  // 3️⃣ Initialize only what's needed
 
-    if (path.includes("project-page.html")) {
-      console.log("Initializing project page");
+  if (path.endsWith("/landing") || path.endsWith("/landing.html") || path === "/") {
+    console.log("Initializing landing page");
+    await initLandingPage();
+    await initServices();
+  }
 
-      const id = window.location.hash.replace("#", "").trim();
-      loadProject(id);
-    }
-  });
-
-  afterPageReady(async () => {
-    if (path.includes("landing.html")) {
-      console.log("Initializing landing page");
-
-      await initLandingPage();
-      await initServices();
-
-      initLandingVideo("#hero", {
-        src: "/assets/landing_02.mp4",
-        playbackRate: 0.5
-      });
-    }
-
-    if (path.includes("services.html")) {
-      await initServices();
-    }
-  });
   
+    if (path.endsWith("/services") || path.endsWith("/services.html") || path === "/") {
+    await initServices();
+  }
 
-  // =========================
-  // HASH NAVIGATION
-  // =========================
+  if (path.endsWith("/all-projects") || path.endsWith("/all-projects.html") || path === "/") {
+    console.log("Initializing categories page");
+    await initCategories();
+  }
 
+  if (path.endsWith("/project-page") || path.endsWith("/project-page.html") || path === "/") {
+    console.log("Initializing project page");
+
+    const id = window.location.hash.replace("#", "").trim();
+    loadProject(id);
+  }
   window.addEventListener("hashchange", () => {
     const projectId = window.location.hash.substring(1);
     loadProject(projectId);

@@ -1,6 +1,0 @@
-.section {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  scroll-snap-stop: 300s;
-  overflow-y: scroll;
-}
