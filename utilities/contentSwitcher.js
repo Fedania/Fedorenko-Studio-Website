@@ -1,33 +1,40 @@
 // contentSwitcher.js
-  import { recalcAccordion } from "/pages/services/accordion.js";
+import { subscribe } from "./landingState.js";
+import { recalcAccordion } from "/pages/services/accordion.js";
+
 export function initContentSwitcher() {
   const main = document.getElementById("content-default");
-  const optionA = document.getElementById("content-start-small");
-  const optionB = document.getElementById("content-think-big");
+  const optionB = document.getElementById("content-start-small");
+  const optionA = document.getElementById("content-think-big");
 
-
+  console.log("[SWITCHER] elements:", { main, optionA, optionB });
 
   function update(activeOption) {
-  const showMain = activeOption === null;
+    console.log("[SWITCHER] update called with:", activeOption);
 
-  main.hidden = !showMain;
-  optionA.hidden = activeOption !== "a";
-  optionB.hidden = activeOption !== "b";
+    const showMain = activeOption === null;
 
-  // 👇 wait for visibility to apply, then recalc
-  requestAnimationFrame(() => {
-    const visibleSection =
-      showMain ? main :
-      activeOption === "a" ? optionA :
-      optionB;
+    main.hidden = !showMain;
+    optionA.hidden = activeOption !== "a";
+    optionB.hidden = activeOption !== "b";
 
-    recalcAccordion(visibleSection);
-  });
-}
-  // Initial state
-  update(null);
+    console.log("[SWITCHER] visibility:", {
+      main: !main.hidden,
+      optionA: !optionA.hidden,
+      optionB: !optionB.hidden
+    });
 
-  document.addEventListener("option-change", (e) => {
-    update(e.detail);
-  });
+    requestAnimationFrame(() => {
+      const visible =
+        showMain ? main :
+        activeOption === "a" ? optionA :
+        optionB;
+
+      console.log("[SWITCHER] recalculating accordion for:", visible);
+
+      recalcAccordion(visible);
+    });
+  }
+
+  subscribe(update);
 }
