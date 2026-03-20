@@ -1,5 +1,5 @@
 // toggleButtons.js
-import { setActiveOption, getActiveOption } from "./landingStates.js";
+import { setActiveOption, getActiveOption } from "./landingState.js";
 
 export function initToggleButtons(container) {
   const options = container.querySelectorAll(".landing__hero__option-btn");

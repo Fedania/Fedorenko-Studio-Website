@@ -11,30 +11,35 @@ import { initLayoutController } from "./utilities/layoutController.js";
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("Initial scrollY:", window.scrollY);
 
-  
+  // 1️⃣ Detect page FIRST
+  const path = window.location.pathname;
 
-   // 1️⃣ Load shared layout
+  const isLandingPage =
+    path.endsWith("/landing") ||
+    path.endsWith("/landing.html") ||
+    path === "/";
+
+  // 2️⃣ Load shared layout
   const headerContext = await initHeaderBase();
+
   if (headerContext) {
-    initLayoutController(headerContext);
+    initLayoutController({
+      ...headerContext,
+      isLandingPage
+    });
   }
 
   await loadComponent("#footer", "/components/footer.html");
   initScrollTop();
 
-  // 2️⃣ Detect current page
-  const path = window.location.pathname;
-
-  // 3️⃣ Initialize only what's needed
-
-  if (path.endsWith("/landing") || path.endsWith("/landing.html") || path === "/") {
+  // 3️⃣ Page-specific init (unchanged)
+  if (isLandingPage) {
     console.log("Initializing landing page");
     await initLandingPage();
     await initServices();
   }
 
-  
-    if (path.endsWith("/services") || path.endsWith("/services.html") || path === "/") {
+  if (path.endsWith("/services") || path.endsWith("/services.html") || path === "/") {
     await initServices();
   }
 
@@ -49,6 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const id = window.location.hash.replace("#", "").trim();
     loadProject(id);
   }
+
   window.addEventListener("hashchange", () => {
     const projectId = window.location.hash.substring(1);
     loadProject(projectId);

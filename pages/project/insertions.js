@@ -1,4 +1,5 @@
 // 🔹 Helper function to handle insertion of items (image, gif, video, etc.)
+import { createRiveElement } from "/utilities/createRiveElement.js";
 export async function insertInsertion(container, insertion) {
     let imgContainer = document.createElement("div");
     imgContainer.classList.add("inserted", insertion.type);
@@ -12,7 +13,19 @@ export async function insertInsertion(container, insertion) {
             createVimeoElement(imgContainer, insertion.src);
             break;
         case "rive":
-            createRiveElement(imgContainer, insertion.src, insertion.artboard, insertion.stateMachine);
+            const riveInstance = createRiveElement({
+                container: imgContainer,
+                src: insertion.src,
+                artboard: insertion.artboard,
+                stateMachine: insertion.stateMachine,
+                fit: insertion.fit || "contain",
+                alignment: insertion.alignment || "center",
+                onEvent: insertion.onEvent || null
+            });
+
+            // Optional: store it if you want to control it later
+            imgContainer._rive = riveInstance;
+
             break;
         case "html":
             insertHTMLFile(imgContainer, insertion.src);
@@ -48,54 +61,6 @@ function createVimeoElement(container, vimeoUrl) {
     iframe.allowFullscreen = true;
     container.appendChild(iframe);
 }
-
-// 🔹 Simple helper to embed responsive Rive animation
-function createRiveElement(container, riveSrc, artboard, stateMachine) {
-    // Create wrapper div to handle aspect ratio and centering
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("rive-wrapper");
-
-    // Create canvas inside the wrapper
-    const riveCanvas = document.createElement("canvas");
-    riveCanvas.classList.add("rive-animation");
-
-    wrapper.appendChild(riveCanvas);
-    container.appendChild(wrapper); // <div class="inserted rive"> is the container
-
-    // Stretch to 100% width like an <img>
-    riveCanvas.style.width = "100%";
-    riveCanvas.style.height = "auto";
-    riveCanvas.style.display = "block";
-
-    // High-DPI support
-    const resizeCanvas = () => {
-        const rect = wrapper.getBoundingClientRect();
-        riveCanvas.width = rect.width * window.devicePixelRatio;
-        riveCanvas.height = rect.height * window.devicePixelRatio;
-        riveInstance.resizeDrawingSurfaceToCanvas();
-    };
-
-    // Create Rive instance
-    const riveInstance = new rive.Rive({
-        src: riveSrc,
-        canvas: riveCanvas,
-        autoplay: true,
-        layout: new rive.Layout({
-            fit: rive.Fit.Contain,     // Contain within canvas, preserve aspect
-            alignment: rive.Alignment.Center
-        }),
-        artboard: artboard || undefined,
-        stateMachines: stateMachine ? [stateMachine] : [],
-        onLoad: () => {
-            resizeCanvas();
-        }
-    });
-
-    window.addEventListener("resize", resizeCanvas);
-}
-
-
-
 
 // 🔹 Helper function for inserting HTML files
 function insertHTMLFile(container, filePath) {

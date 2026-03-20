@@ -1,4 +1,4 @@
-import { setActiveOption, getActiveOption } from "./landingStates.js";
+import { setActiveOption, getActiveOption } from "./landingState.js";
 
 export function initToggleButtons(container) {
   const buttons = container.querySelectorAll("button[data-option]");

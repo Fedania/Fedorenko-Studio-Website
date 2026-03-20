@@ -1,29 +1,18 @@
 import { handleRiveEvent } from "./riveEvents.js";
+import { createRiveElement } from "/utilities/createRiveElement.js";
+
+let riveAPI = null;
 
 export function initRiveLanding() {
-  const canvas = document.getElementById("rive-canvas");
-    
-  if (!canvas) {
-    console.warn("Rive canvas not found");
-    return;
-  }
+  const container = document.getElementById("controls");
 
-  const riveInstance = new rive.Rive({
-    src: "../assets/landing_01.riv",
-    canvas: canvas,
-    stateMachines: "State Machine 2",
-    autoplay: true,
-
-    onLoad: () => {
-      riveInstance.resizeDrawingSurfaceToCanvas();
-    }
+  riveAPI = createRiveElement({
+    container,
+    src: "../assets/landing_02.riv",
+    stateMachine: "State Machine 2",
+    fit: "contain",
+    onEvent: handleRiveEvent
   });
 
- riveInstance.on(
-  rive.EventType.RiveEvent,
-  handleRiveEvent
-);
-  window.addEventListener("resize", () => {
-    riveInstance.resizeDrawingSurfaceToCanvas();
-  });
+  return riveAPI;
 }

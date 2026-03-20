@@ -745,7 +745,7 @@ UTILITIES
     width: 100%;
     aspect-ratio: 3 / 2;
     position: relative;
-    background-color: var(--color-bg);
+
 }
 .rive-wrapper canvas {
     width: 100%;

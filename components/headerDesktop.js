@@ -1,95 +1,101 @@
-let scrollHandler = null;
-let hoverActive = false;
-let hoverElements = [];
-
 export function enableDesktop({ header, overlay }) {
   let lastScrollY = window.scrollY;
+  let hoverActive = false;
 
   const trigger = document.createElement("div");
   trigger.id = "header__trigger";
-  trigger.className = "header__trigger";
   header.appendChild(trigger);
 
   function setHeaderState(show) {
-    if (show) {
-      header.classList.remove("hidden");
-      header.classList.add("visible");
+    header.classList.toggle("visible", show);
+    header.classList.toggle("hidden", !show);
 
-      overlay.classList.remove("overlay--expanded");
-      overlay.classList.add("overlay--shrunk");
-    } else {
-      header.classList.add("hidden");
-      header.classList.remove("visible");
-
-      overlay.classList.add("overlay--expanded");
-      overlay.classList.remove("overlay--shrunk");
-    }
+    overlay.classList.toggle("overlay--shrunk", show);
+    overlay.classList.toggle("overlay--expanded", !show);
   }
 
-  scrollHandler = () => {
+  function onScroll() {
     if (hoverActive) return;
 
     const current = window.scrollY;
 
-    if (current > lastScrollY || current < 10) {
-      setHeaderState(false);
-    } else {
-      setHeaderState(true);
-    }
+    const shouldShow =
+      current < 10
+        ? true
+        : !(current > lastScrollY);
 
+    setHeaderState(shouldShow);
     lastScrollY = current;
-  };
+  }
 
-  window.addEventListener("scroll", scrollHandler);
-
-  // Shared hover handlers
-  const onEnter = () => {
+  function onEnter() {
     hoverActive = true;
     setHeaderState(true);
-  };
+  }
 
-  const onLeave = (e) => {
-    // Check if cursor is still inside header or trigger
-    if (
-      header.contains(e.relatedTarget) ||
-      trigger.contains(e.relatedTarget)
-    ) {
-      return;
-    }
-
+  function onLeave(e) {
+    if (header.contains(e.relatedTarget) || trigger.contains(e.relatedTarget)) return;
     hoverActive = false;
-    scrollHandler();
-  };
+    onScroll();
+  }
 
-  // Attach to BOTH
-  [trigger, header].forEach((el) => {
+  window.addEventListener("scroll", onScroll);
+
+  [trigger, header].forEach(el => {
     el.addEventListener("mouseenter", onEnter);
     el.addEventListener("mouseleave", onLeave);
   });
 
-  hoverElements = [trigger, header];
-
-  setHeaderState(false);
+  // default state
+  setHeaderState(true);
+  console.log("Desktop default");
 }
 
-export function disableDesktop({ header, overlay }) {
-  if (scrollHandler) {
-    window.removeEventListener("scroll", scrollHandler);
-    scrollHandler = null;
+export function enableDesktopLanding({ header, overlay }) {
+  let lastScrollY = window.scrollY;
+  let hoverActive = false;
+
+  const trigger = document.createElement("div");
+  trigger.id = "header__trigger";
+  header.appendChild(trigger);
+
+  function setHeaderState(show) {
+    header.classList.toggle("visible", show);
+    header.classList.toggle("hidden", !show);
+
+    overlay.classList.toggle("overlay--shrunk", show);
+    overlay.classList.toggle("overlay--expanded", !show);
   }
 
-  hoverElements.forEach((el) => {
-    el.replaceWith(el.cloneNode(true)); // quick clean way to remove listeners
+  function onScroll() {
+    if (hoverActive) return;
+
+    const current = window.scrollY;
+
+    const shouldShow = !(current > lastScrollY || current < 10);
+
+    setHeaderState(shouldShow);
+    lastScrollY = current;
+  }
+
+  function onEnter() {
+    hoverActive = true;
+    setHeaderState(true);
+  }
+
+  function onLeave(e) {
+    if (header.contains(e.relatedTarget) || trigger.contains(e.relatedTarget)) return;
+    hoverActive = false;
+    onScroll();
+  }
+
+  window.addEventListener("scroll", onScroll);
+
+  [trigger, header].forEach(el => {
+    el.addEventListener("mouseenter", onEnter);
+    el.addEventListener("mouseleave", onLeave);
   });
 
-  hoverElements = [];
-
-  const trigger = header.querySelector("#header__trigger");
-  if (trigger) header.removeChild(trigger);
-
-  header.classList.remove("hidden");
-  header.classList.add("visible");
-
-  overlay.classList.remove("overlay--expanded");
-  overlay.classList.add("overlay--shrunk");
+  // ✅ FORCE INITIAL STATE (hidden)
+  setHeaderState(false);
 }

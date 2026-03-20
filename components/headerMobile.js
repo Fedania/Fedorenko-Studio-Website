@@ -5,7 +5,7 @@ let sidebar = null;
 let hamburger = null;
 
 export function enableMobile({ navigation, headerNav, overlay }) {
-if (document.getElementById("sidebar")) return;
+  if (sidebar) return;
 
   sidebar = document.createElement("aside");
   sidebar.id = "sidebar";
@@ -28,22 +28,9 @@ if (document.getElementById("sidebar")) return;
   closeBtn.addEventListener("click", () => {
     sidebar.classList.remove("is-open");
   });
-  
+
   loadComponent(sidebar, "/components/footer.html");
 
   overlay.classList.remove("overlay--expanded");
   overlay.classList.add("overlay--shrunk");
-}
-
-export function disableMobile({ header, headerNav }) {
-  if (!sidebar) return;
-
-  // Move nav back to header root
-  header.appendChild(headerNav);
-
-  sidebar.remove();
-  sidebar = null;
-
-  hamburger?.remove();
-  hamburger = null;
 }

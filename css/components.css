@@ -328,7 +328,8 @@
 }
 .landing__hero__rive {
   width: 100%;
-  height: 30vh;
+  height: auto;
+  display: block;
 }
 /*  ===========================================================================
     PROJECT NAV BUTTONS 
