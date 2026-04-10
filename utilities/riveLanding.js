@@ -8,7 +8,7 @@ export function initRiveLanding() {
 
   riveAPI = createRiveElement({
     container,
-    src: "../assets/landing_02.riv",
+    src: "../assets/landing_04.riv",
     stateMachine: "State Machine 2",
     fit: "contain",
     onEvent: handleRiveEvent

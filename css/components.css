@@ -14,7 +14,7 @@
     display: block;
     pointer-events: none;
 
-    box-shadow: 0 0 0 100px var(--color-ui-bg);
+    box-shadow: 0 0 0 200px var(--color-ui-bg);
     border-radius: var(--frame-thk);
     transition: top 0.4s ease, opacity 0.3s;
 }
@@ -37,11 +37,12 @@
 
 }
 .page__content {
-    width: 80%;
+    width: 100%;
     max-width: var(--page-max-width);
     position: relative;
     z-index: 2;
-    margin: auto;
+    margin: 0 auto;
+    padding: var(--page-padding) 0;
 }
 /* ============================================================================
    HEADER & NAVIGATION
@@ -117,7 +118,11 @@
 .nav__links li, .nav__logo li {
     position: relative;
 }
-
+.nav__links h6 {
+    margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: var(--heading-h5);
+}
 .nav__links a, .nav__logo a {
     display: flex;
     align-items: center;
@@ -151,8 +156,8 @@
 .menu-toggle {
     display: none;
     position: fixed;
-    top: 2rem;
-    right: 2rem;
+    top: calc(var(--frame-thk) *2);
+    right: calc(var(--frame-thk) * 2);
     z-index: 30;
 
     background: none;
@@ -181,10 +186,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding-top: 30vh;
+    padding-bottom: 10%;
     background: var(--color-ui-bg);
     color: var(--color-ui-text);
-    z-index: 50;
+    z-index: 100;
     transition: left 0.6s ease;
 }
 
@@ -229,10 +236,10 @@
     cursor: pointer;
 }
 
-.sidebar__close {
+.btn__close-sidebar {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: calc(var(--frame-thk) * 2);
+    right: calc(var(--frame-thk) * 2);
     display: block;
     width: auto;
     height: auto;
@@ -331,52 +338,156 @@
   height: auto;
   display: block;
 }
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
 /*  ===========================================================================
     PROJECT NAV BUTTONS 
     ============================================================================ */
 
-    .project-navigation {
-        display: flex;
-        justify-content: center;
-        margin: var(--medium) 0;
-        gap: var(--xsmall);
-
-      }
-      
-      .nav-button {
-        width: var(--xlarge);
-        height: var(--xlarge);
-        
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        border-radius: 50%;
-        border: 1px solid #e41515;
-        background-color: var(--color-ui-bg);
-        color: var(--color-ui-text);
-        transform-origin: center center;
-        transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .nav-button .icon {
-        width: 50%;
-        height: 50%;
-    }
-    .nav-button:hover {
-    transform: scale(1.1);
-    }
-
-    .nav-button.disabled {
-    opacity: 0.3;
-    pointer-events: none;
-    }
+.project-navigation {
+    display: flex;
+    justify-content: center;
+    width: 8rem;
+    margin: 0 auto;
     
+
+    }
+      
+    
+    
+    .contact-modal {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.contact-modal.hidden {
+  display: none;
+}
+
+/* CONTENT CONTAINER */
+.contact-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  max-width: 500px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  padding: clamp(1.5rem, 4vw, 3rem);
+  gap: 1.5rem;
+}
+
+/* CLOSE BUTTON (now relative to modal content) */
+
+.btn__close {
+  position: fixed;
+  top: calc(var(--frame-thk) * 2);
+  right: calc(var(--frame-thk) * 2);
+  font-size: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: auto;
+    height: auto;
+    color: var(--color-ui-text);
+    line-height: 1em;
+    
+    font-size: 3rem;
+}
+
+/* TITLE */
+
+.contact-main {
+    grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
+
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+.contact-main h2 {
+  text-align: center;
+  margin: 0;
+}
+/* FORM (centered vertically) */
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* INPUTS */
+.contact-content input,
+.contact-content textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.contact-content textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* BUTTON */
+.contact-content button[type="submit"] {
+  padding: 0.9rem;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* ALT TEXT (bottom) */
+.contact-alt {
+    grid-row: 3;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.contact-modal {
+  animation: fadeIn 0.25s ease;
+}
+.contact-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 /* ============================================================================
    RESPONSIVE DESIGN
    ============================================================================ */
 
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     
     
     #header {

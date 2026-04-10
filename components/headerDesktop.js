@@ -4,6 +4,7 @@ export function enableDesktop({ header, overlay }) {
 
   const trigger = document.createElement("div");
   trigger.id = "header__trigger";
+  trigger.className = "header__trigger";
   header.appendChild(trigger);
 
   function setHeaderState(show) {
@@ -57,6 +58,7 @@ export function enableDesktopLanding({ header, overlay }) {
 
   const trigger = document.createElement("div");
   trigger.id = "header__trigger";
+  trigger.className = "header__trigger";
   header.appendChild(trigger);
 
   function setHeaderState(show) {

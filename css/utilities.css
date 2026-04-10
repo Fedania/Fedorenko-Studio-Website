@@ -33,7 +33,13 @@ UTILITIES
   grid-auto-columns: 1fr;
   display: grid;
 }
-
+.flex-centered {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
     .text-align--left {
     text-align: left;
     }
@@ -96,14 +102,20 @@ UTILITIES
 
 .rive-wrapper {
     width: 100%;
-    aspect-ratio: 3 / 2;
-    position: relative;
+    height: 100%;
+    display: block;
 
+    Position: relative;
+    padding: 0;
+    overflow: visible;
 }
 
 .rive-wrapper canvas {
-    width: 100%;
+    margin: 0 auto;
     height: 100%;
+    width: 100%;
+
+    display: block
 }
 
 .image-container.image img {

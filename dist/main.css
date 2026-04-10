@@ -245,7 +245,7 @@ figcaption {
     }
     
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   
   :root {
     --heading-h4: calc(var(--heading-h3) / var(--1gr));
@@ -472,7 +472,7 @@ figcaption {
     
     cursor: pointer;
 }
-.sidebar__close {
+.btn__close-sidebar {
     position: absolute;
     top: 2rem;
     right: 2rem;
@@ -600,7 +600,7 @@ figcaption {
 /* ============================================================================
    RESPONSIVE DESIGN
    ============================================================================ */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     
     
     #header {
@@ -896,16 +896,7 @@ section:not(#header, #footer, #hero, #nav-buttons) {
     height: 100vh;
     overflow: hidden;
 }
-#hero__bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    z-index: 1;
-}
+
 .hero__overlay {
     position: absolute;
     top: 0;
@@ -1289,7 +1280,7 @@ body.category-view .gallery__container-grid {
         font-size: clamp(12px, 1vw + 10px, 24px);
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     /* Gallery */
     body.main-view .gallery__container-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1319,7 +1310,7 @@ body.category-view .gallery__container-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     /* Gallery */
     .gallery__container-grid {
         grid-template-columns: repeat(1, 1fr);

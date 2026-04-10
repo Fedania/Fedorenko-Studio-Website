@@ -1,6 +1,7 @@
 {
   "projectID": "16-po-people",
   "title": "",
+  "bodyClass": "grey",
   "blocks": [
     {
       "type": "heading",
@@ -40,16 +41,6 @@
     {
       "type": "img",
       "value": "05.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "06.jpg",
-      "alt": ""
-    },
-    {
-      "type": "img",
-      "value": "07.jpg",
       "alt": ""
     }
 ]}

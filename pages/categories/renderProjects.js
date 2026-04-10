@@ -1,5 +1,6 @@
 // pages/categories/renderProjects.js
 import { renderProjectThumbnail } from "../../utilities/projectThumbnail.js";
+import { createIcon } from "/utilities/createIcon.js";
 
 /**
  * Renders all project categories or a single category view.
@@ -15,6 +16,10 @@ export function renderProjects(categories, selectedCategory = null) {
 
   container.innerHTML = "";
 
+  // 🔥 update page title
+  updatePageTitle(selectedCategory);
+
+  renderBackButton(selectedCategory);
   // Toggle view states on body
   document.body.classList.toggle("category-view", !!selectedCategory);
   document.body.classList.toggle("main-view", !selectedCategory);
@@ -25,22 +30,22 @@ export function renderProjects(categories, selectedCategory = null) {
       selectedCategory,
       categories[selectedCategory],
       container,
-      false // showMore = false → render all
+      false
     );
     return;
   }
 
   // Main view → show only first 4 per category
   Object.entries(categories).forEach(([category, projects]) => {
-    renderCategory(
-      category,
-      projects,
-      container,
-      true // showMore = true → limit to 4
-    );
+    renderCategory(category, projects, container, true);
   });
 }
+function updatePageTitle(selectedCategory) {
+  const titleEl = document.getElementById("page-title");
+  if (!titleEl) return;
 
+  titleEl.textContent = selectedCategory || "All Projects";
+}
 /**
  * Renders a single category section with its projects.
  * @param {string} category - Category name.
@@ -52,7 +57,6 @@ function renderCategory(category, projects, container, showMore = false) {
   const section = document.createElement("div");
   section.classList.add("category__container");
 
-  // Limit projects only if showMore is true
   const projectsToRender = showMore ? projects.slice(0, 4) : projects;
 
   const thumbnailsHTML = projectsToRender
@@ -60,7 +64,11 @@ function renderCategory(category, projects, container, showMore = false) {
     .join("");
 
   section.innerHTML = `
-    <h4 class="category__title">${category}</h4>
+    ${
+      showMore
+        ? `<h4 class="category__title">${category}</h4>`
+        : ""
+    }
     <div class="gallery__container-grid">
       ${thumbnailsHTML}
     </div>
@@ -74,4 +82,32 @@ function renderCategory(category, projects, container, showMore = false) {
   `;
 
   container.appendChild(section);
+}
+
+function renderBackButton(selectedCategory) {
+  // Remove existing button (avoid duplicates on re-render)
+  const existing = document.querySelector(".back-to-all");
+  if (existing) existing.remove();
+
+  // Only show in category view
+  if (!selectedCategory) return;
+
+  const titleEl = document.getElementById("page-title");
+  if (!titleEl) return;
+
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("page-title-wrapper");
+
+  // 🔙 Back button
+  const backButton = document.createElement("a");
+  backButton.classList.add("nav-button", "prev", "back-to-all");
+  backButton.setAttribute("aria-label", "Back to All Projects");
+  backButton.href = "?"; // removes category param
+
+  backButton.appendChild(createIcon("arrow-left"));
+
+  // Wrap button + title together
+  titleEl.parentNode.insertBefore(wrapper, titleEl);
+  wrapper.appendChild(backButton);
+  wrapper.appendChild(titleEl);
 }

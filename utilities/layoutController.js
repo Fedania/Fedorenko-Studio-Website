@@ -3,7 +3,6 @@ import { enableDesktop, enableDesktopLanding } from "/components/headerDesktop.j
 import { enableMobile } from "/components/headerMobile.js";
 
 let currentMode = null;
-let currentLayout = null;
 let listeners = [];
 let isInitialized = false;
 
@@ -21,22 +20,17 @@ export function initLayoutController(context) {
 
   function getMode() {
     const width = window.innerWidth;
-    if (width <= 480) return "mobile";
+    if (width <= 768) return "mobile";
     if (width <= 1024) return "tablet";
     return "desktop";
   }
 
-  function getLayout(mode) {
-    return mode === "desktop" ? "desktop" : "mobile";
-  }
-
   function applyMode() {
     const newMode = getMode();
-    const newLayout = getLayout(newMode);
 
-    // 🔥 reload only if layout type changes
-    if (currentLayout && newLayout !== currentLayout) {
-      console.log("Layout changed → reloading");
+    // 🔥 reload on ANY mode change (mobile ↔ tablet included)
+    if (currentMode && newMode !== currentMode) {
+      console.log(`Mode changed (${currentMode} → ${newMode}) → reloading`);
       window.location.reload();
       return;
     }
@@ -45,25 +39,23 @@ export function initLayoutController(context) {
 
     console.log("Applying mode:", newMode);
 
-    // init layout only once
-    if (!currentLayout) {
-      if (newLayout === "desktop") {
+    // 🔥 init layout only once
+    if (!currentMode) {
+      if (newMode === "desktop") {
         if (context.isLandingPage) {
           enableDesktopLanding(context);
         } else {
           enableDesktop(context);
         }
-      }
-
-      if (newLayout === "mobile") {
+      } else {
+        // mobile + tablet share same layout
         enableMobile(context);
       }
     }
 
     currentMode = newMode;
-    currentLayout = newLayout;
 
-    // 🔥 notify Rive etc.
+    // 🔥 notify (Rive etc.)
     listeners.forEach(cb => cb(currentMode));
   }
 

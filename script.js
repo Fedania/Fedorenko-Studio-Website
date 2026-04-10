@@ -6,6 +6,8 @@ import { initServices } from "./pages/services/sectionServices.js";
 import { initLandingPage } from "./pages/landing/landingPage.js";
 import { initHeaderBase } from "./components/headerBase.js";
 import { initLayoutController } from "./utilities/layoutController.js";
+import { createVideo } from "./utilities/createVideo.js";
+import { initContactModal } from "./utilities/contactModal.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -31,12 +33,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await loadComponent("#footer", "/components/footer.html");
   initScrollTop();
+  initContactModal();
 
   // 3️⃣ Page-specific init (unchanged)
   if (isLandingPage) {
     console.log("Initializing landing page");
     await initLandingPage();
     await initServices();
+    createVideo({
+      container: "#hero",
+      id: "hero__bg-video",
+      className: "bg-video",
+      src: "/assets/landing_02.mp4",
+      playbackRate: 0.5,
+      autoplay: true,
+      loop: true,
+      muted: true
+    });
   }
 
   if (path.endsWith("/services") || path.endsWith("/services.html") || path === "/") {

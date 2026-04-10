@@ -11,7 +11,7 @@ export function enableMobile({ navigation, headerNav, overlay }) {
   sidebar.id = "sidebar";
 
   const closeBtn = document.createElement("button");
-  closeBtn.className = "sidebar__close";
+  closeBtn.className = "btn__close-sidebar";
   closeBtn.textContent = "×";
 
   hamburger = document.createElement("button");
@@ -31,6 +31,6 @@ export function enableMobile({ navigation, headerNav, overlay }) {
 
   loadComponent(sidebar, "/components/footer.html");
 
-  overlay.classList.remove("overlay--expanded");
-  overlay.classList.add("overlay--shrunk");
+  overlay.classList.add("overlay--expanded");
+  overlay.classList.remove("overlay--shrunk");
 }
