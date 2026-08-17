@@ -10,16 +10,22 @@ import { createVideo } from "./utilities/createVideo.js";
 import { initContactModal } from "./utilities/contactModal.js";
 
 
+// Which page are we on? Returns one name.
+function getPage(path) {
+  if (path === "/" || path.endsWith("/landing") || path.endsWith("/landing.html")) return "landing";
+  if (path.endsWith("/services") || path.endsWith("/services.html")) return "services";
+  if (path.endsWith("/all-projects") || path.endsWith("/all-projects.html")) return "categories";
+  if (path.endsWith("/project-page") || path.endsWith("/project-page.html")) return "project";
+  return "landing"; // fallback
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("Initial scrollY:", window.scrollY);
 
   // 1️⃣ Detect page FIRST
   const path = window.location.pathname;
-
-  const isLandingPage =
-    path.endsWith("/landing") ||
-    path.endsWith("/landing.html") ||
-    path === "/";
+  const page = getPage(path);
+  const isLandingPage = page === "landing";
 
   // 2️⃣ Load shared layout
   const headerContext = await initHeaderBase();
@@ -52,16 +58,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  if (path.endsWith("/services") || path.endsWith("/services.html") || path === "/") {
+  if (page === "services") {
     await initServices();
   }
 
-  if (path.endsWith("/all-projects") || path.endsWith("/all-projects.html") || path === "/") {
+  if (page === "categories") {
     console.log("Initializing categories page");
     await initCategories();
   }
 
-  if (path.endsWith("/project-page") || path.endsWith("/project-page.html") || path === "/") {
+  if (page === "project") {
     console.log("Initializing project page");
 
     const id = window.location.hash.replace("#", "").trim();

@@ -13,15 +13,16 @@ export function renderProjectThumbnail(project) {
     : `/pages/project-page.html#${project.id}`;
 
   return `
-    <div class="project-card">
-      
+    <div class="project-card is-loading">
+
       <a href="${href}" data-project-id="${project.id}" >
-        
-          <img 
-            src="/images/${project.id}/01.jpg" 
-            alt="${project.title}" 
+
+          <img
+            src="/images/${project.id}/01.jpg"
+            alt="${project.title}"
             loading="lazy"
-            onerror="this.onerror=null; this.src='/assets/placeholder.jpg'"
+            onload="this.closest('.project-card').classList.remove('is-loading')"
+            onerror="this.onerror=null; this.src='/assets/placeholder.jpg'; this.closest('.project-card').classList.remove('is-loading')"
           />
           <div class="project-card__overlay">
             <h6>${project.title}</h6>
